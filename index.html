@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Roadhouse Deli & Grill — Windhoek's favourite spot for hearty food by day and craft cocktails by night. Burgers, steaks, wings, pizza and premium drinks.">
+  <title>Roadhouse Deli & Grill | Windhoek</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="page-transition"></div>
+
+<!-- ======================================================
+     NAVIGATION
+     ====================================================== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Roadhouse Logo" onerror="this.style.display='none'">
+      <div class="logo-text">
+        Roadhouse
+        <span>Deli &amp; Grill</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#hero"        data-i18n="nav.home">Home</a></li>
+      <li><a href="menu.html"    data-i18n="nav.menu">Menu</a></li>
+      <li><a href="#meal-of-day" data-i18n="nav.meals">Meal of the Day</a></li>
+      <li><a href="#events"      data-i18n="nav.events">Events</a></li>
+      <li><a href="#reviews"     data-i18n="nav.reviews">Reviews</a></li>
+      <li><a href="#contact"     data-i18n="nav.contact">Contact</a></li>
+    </ul>
+
+    <!-- Language dropdown + circular logo -->
+    <div style="display:flex;align-items:center;gap:1rem;margin-left:auto;">
+      <div class="lang-dropdown">
+        <button class="lang-selected">🇬🇧 EN <span class="caret">▼</span></button>
+        <div class="lang-menu"></div>
+      </div>
+      <a href="index.html" class="logo-circle" title="Roadhouse Deli & Grill">
+        <img src="logo.png" alt="Roadhouse Logo" onerror="this.parentElement.innerHTML='<div class=\'logo-circle-placeholder\'>RH<span>DELI & GRILL</span></div>'">
+      </a>
+    </div>
+
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#hero"        data-i18n="nav.home">Home</a>
+  <a href="menu.html"    data-i18n="nav.menu">Menu</a>
+  <a href="#meal-of-day" data-i18n="nav.meals">Meal of the Day</a>
+  <a href="#events"      data-i18n="nav.events">Events</a>
+  <a href="#reviews"     data-i18n="nav.reviews">Reviews</a>
+  <a href="#contact"     data-i18n="nav.contact">Contact</a>
+  <div class="lang-dropdown" style="width:fit-content">
+    <button class="lang-selected">🇬🇧 EN <span class="caret">▼</span></button>
+    <div class="lang-menu"></div>
+  </div>
+</div>
+
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-texture"></div>
+
+  <div class="hero-content">
+    <span class="hero-badge" data-i18n="hero.badge">Established in Windhoek</span>
+    <h1 class="hero-title">
+      <span data-i18n="hero.title1">Roadhouse</span><br>
+      <em class="highlight" data-i18n="hero.title2">Deli &amp; Grill</em>
+    </h1>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">Where great food meets great company</p>
+    <div class="hero-cta">
+      <a href="menu.html" class="btn-primary" data-i18n="hero.cta1">View Menu</a>
+      <a href="#contact"  class="btn-outline"  data-i18n="hero.cta2">Book a Table</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span data-i18n="hero.scroll">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     ABOUT
+     ====================================================== -->
+<section id="about" class="section-pad">
+  <div class="about-grid">
+    <div class="about-image-col reveal left">
+      <img
+        src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=900&auto=format&fit=crop&q=80"
+        alt="Roadhouse interior"
+        loading="lazy"
+      >
+      <div class="about-image-overlay"></div>
+    </div>
+
+    <div class="about-content-col reveal right">
+      <span class="eyebrow" data-i18n="about.eyebrow">Our Story</span>
+      <h2 data-i18n="about.title">Born from the love of fire &amp; flavour</h2>
+      <p data-i18n="about.body">Roadhouse Deli &amp; Grill is more than a restaurant — it's a gathering place. By day we fuel the city with hearty meals and honest food. By night we light up the bar with craft cocktails, premium spirits, and the kind of atmosphere that keeps you coming back. Warm wood, bold flavours, and a staff that wear black because they mean business.</p>
+
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-num">80+</span>
+          <span class="stat-label" data-i18n="about.stat1">Menu Items</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">20+</span>
+          <span class="stat-label" data-i18n="about.stat2">Craft Cocktails</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">5+</span>
+          <span class="stat-label" data-i18n="about.stat3">Years Open</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     MEAL OF THE DAY
+     ====================================================== -->
+<section id="meal-of-day" class="section-pad">
+  <div class="container">
+    <div class="meal-header reveal">
+      <span class="eyebrow" data-i18n="meal.eyebrow">Daily Special</span>
+      <h2 data-i18n="meal.title">Meal of the Day</h2>
+      <div class="wood-line"></div>
+      <div class="day-badge" id="day-badge">Today</div>
+    </div>
+    <div class="meal-cards" id="meal-cards">
+      <!-- Populated by script.js -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     MENU PREVIEW
+     ====================================================== -->
+<section id="menu-preview" class="section-pad">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:3rem;">
+      <span class="eyebrow" data-i18n="menu.eyebrow">What We Serve</span>
+      <h2 data-i18n="menu.title">Our Menu</h2>
+      <div class="wood-line"></div>
+    </div>
+
+    <div class="menu-categories">
+      <a href="menu.html#burgers"   class="menu-cat-item reveal">
+        <span class="cat-icon">🍔</span>
+        <h3>Burgers &amp; Starters</h3>
+        <p>Classic through to loaded</p>
+      </a>
+      <a href="menu.html#grills"    class="menu-cat-item reveal">
+        <span class="cat-icon">🥩</span>
+        <h3 data-i18n="menu.cat.grill">Grill &amp; Steaks</h3>
+        <p>A-grade cuts, flame-grilled</p>
+      </a>
+      <a href="menu.html#pizza"     class="menu-cat-item reveal">
+        <span class="cat-icon">🍕</span>
+        <h3>Pizza &amp; Pasta</h3>
+        <p>Stone-baked &amp; hand-tossed</p>
+      </a>
+      <a href="menu.html#platters"  class="menu-cat-item reveal">
+        <span class="cat-icon">🍗</span>
+        <h3 data-i18n="menu.cat.platters">Wings &amp; Platters</h3>
+        <p>Sharing is caring</p>
+      </a>
+      <a href="menu.html#cocktails" class="menu-cat-item reveal">
+        <span class="cat-icon">🍹</span>
+        <h3 data-i18n="menu.cat.cocktails">Cocktails</h3>
+        <p>Craft &amp; classic blends</p>
+      </a>
+      <a href="menu.html#drinks"    class="menu-cat-item reveal">
+        <span class="cat-icon">🥃</span>
+        <h3 data-i18n="menu.cat.drinks">Spirits &amp; Drinks</h3>
+        <p>Whiskey, gin, beer &amp; wine</p>
+      </a>
+    </div>
+
+    <div class="menu-preview-cta reveal" style="margin-top:2.5rem;">
+      <a href="menu.html" class="btn-primary" data-i18n="menu.cta">View Full Menu</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     EVENTS & SPECIALS
+     ====================================================== -->
+<section id="events" class="section-pad">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:3rem;">
+      <span class="eyebrow" data-i18n="events.eyebrow">What's On</span>
+      <h2 data-i18n="events.title">Events &amp; Specials</h2>
+      <div class="wood-line"></div>
+    </div>
+
+    <div class="events-grid">
+      <div class="events-list">
+
+        <div class="event-card reveal">
+          <div class="event-date">
+            <span class="day">13</span>
+            <span class="month">Jun</span>
+          </div>
+          <div class="event-info">
+            <h4>Live Music Night</h4>
+            <p>Local artists take the stage every Friday. Come for the food, stay for the vibe. Doors from 19:00.</p>
+            <span class="event-tag">Live Music</span>
+          </div>
+        </div>
+
+        <div class="event-card reveal">
+          <div class="event-date">
+            <span class="day">20</span>
+            <span class="month">Jun</span>
+          </div>
+          <div class="event-info">
+            <h4>Saturday Night Braai &amp; DJ</h4>
+            <p>Premium braai platters, ice-cold drinks and a DJ set from 20:00 till late. No cover charge.</p>
+            <span class="event-tag">Braai Night</span>
+          </div>
+        </div>
+
+        <div class="event-card reveal">
+          <div class="event-date">
+            <span class="day">25</span>
+            <span class="month">Jun</span>
+          </div>
+          <div class="event-info">
+            <h4>Mid-Week Cocktail Special</h4>
+            <p>Every Wednesday — buy 2 cocktails, get 1 free. Classic Mojito, Roadhouse Gin, Long Island and more.</p>
+            <span class="event-tag">Cocktail Special</span>
+          </div>
+        </div>
+
+        <div class="event-card reveal">
+          <div class="event-date">
+            <span class="day">28</span>
+            <span class="month">Jun</span>
+          </div>
+          <div class="event-info">
+            <h4>Family Sunday Feast</h4>
+            <p>Bring the whole family. Whole flame-grilled chicken with fries. Kids eat at half price.</p>
+            <span class="event-tag">Family Day</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="specials-panel reveal right">
+        <h3 data-i18n="events.specials">Happy Hour &amp; Specials</h3>
+
+        <div class="special-item">
+          <span class="special-item-name">Tafel Lager <span class="special-badge">Daily</span></span>
+          <span class="special-item-price">N$30</span>
+        </div>
+        <div class="special-item">
+          <span class="special-item-name">Castle Lite <span class="special-badge">Daily</span></span>
+          <span class="special-item-price">N$30</span>
+        </div>
+        <div class="special-item">
+          <span class="special-item-name">Classic Mojito <span class="special-badge">Wed</span></span>
+          <span class="special-item-price">N$90</span>
+        </div>
+        <div class="special-item">
+          <span class="special-item-name">Wings &amp; Chips <span class="special-badge">Fri</span></span>
+          <span class="special-item-price">N$145</span>
+        </div>
+        <div class="special-item">
+          <span class="special-item-name">Roadhouse Pasta <span class="special-badge">Mon</span></span>
+          <span class="special-item-price">N$85</span>
+        </div>
+        <div class="special-item">
+          <span class="special-item-name">Chicken Schnitzel <span class="special-badge">Thu</span></span>
+          <span class="special-item-price">N$85</span>
+        </div>
+        <div class="special-item">
+          <span class="special-item-name">Braai Plate <span class="special-badge">Fri</span></span>
+          <span class="special-item-price">N$150</span>
+        </div>
+
+        <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.1);">
+          <p style="font-family:Oswald,sans-serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);">Happy Hour</p>
+          <p style="font-size:0.85rem;color:var(--off-white);margin-top:0.25rem;">Mon–Fri · 16:00 – 18:00<br>Selected beers &amp; spirits 20% off</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     REVIEWS
+     ====================================================== -->
+<section id="reviews" class="section-pad">
+  <div class="container">
+    <div class="reviews-header reveal">
+      <span class="eyebrow" data-i18n="reviews.eyebrow">What People Say</span>
+      <h2 data-i18n="reviews.title">Guest Reviews</h2>
+      <div class="wood-line"></div>
+      <span class="stars">★★★★★</span>
+    </div>
+
+    <div class="reviews-slider">
+      <div class="reviews-track">
+        <div class="review-card reveal">
+          <p class="review-text">"The Wagon Wheel Burger was absolutely incredible — hash brown, egg, bacon and cheese on a perfect patty. The Roadhouse Gin cocktail paired with it was next level. This place is my Friday ritual."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">M</div>
+            <div>
+              <div class="reviewer-name">Michael T.</div>
+              <div class="stars" style="font-size:0.8rem">★★★★★</div>
+              <div class="reviewer-date">May 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <p class="review-text">"Came in on a Thursday and the Chicken Schnitzel special was everything. Great portion, incredible gravy, and the service was warm and professional. Back next week for sure."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">S</div>
+            <div>
+              <div class="reviewer-name">Sarah K.</div>
+              <div class="stars" style="font-size:0.8rem">★★★★★</div>
+              <div class="reviewer-date">May 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <p class="review-text">"The Party Platter for our group was insane value — boerewors, wings, hake, prawns, everything spot on. The atmosphere at night is electric. Roadhouse is THE spot in Windhoek."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">J</div>
+            <div>
+              <div class="reviewer-name">Johan B.</div>
+              <div class="stars" style="font-size:0.8rem">★★★★★</div>
+              <div class="reviewer-date">April 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <p class="review-text">"Long Island Iced Tea and BBQ Wings on a Friday night — life doesn't get better. The wood decor and ambient lighting make for such a vibe. Highly recommend!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">N</div>
+            <div>
+              <div class="reviewer-name">Nadia P.</div>
+              <div class="stars" style="font-size:0.8rem">★★★★☆</div>
+              <div class="reviewer-date">April 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <p class="review-text">"Brought clients here for a business lunch — the 500g Rump Steak was flawless and the Seafood Pasta impressed everyone. Professional, warm service. Windhoek's best kept secret."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">D</div>
+            <div>
+              <div class="reviewer-name">David M.</div>
+              <div class="stars" style="font-size:0.8rem">★★★★★</div>
+              <div class="reviewer-date">March 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <p class="review-text">"The Family Feast on Sunday — whole grilled chicken, fries, Portuguese rolls. Kids loved it! Fresh and delicious. Definitely our new Sunday tradition."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">A</div>
+            <div>
+              <div class="reviewer-name">Amanda S.</div>
+              <div class="stars" style="font-size:0.8rem">★★★★★</div>
+              <div class="reviewer-date">March 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-controls">
+      <button class="slider-btn prev" aria-label="Previous"><i class="fa fa-chevron-left"></i></button>
+      <div class="slider-dots"></div>
+      <button class="slider-btn next" aria-label="Next"><i class="fa fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Review form -->
+    <div class="review-form-section reveal">
+      <h3 data-i18n="reviews.write">Leave a Review</h3>
+      <form class="review-form" id="review-form" novalidate>
+        <input type="hidden" id="rating-value" value="5">
+
+        <div class="form-group">
+          <label data-i18n="reviews.name">Your Name</label>
+          <input type="text" name="reviewer-name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label>Email (optional)</label>
+          <input type="email" name="reviewer-email" placeholder="your@email.com">
+        </div>
+        <div class="form-group full">
+          <label data-i18n="reviews.rating">Rating</label>
+          <div class="star-rating">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label data-i18n="reviews.comment">Your Review</label>
+          <textarea name="review-text" rows="4" placeholder="Tell us about your experience..." required></textarea>
+        </div>
+        <div class="form-group full" style="display:flex;justify-content:flex-end;">
+          <button type="submit" class="btn-primary" data-i18n="reviews.submit">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     FOOTER / CONTACT
+     ====================================================== -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text" style="font-size:1.4rem;margin-bottom:0.5rem;">
+          Roadhouse<span style="display:block">Deli &amp; Grill</span>
+        </div>
+        <p>Windhoek's favourite spot for hearty food by day and craft cocktails by night. Good food, good drinks, good people.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/RoadhouseDeliAndGrill/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/roadhouse_deli/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/264813287476" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.hours">Hours</h4>
+        <ul>
+          <li style="color:var(--off-white);font-size:0.875rem;">
+            <span data-i18n="footer.days.weekday">Sun – Thu</span><br>
+            <span style="color:var(--text-muted)" data-i18n="footer.hours.weekday">08:00 – 00:00</span>
+          </li>
+          <li style="color:var(--off-white);font-size:0.875rem;margin-top:0.75rem;">
+            <span data-i18n="footer.days.fri">Fri – Sat</span><br>
+            <span style="color:var(--text-muted)" data-i18n="footer.hours.fri">08:00 – 02:00</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.links">Quick Links</h4>
+        <ul>
+          <li><a href="index.html"   data-i18n="nav.home">Home</a></li>
+          <li><a href="menu.html"    data-i18n="nav.menu">Menu</a></li>
+          <li><a href="#meal-of-day" data-i18n="nav.meals">Meal of the Day</a></li>
+          <li><a href="#events"      data-i18n="nav.events">Events</a></li>
+          <li><a href="#reviews"     data-i18n="nav.reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.contact">Contact</h4>
+        <p><i class="fa fa-map-marker-alt" style="color:var(--wood-warm);margin-right:0.5rem;"></i>Independence Avenue, opposite Hilton Hotel, Windhoek</p>
+        <p style="margin-top:0.75rem;"><i class="fa fa-phone" style="color:var(--wood-warm);margin-right:0.5rem;"></i><a href="tel:+264813287476">+264 81 328 7476</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p data-i18n="footer.rights">© 2026 Roadhouse Deli &amp; Grill. All rights reserved.</p>
+      <p style="color:var(--wood-dark);font-size:0.75rem;">Made with ♥ in Namibia</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

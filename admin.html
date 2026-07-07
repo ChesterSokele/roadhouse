@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Roadhouse Deli &amp; Grill</title>
+<style>
+:root {
+  --black:      #111010;
+  --dark:       #1a1a18;
+  --charcoal:   #2a2a27;
+  --white:      #f5f0eb;
+  --off-white:  #e8e0d5;
+  --wood-dark:  #3d1f0a;
+  --wood-mid:   #6b3a1f;
+  --wood-light: #a0622a;
+  --wood-warm:  #c8956c;
+  --wood-cream: #d4a574;
+  --gold:       #c9a84c;
+  --muted:      #9e9e9e;
+  --green:      #25a85a;
+  --red:        #e05555;
+  --border:     rgba(255,255,255,0.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black);color:var(--white);font-family:'Segoe UI',sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:pointer}
+
+/* ── Login Screen ── */
+#login-screen{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;background:linear-gradient(135deg,var(--wood-dark),var(--black));
+}
+.login-card{
+  background:var(--charcoal);border:1px solid var(--border);border-radius:10px;
+  padding:2.5rem 3rem;width:380px;text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+.login-card .brand{font-size:1.4rem;font-weight:700;letter-spacing:.05em;margin-bottom:.25rem}
+.login-card .brand span{color:var(--gold)}
+.login-card p{color:var(--muted);font-size:.85rem;margin-bottom:2rem}
+.login-card input{
+  width:100%;background:var(--dark);border:1px solid var(--border);
+  border-radius:5px;color:var(--white);font-size:.95rem;
+  padding:.75rem 1rem;margin-bottom:1rem;outline:none;
+}
+.login-card input:focus{border-color:var(--gold)}
+.btn-login{
+  width:100%;padding:.85rem;background:var(--gold);color:var(--black);
+  font-weight:700;font-size:.95rem;letter-spacing:.05em;border:none;border-radius:5px;
+  transition:opacity .2s;
+}
+.btn-login:hover{opacity:.85}
+#login-error{color:var(--red);font-size:.82rem;margin-top:.5rem;min-height:1.2em}
+
+/* ── App Shell ── */
+#app{display:none}
+.topbar{
+  background:var(--charcoal);border-bottom:1px solid var(--border);
+  padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.topbar .brand{font-weight:700;font-size:1rem;letter-spacing:.05em}
+.topbar .brand span{color:var(--gold)}
+.topbar .meta{display:flex;align-items:center;gap:1rem}
+.topbar .admin-email{color:var(--muted);font-size:.8rem}
+.btn-logout{
+  background:transparent;border:1px solid var(--border);color:var(--muted);
+  font-size:.78rem;padding:.35rem .85rem;border-radius:4px;
+  transition:all .2s;
+}
+.btn-logout:hover{border-color:var(--red);color:var(--red)}
+
+.layout{display:flex;min-height:calc(100vh - 53px)}
+
+/* ── Sidebar ── */
+.sidebar{
+  width:220px;background:var(--dark);border-right:1px solid var(--border);
+  padding:1.5rem 0;flex-shrink:0;
+}
+.sidebar nav a{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.75rem 1.5rem;font-size:.9rem;color:var(--muted);
+  transition:all .2s;border-left:3px solid transparent;
+}
+.sidebar nav a:hover{color:var(--white);background:rgba(255,255,255,.03)}
+.sidebar nav a.active{color:var(--gold);border-left-color:var(--gold);background:rgba(201,168,76,.06)}
+.sidebar .icon{font-size:1.1rem;width:1.2rem;text-align:center}
+
+/* ── Main Content ── */
+.main{flex:1;padding:2rem;overflow:auto}
+.panel{display:none}
+.panel.active{display:block}
+
+.panel-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.5rem;
+}
+.panel-header h1{font-size:1.4rem;font-weight:700}
+.btn-add{
+  background:var(--gold);color:var(--black);border:none;
+  padding:.6rem 1.2rem;border-radius:5px;font-weight:700;font-size:.85rem;
+  display:flex;align-items:center;gap:.4rem;transition:opacity .2s;
+}
+.btn-add:hover{opacity:.85}
+
+/* ── Cards ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem}
+.item-card{
+  background:var(--charcoal);border:1px solid var(--border);border-radius:8px;
+  overflow:hidden;position:relative;transition:border-color .2s;
+}
+.item-card:hover{border-color:rgba(201,168,76,.3)}
+.item-card .card-img{
+  width:100%;height:150px;object-fit:cover;background:var(--dark);
+}
+.item-card .card-img-placeholder{
+  width:100%;height:150px;background:var(--dark);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;color:var(--muted);
+}
+.item-card .card-body{padding:1rem}
+.item-card .card-title{font-weight:700;margin-bottom:.25rem;font-size:.95rem}
+.item-card .card-desc{color:var(--muted);font-size:.8rem;line-height:1.4;margin-bottom:.75rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.item-card .card-meta{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.tag{
+  font-size:.68rem;padding:.2rem .55rem;border-radius:3px;
+  font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+}
+.tag-active{background:rgba(37,168,90,.15);color:#4cd97e}
+.tag-inactive{background:rgba(224,85,85,.15);color:#e07070}
+.tag-event{background:rgba(201,168,76,.15);color:var(--gold)}
+.item-card .card-price{color:var(--wood-cream);font-weight:700;font-size:.9rem;margin-left:auto}
+.card-actions{
+  display:flex;gap:.5rem;padding:.75rem 1rem;
+  border-top:1px solid var(--border);background:rgba(0,0,0,.15);
+}
+.btn-edit,.btn-delete,.btn-toggle{
+  flex:1;padding:.45rem;border:none;border-radius:4px;font-size:.78rem;
+  font-weight:600;letter-spacing:.03em;transition:opacity .2s;
+}
+.btn-edit{background:rgba(201,168,76,.15);color:var(--gold)}
+.btn-edit:hover{background:rgba(201,168,76,.3)}
+.btn-delete{background:rgba(224,85,85,.15);color:var(--red)}
+.btn-delete:hover{background:rgba(224,85,85,.3)}
+.btn-toggle{background:rgba(255,255,255,.07);color:var(--muted)}
+.btn-toggle:hover{background:rgba(255,255,255,.12);color:var(--white)}
+
+/* ── Meal of Day grid ── */
+.meal-day-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.meal-day-card{background:var(--charcoal);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.meal-day-card .day-header{
+  background:var(--dark);padding:.75rem 1rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.meal-day-card .day-name{font-weight:700;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase}
+.meal-day-card.today .day-name{color:var(--gold)}
+.meal-day-card .meal-img{width:100%;height:120px;object-fit:cover}
+.meal-day-card .meal-img-placeholder{
+  width:100%;height:120px;background:var(--dark);
+  display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--muted);
+}
+.meal-day-card .meal-body{padding:.85rem 1rem}
+.meal-day-card .meal-name{font-weight:700;margin-bottom:.2rem}
+.meal-day-card .meal-price{color:var(--wood-cream);font-weight:700;font-size:.85rem}
+.meal-day-card .btn-edit-meal{
+  width:100%;margin-top:.65rem;padding:.45rem;background:rgba(201,168,76,.12);
+  color:var(--gold);border:none;border-radius:4px;font-size:.78rem;font-weight:600;
+  transition:background .2s;
+}
+.meal-day-card .btn-edit-meal:hover{background:rgba(201,168,76,.25)}
+
+/* ── Reviews table ── */
+.reviews-table{width:100%;border-collapse:collapse}
+.reviews-table th{
+  text-align:left;padding:.75rem 1rem;font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);
+}
+.reviews-table td{
+  padding:.75rem 1rem;font-size:.85rem;border-bottom:1px solid rgba(255,255,255,.04);
+  vertical-align:middle;
+}
+.reviews-table tr:hover td{background:rgba(255,255,255,.02)}
+.star-display{color:var(--gold);font-size:.9rem}
+.review-text-cell{max-width:300px;color:var(--muted);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn-approve,.btn-pin,.btn-del-sm{
+  padding:.3rem .7rem;border:none;border-radius:3px;font-size:.72rem;
+  font-weight:600;margin-right:.3rem;transition:opacity .2s;cursor:pointer;
+}
+.btn-approve{background:rgba(37,168,90,.15);color:#4cd97e}
+.btn-approve.approved{background:rgba(37,168,90,.3)}
+.btn-pin{background:rgba(201,168,76,.15);color:var(--gold)}
+.btn-pin.pinned{background:rgba(201,168,76,.3)}
+.btn-del-sm{background:rgba(224,85,85,.15);color:var(--red)}
+.btn-approve:hover,.btn-pin:hover,.btn-del-sm:hover{opacity:.75}
+
+/* ── Notices ── */
+.notice-list{display:flex;flex-direction:column;gap:.75rem}
+.notice-card{
+  background:var(--charcoal);border:1px solid var(--border);border-radius:7px;
+  padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem;
+}
+.notice-card .notice-text{flex:1;font-size:.9rem;line-height:1.5}
+.notice-card .notice-actions{display:flex;gap:.4rem;flex-shrink:0}
+
+/* ── Modal ── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);
+  z-index:999;align-items:center;justify-content:center;padding:1rem;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:var(--charcoal);border:1px solid var(--border);border-radius:10px;
+  width:100%;max-width:560px;max-height:90vh;overflow-y:auto;
+  animation:slideUp .25s ease;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);
+}
+.modal-header h2{font-size:1.1rem;font-weight:700}
+.btn-close-modal{background:none;border:none;color:var(--muted);font-size:1.4rem;line-height:1;padding:.1rem .3rem}
+.btn-close-modal:hover{color:var(--white)}
+.modal-body{padding:1.5rem}
+.form-group{margin-bottom:1rem}
+.form-group label{
+  display:block;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--wood-warm);margin-bottom:.4rem;
+}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;background:var(--dark);border:1px solid var(--border);border-radius:5px;
+  color:var(--white);font-size:.9rem;padding:.7rem .9rem;outline:none;
+  transition:border-color .2s;font-family:inherit;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.img-preview-wrap{margin-top:.5rem}
+.img-preview-wrap img{border-radius:5px;max-height:160px;object-fit:cover;width:100%}
+.upload-hint{font-size:.75rem;color:var(--muted);margin-top:.3rem}
+.upload-progress{
+  background:var(--dark);border-radius:3px;height:4px;margin-top:.4rem;overflow:hidden;display:none;
+}
+.upload-progress .bar{height:100%;background:var(--gold);width:0;transition:width .3s}
+.modal-footer{
+  padding:1rem 1.5rem;border-top:1px solid var(--border);
+  display:flex;justify-content:flex-end;gap:.75rem;
+}
+.btn-cancel{background:transparent;border:1px solid var(--border);color:var(--muted);
+  padding:.6rem 1.2rem;border-radius:5px;font-size:.85rem}
+.btn-cancel:hover{border-color:var(--white);color:var(--white)}
+.btn-save{background:var(--gold);color:var(--black);border:none;
+  padding:.6rem 1.4rem;border-radius:5px;font-weight:700;font-size:.85rem;transition:opacity .2s}
+.btn-save:hover{opacity:.85}
+.btn-save:disabled{opacity:.5;cursor:not-allowed}
+
+/* ── Toast ── */
+.toast{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--charcoal);border:1px solid var(--border);border-radius:7px;
+  padding:.85rem 1.25rem;font-size:.88rem;z-index:9999;
+  display:flex;align-items:center;gap:.6rem;
+  transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;
+}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{border-color:var(--green)}
+.toast.error{border-color:var(--red)}
+
+/* ── Empty state ── */
+.empty-state{
+  text-align:center;padding:4rem 1rem;color:var(--muted);
+}
+.empty-state .icon{font-size:3rem;margin-bottom:1rem}
+.empty-state p{font-size:.9rem}
+
+/* ── Toggle switch ── */
+.toggle-wrap{display:flex;align-items:center;gap:.6rem}
+.toggle{
+  width:40px;height:22px;background:var(--dark);border-radius:11px;
+  position:relative;cursor:pointer;border:1px solid var(--border);transition:background .2s;
+}
+.toggle.on{background:var(--green)}
+.toggle::after{
+  content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;
+  background:var(--muted);border-radius:50%;transition:all .2s;
+}
+.toggle.on::after{left:20px;background:#fff}
+.toggle-label{font-size:.8rem;color:var(--muted)}
+
+/* ── Responsive ── */
+@media(max-width:700px){
+  .sidebar{width:60px}
+  .sidebar nav a span:last-child{display:none}
+  .sidebar nav a{justify-content:center;padding:.75rem}
+  .cards-grid{grid-template-columns:1fr}
+  .meal-day-grid{grid-template-columns:1fr 1fr}
+  .form-row-2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ LOGIN ════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="brand">Roadhouse<span> Admin</span></div>
+    <p>Deli &amp; Grill — Staff Portal</p>
+    <input type="email" id="login-email" placeholder="Email address" autocomplete="email">
+    <input type="password" id="login-password" placeholder="Password" autocomplete="current-password">
+    <button class="btn-login" id="btn-login">Sign In</button>
+    <p id="login-error"></p>
+  </div>
+</div>
+
+<!-- ════════ APP ════════ -->
+<div id="app">
+
+  <div class="topbar">
+    <div class="brand">Roadhouse<span> Admin</span></div>
+    <div class="meta">
+      <span class="admin-email" id="admin-email-display"></span>
+      <button class="btn-logout" id="btn-logout">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav>
+        <a href="#" class="active" data-panel="events">
+          <span class="icon">📅</span><span>Events</span>
+        </a>
+        <a href="#" data-panel="specials">
+          <span class="icon">⭐</span><span>Specials</span>
+        </a>
+        <a href="#" data-panel="meals">
+          <span class="icon">🍽️</span><span>Meal of Day</span>
+        </a>
+        <a href="#" data-panel="reviews">
+          <span class="icon">💬</span><span>Reviews</span>
+        </a>
+        <a href="#" data-panel="notices">
+          <span class="icon">📢</span><span>Notices</span>
+        </a>
+        <a href="index.html" target="_blank" style="margin-top:auto">
+          <span class="icon">🌐</span><span>View Site</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main">
+
+      <!-- EVENTS -->
+      <div id="panel-events" class="panel active">
+        <div class="panel-header">
+          <h1>📅 Events &amp; Activities</h1>
+          <button class="btn-add" onclick="openModal('event')">+ Add Event</button>
+        </div>
+        <div id="events-grid" class="cards-grid">
+          <div class="empty-state"><div class="icon">📅</div><p>Loading events…</p></div>
+        </div>
+      </div>
+
+      <!-- SPECIALS -->
+      <div id="panel-specials" class="panel">
+        <div class="panel-header">
+          <h1>⭐ Happy Hour &amp; Specials</h1>
+          <button class="btn-add" onclick="openModal('special')">+ Add Special</button>
+        </div>
+        <div id="specials-grid" class="cards-grid">
+          <div class="empty-state"><div class="icon">⭐</div><p>Loading specials…</p></div>
+        </div>
+      </div>
+
+      <!-- MEALS -->
+      <div id="panel-meals" class="panel">
+        <div class="panel-header">
+          <h1>🍽️ Meal of the Day</h1>
+          <p style="font-size:.82rem;color:var(--muted)">Click a day to update its featured meal.</p>
+        </div>
+        <div id="meals-grid" class="meal-day-grid"></div>
+      </div>
+
+      <!-- REVIEWS -->
+      <div id="panel-reviews" class="panel">
+        <div class="panel-header">
+          <h1>💬 Guest Reviews</h1>
+          <div style="font-size:.8rem;color:var(--muted)">Approve to show on site · Pin to feature at top</div>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="reviews-table">
+            <thead><tr>
+              <th>Name</th><th>Rating</th><th>Review</th><th>Date</th><th>Status</th><th>Actions</th>
+            </tr></thead>
+            <tbody id="reviews-tbody">
+              <tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- NOTICES -->
+      <div id="panel-notices" class="panel">
+        <div class="panel-header">
+          <h1>📢 Notices &amp; Announcements</h1>
+          <button class="btn-add" onclick="openModal('notice')">+ Add Notice</button>
+        </div>
+        <div id="notices-list" class="notice-list">
+          <div class="empty-state"><div class="icon">📢</div><p>Loading notices…</p></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ════════ MODAL ════════ -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-title">Add Item</h2>
+      <button class="btn-close-modal" onclick="closeModal()">&#10005;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" id="btn-save" onclick="saveItem()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ TOAST ════════ -->
+<div class="toast" id="toast"></div>
+
+<!-- ════════ FIREBASE SDK ════════ -->
+<script type="module">
+import { initializeApp }                      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged }
+                                               from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, collection, doc, addDoc, setDoc, updateDoc, deleteDoc,
+         onSnapshot, serverTimestamp, query, orderBy }
+                                               from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject }
+                                               from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
+// ── CONFIG  ──────────────────────────
+const firebaseConfig = {
+    apiKey: "AIzaSyDq1jqOsmoHWOovP2zwnc8kcASQEA9iDF4",
+    authDomain: "carry-together.firebaseapp.com",
+    projectId: "carry-together",
+    storageBucket: "carry-together.firebasestorage.app",
+    messagingSenderId: "590186733121",
+    appId: "1:590186733121:web:80899a8ff4c7f286fd30c0",
+    measurementId: "G-8R60R3RW76"
+  };
+// ─────────────────────────────────────────────────────────────────────
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+const stor = getStorage(app);
+
+const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+// ── State ──
+let currentPanel = 'events';
+let editingId    = null;
+let editingType  = null;
+let uploadTask   = null;
+let pendingImageURL = null;
+let pendingImagePath = null;
+
+// ── Auth ──
+document.getElementById('btn-login').addEventListener('click', async () => {
+  const email = document.getElementById('login-email').value.trim();
+  const pass  = document.getElementById('login-password').value;
+  const errEl = document.getElementById('login-error');
+  errEl.textContent = '';
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+  } catch(e) {
+    errEl.textContent = 'Invalid email or password.';
+  }
+});
+document.getElementById('login-password').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('btn-login').click();
+});
+document.getElementById('btn-logout').addEventListener('click', () => signOut(auth));
+
+onAuthStateChanged(auth, user => {
+  if (user) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    document.getElementById('admin-email-display').textContent = user.email;
+    loadAll();
+  } else {
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('app').style.display = 'none';
+  }
+});
+
+// ── Sidebar Navigation ──
+document.querySelectorAll('.sidebar nav a[data-panel]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const panel = link.dataset.panel;
+    document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
+    link.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + panel).classList.add('active');
+    currentPanel = panel;
+  });
+});
+
+// ── Load All ──
+function loadAll() {
+  loadEvents();
+  loadSpecials();
+  loadMeals();
+  loadReviews();
+  loadNotices();
+}
+
+// ════════════════════════════════════════
+//  EVENTS
+// ════════════════════════════════════════
+function loadEvents() {
+  const q = query(collection(db, 'events'), orderBy('date'));
+  onSnapshot(q, snap => {
+    const grid = document.getElementById('events-grid');
+    if (snap.empty) {
+      grid.innerHTML = '<div class="empty-state"><div class="icon">📅</div><p>No events yet. Add your first one!</p></div>';
+      return;
+    }
+    grid.innerHTML = '';
+    snap.forEach(d => {
+      const ev = d.data();
+      const card = document.createElement('div');
+      card.className = 'item-card';
+      card.innerHTML = `
+        ${ev.imageURL
+          ? `<img class="card-img" src="${ev.imageURL}" alt="${ev.title}">`
+          : `<div class="card-img-placeholder">📅</div>`}
+        <div class="card-body">
+          <div class="card-title">${ev.title}</div>
+          <div class="card-desc">${ev.description||''}</div>
+          <div class="card-meta">
+            <span class="tag tag-event">${ev.date||''} ${ev.time||''}</span>
+            <span class="tag ${ev.active!==false?'tag-active':'tag-inactive'}">${ev.active!==false?'Active':'Hidden'}</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn-edit"  onclick="openModal('event','${d.id}')">✏️ Edit</button>
+          <button class="btn-toggle" onclick="toggleActive('events','${d.id}',${ev.active!==false})">${ev.active!==false?'Hide':'Show'}</button>
+          <button class="btn-delete" onclick="deleteItem('events','${d.id}','${ev.imagePath||''}')">🗑️ Delete</button>
+        </div>`;
+      grid.appendChild(card);
+    });
+  });
+}
+
+// ════════════════════════════════════════
+//  SPECIALS
+// ════════════════════════════════════════
+function loadSpecials() {
+  const q = query(collection(db, 'specials'), orderBy('createdAt'));
+  onSnapshot(q, snap => {
+    const grid = document.getElementById('specials-grid');
+    if (snap.empty) {
+      grid.innerHTML = '<div class="empty-state"><div class="icon">⭐</div><p>No specials yet.</p></div>';
+      return;
+    }
+    grid.innerHTML = '';
+    snap.forEach(d => {
+      const sp = d.data();
+      const card = document.createElement('div');
+      card.className = 'item-card';
+      card.innerHTML = `
+        ${sp.imageURL
+          ? `<img class="card-img" src="${sp.imageURL}" alt="${sp.name}">`
+          : `<div class="card-img-placeholder">⭐</div>`}
+        <div class="card-body">
+          <div class="card-title">${sp.name}</div>
+          <div class="card-desc">${sp.description||''}</div>
+          <div class="card-meta">
+            ${sp.badge?`<span class="tag tag-event">${sp.badge}</span>`:''}
+            <span class="tag ${sp.active!==false?'tag-active':'tag-inactive'}">${sp.active!==false?'Active':'Hidden'}</span>
+            ${sp.price?`<span class="card-price">${sp.price}</span>`:''}
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn-edit"  onclick="openModal('special','${d.id}')">✏️ Edit</button>
+          <button class="btn-toggle" onclick="toggleActive('specials','${d.id}',${sp.active!==false})">${sp.active!==false?'Hide':'Show'}</button>
+          <button class="btn-delete" onclick="deleteItem('specials','${d.id}','${sp.imagePath||''}')">🗑️ Delete</button>
+        </div>`;
+      grid.appendChild(card);
+    });
+  });
+}
+
+// ════════════════════════════════════════
+//  MEAL OF THE DAY
+// ════════════════════════════════════════
+const defaultMeals = {
+  0:{name:'Family Feast',desc:'A whole flame-grilled chicken with golden fries and warm Portuguese bread.',price:'N$195',imageURL:'https://images.unsplash.com/photo-1598103442097-8b74394b95c7?w=600&auto=format&fit=crop'},
+  1:{name:'Roadhouse Pasta',desc:"Pasta with ham in our chef's special cream sauce, topped with fresh herbs and parmesan.",price:'N$85',imageURL:'https://images.unsplash.com/photo-1551183053-bf91798d792c?w=600&auto=format&fit=crop'},
+  2:{name:'Beef Stew',desc:'Slow-cooked tender beef in a rich, hearty gravy served with fluffy rice or pap.',price:'N$100',imageURL:'https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=600&auto=format&fit=crop'},
+  3:{name:'Cottage Pie',desc:'Classic cottage pie with savoury mince filling topped with golden mashed potato.',price:'N$100',imageURL:'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop'},
+  4:{name:'Chicken Schnitzel',desc:'Crispy, golden-fried chicken schnitzel served with creamy mash and rich homemade gravy.',price:'N$85',imageURL:'https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&auto=format&fit=crop'},
+  5:{name:'Braai Plate',desc:'The Roadhouse Friday classic: boerewors, chicken, chops and sides.',price:'N$150',imageURL:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&auto=format&fit=crop'},
+  6:{name:'Grand Feast Delight',desc:'Short ribs, meatballs, crispy chips, flavourful wings, zesty Russian and salad medley.',price:'N$500',imageURL:'https://images.unsplash.com/photo-1544025162-d76538485491?w=600&auto=format&fit=crop'},
+};
+
+function loadMeals() {
+  const grid = document.getElementById('meals-grid');
+  const today = new Date().getDay();
+  grid.innerHTML = '';
+  onSnapshot(collection(db, 'mealOfDay'), snap => {
+    const firestoreData = {};
+    snap.forEach(d => { firestoreData[d.id] = d.data(); });
+    grid.innerHTML = '';
+    for (let i = 0; i < 7; i++) {
+      const meal = firestoreData[String(i)] || defaultMeals[i];
+      const card = document.createElement('div');
+      card.className = 'meal-day-card' + (i === today ? ' today' : '');
+      card.innerHTML = `
+        <div class="day-header">
+          <span class="day-name">${dayNames[i]}${i===today?' ← Today':''}</span>
+        </div>
+        ${meal.imageURL
+          ? `<img class="meal-img" src="${meal.imageURL}" alt="${meal.name}">`
+          : `<div class="meal-img-placeholder">🍽️</div>`}
+        <div class="meal-body">
+          <div class="meal-name">${meal.name}</div>
+          <div class="meal-price">${meal.price||''}</div>
+          <button class="btn-edit-meal" onclick="openModal('meal','${i}')">✏️ Edit ${dayNames[i]}</button>
+        </div>`;
+      grid.appendChild(card);
+    }
+  });
+}
+
+// ════════════════════════════════════════
+//  REVIEWS
+// ════════════════════════════════════════
+function loadReviews() {
+  const q = query(collection(db, 'reviews'), orderBy('createdAt','desc'));
+  onSnapshot(q, snap => {
+    const tbody = document.getElementById('reviews-tbody');
+    if (snap.empty) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">No reviews yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = '';
+    snap.forEach(d => {
+      const rv = d.data();
+      const stars = '★'.repeat(rv.rating||5) + '☆'.repeat(5-(rv.rating||5));
+      const date = rv.createdAt?.toDate?.()?.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) || 'N/A';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${rv.name||'Anonymous'}</strong></td>
+        <td><span class="star-display">${stars}</span></td>
+        <td class="review-text-cell" title="${(rv.text||'').replace(/"/g,"'")}">
+          "${rv.text||''}"
+        </td>
+        <td style="color:var(--muted);font-size:.8rem">${date}</td>
+        <td>
+          <span class="tag ${rv.approved?'tag-active':'tag-inactive'}">${rv.approved?'Approved':'Pending'}</span>
+          ${rv.pinned?'<span class="tag tag-event" style="margin-left:.3rem">Pinned</span>':''}
+        </td>
+        <td>
+          <button class="btn-approve ${rv.approved?'approved':''}"
+            onclick="toggleReview('${d.id}','approved',${!!rv.approved})">${rv.approved?'✓ Approved':'Approve'}</button>
+          <button class="btn-pin ${rv.pinned?'pinned':''}"
+            onclick="toggleReview('${d.id}','pinned',${!!rv.pinned})">${rv.pinned?'📌 Pinned':'Pin'}</button>
+          <button class="btn-del-sm" onclick="deleteItem('reviews','${d.id}','')">🗑️</button>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+  });
+}
+
+// ════════════════════════════════════════
+//  NOTICES
+// ════════════════════════════════════════
+function loadNotices() {
+  const q = query(collection(db, 'notices'), orderBy('createdAt','desc'));
+  onSnapshot(q, snap => {
+    const list = document.getElementById('notices-list');
+    if (snap.empty) {
+      list.innerHTML = '<div class="empty-state"><div class="icon">📢</div><p>No notices yet.</p></div>';
+      return;
+    }
+    list.innerHTML = '';
+    snap.forEach(d => {
+      const nt = d.data();
+      const card = document.createElement('div');
+      card.className = 'notice-card';
+      card.innerHTML = `
+        <div class="notice-text">${nt.text||''}</div>
+        <div class="notice-actions">
+          <button class="btn-toggle" onclick="toggleActive('notices','${d.id}',${nt.active!==false})"
+            style="width:auto;padding:.3rem .75rem;font-size:.75rem">
+            ${nt.active!==false?'Hide':'Show'}
+          </button>
+          <button class="btn-edit" onclick="openModal('notice','${d.id}')"
+            style="width:auto;padding:.3rem .75rem;font-size:.75rem">Edit</button>
+          <button class="btn-delete" onclick="deleteItem('notices','${d.id}','')"
+            style="width:auto;padding:.3rem .75rem;font-size:.75rem">🗑️</button>
+        </div>`;
+      list.appendChild(card);
+    });
+  });
+}
+
+// ════════════════════════════════════════
+//  MODAL
+// ════════════════════════════════════════
+window.openModal = async function(type, id = null) {
+  editingId   = id;
+  editingType = type;
+  pendingImageURL  = null;
+  pendingImagePath = null;
+
+  let data = {};
+  if (id && type !== 'meal') {
+    // fetch existing data
+    try {
+      const { getDoc } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+      const snap = await getDoc(doc(db, collectionName(type), id));
+      if (snap.exists()) data = snap.data();
+    } catch(e){}
+  }
+  if (type === 'meal' && id !== null) {
+    // id is dayIndex
+    try {
+      const { getDoc } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+      const snap = await getDoc(doc(db, 'mealOfDay', String(id)));
+      data = snap.exists() ? snap.data() : (defaultMeals[parseInt(id)]||{});
+    } catch(e){ data = defaultMeals[parseInt(id)]||{}; }
+  }
+
+  const titles = {event:'Event',special:'Special',meal:'Meal of the Day',notice:'Notice'};
+  document.getElementById('modal-title').textContent = (id?'Edit ':'Add ') + titles[type];
+
+  let body = '';
+  if (type === 'event') {
+    body = `
+      <div class="form-group"><label>Event Title *</label>
+        <input id="f-title" value="${esc(data.title||'')}" placeholder="e.g. Live Music Night"></div>
+      <div class="form-group"><label>Description</label>
+        <textarea id="f-desc">${esc(data.description||'')}</textarea></div>
+      <div class="form-row-2">
+        <div class="form-group"><label>Date</label>
+          <input type="date" id="f-date" value="${data.date||''}"></div>
+        <div class="form-group"><label>Time (e.g. 19:00)</label>
+          <input id="f-time" value="${esc(data.time||'')}" placeholder="19:00"></div>
+      </div>
+      <div class="form-group"><label>Tag (e.g. Live Music)</label>
+        <input id="f-tag" value="${esc(data.tag||'')}" placeholder="Live Music"></div>
+      <div class="form-group"><label>Image</label>
+        <input type="file" id="f-image" accept="image/*" onchange="handleImageSelect(event)">
+        <div class="upload-hint">Max 5MB · JPG/PNG/WebP</div>
+        <div class="upload-progress" id="upload-progress"><div class="bar" id="upload-bar"></div></div>
+        <div class="img-preview-wrap" id="img-preview">
+          ${data.imageURL?`<img src="${data.imageURL}" alt="preview">`:''}
+        </div>
+      </div>`;
+  } else if (type === 'special') {
+    body = `
+      <div class="form-group"><label>Special Name *</label>
+        <input id="f-title" value="${esc(data.name||'')}" placeholder="e.g. 2 Cocktails"></div>
+      <div class="form-group"><label>Description</label>
+        <textarea id="f-desc">${esc(data.description||'')}</textarea></div>
+      <div class="form-row-2">
+        <div class="form-group"><label>Price (e.g. N$120)</label>
+          <input id="f-price" value="${esc(data.price||'')}" placeholder="N$120"></div>
+        <div class="form-group"><label>Badge (e.g. Mon–Fri)</label>
+          <input id="f-badge" value="${esc(data.badge||'')}" placeholder="Mon–Fri"></div>
+      </div>
+      <div class="form-group"><label>Image</label>
+        <input type="file" id="f-image" accept="image/*" onchange="handleImageSelect(event)">
+        <div class="upload-hint">Max 5MB · JPG/PNG/WebP</div>
+        <div class="upload-progress" id="upload-progress"><div class="bar" id="upload-bar"></div></div>
+        <div class="img-preview-wrap" id="img-preview">
+          ${data.imageURL?`<img src="${data.imageURL}" alt="preview">`:''}
+        </div>
+      </div>`;
+  } else if (type === 'meal') {
+    const dayName = dayNames[parseInt(id)];
+    body = `
+      <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem">Editing: <strong style="color:var(--gold)">${dayName}</strong></p>
+      <div class="form-group"><label>Meal Name *</label>
+        <input id="f-title" value="${esc(data.name||'')}" placeholder="e.g. Braai Plate"></div>
+      <div class="form-group"><label>Description</label>
+        <textarea id="f-desc">${esc(data.description||data.desc||'')}</textarea></div>
+      <div class="form-group"><label>Price (e.g. N$150)</label>
+        <input id="f-price" value="${esc(data.price||'')}" placeholder="N$150"></div>
+      <div class="form-group"><label>Image</label>
+        <input type="file" id="f-image" accept="image/*" onchange="handleImageSelect(event)">
+        <div class="upload-hint">Max 5MB · JPG/PNG/WebP</div>
+        <div class="upload-progress" id="upload-progress"><div class="bar" id="upload-bar"></div></div>
+        <div class="img-preview-wrap" id="img-preview">
+          ${data.imageURL?`<img src="${data.imageURL}" alt="preview">`:''}
+        </div>
+      </div>`;
+  } else if (type === 'notice') {
+    body = `
+      <div class="form-group"><label>Notice Text *</label>
+        <textarea id="f-title" style="min-height:120px">${esc(data.text||'')}</textarea></div>
+      <div class="form-group"><label>Visible on site</label>
+        <div class="toggle-wrap">
+          <div class="toggle ${data.active!==false?'on':''}" id="f-active-toggle"
+            onclick="this.classList.toggle('on')"></div>
+          <span class="toggle-label">Show on website</span>
+        </div>
+      </div>`;
+  }
+
+  document.getElementById('modal-body').innerHTML = body;
+  document.getElementById('modal-overlay').classList.add('open');
+};
+
+window.closeModal = function() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  editingId = editingType = null;
+  pendingImageURL = pendingImagePath = null;
+};
+
+// ── Image upload ──
+window.handleImageSelect = function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  if (file.size > 5*1024*1024) { showToast('Image must be under 5MB','error'); return; }
+
+  const path = `${editingType}s/${Date.now()}_${file.name}`;
+  const storRef = ref(stor, path);
+  const task = uploadBytesResumable(storRef, file);
+
+  const progressWrap = document.getElementById('upload-progress');
+  const bar = document.getElementById('upload-bar');
+  const saveBtn = document.getElementById('btn-save');
+  progressWrap.style.display = 'block';
+  saveBtn.disabled = true;
+
+  task.on('state_changed',
+    snap => {
+      const pct = (snap.bytesTransferred/snap.totalBytes)*100;
+      bar.style.width = pct + '%';
+    },
+    err => { showToast('Upload failed: '+err.message,'error'); saveBtn.disabled=false; },
+    async () => {
+      const url = await getDownloadURL(storRef);
+      pendingImageURL  = url;
+      pendingImagePath = path;
+      document.getElementById('img-preview').innerHTML = `<img src="${url}" alt="preview">`;
+      progressWrap.style.display='none';
+      saveBtn.disabled=false;
+      showToast('Image uploaded ✓','success');
+    }
+  );
+};
+
+// ── Save ──
+window.saveItem = async function() {
+  const type = editingType;
+  const saveBtn = document.getElementById('btn-save');
+  saveBtn.disabled = true;
+
+  try {
+    if (type === 'event') {
+      const payload = {
+        title:       getValue('f-title'),
+        description: getValue('f-desc'),
+        date:        getValue('f-date'),
+        time:        getValue('f-time'),
+        tag:         getValue('f-tag'),
+        active:      true,
+        updatedAt:   serverTimestamp(),
+      };
+      if (!payload.title) { showToast('Title is required','error'); saveBtn.disabled=false; return; }
+      if (pendingImageURL)  { payload.imageURL=pendingImageURL; payload.imagePath=pendingImagePath; }
+      if (editingId) { await updateDoc(doc(db,'events',editingId), payload); }
+      else           { payload.createdAt=serverTimestamp(); await addDoc(collection(db,'events'),payload); }
+
+    } else if (type === 'special') {
+      const payload = {
+        name:        getValue('f-title'),
+        description: getValue('f-desc'),
+        price:       getValue('f-price'),
+        badge:       getValue('f-badge'),
+        active:      true,
+        updatedAt:   serverTimestamp(),
+      };
+      if (!payload.name) { showToast('Name is required','error'); saveBtn.disabled=false; return; }
+      if (pendingImageURL) { payload.imageURL=pendingImageURL; payload.imagePath=pendingImagePath; }
+      if (editingId) { await updateDoc(doc(db,'specials',editingId), payload); }
+      else           { payload.createdAt=serverTimestamp(); await addDoc(collection(db,'specials'),payload); }
+
+    } else if (type === 'meal') {
+      const payload = {
+        name:  getValue('f-title'),
+        desc:  getValue('f-desc'),
+        price: getValue('f-price'),
+      };
+      if (!payload.name) { showToast('Meal name is required','error'); saveBtn.disabled=false; return; }
+      if (pendingImageURL) { payload.imageURL=pendingImageURL; payload.imagePath=pendingImagePath; }
+      await setDoc(doc(db,'mealOfDay',String(editingId)), payload, {merge:true});
+
+    } else if (type === 'notice') {
+      const active = document.getElementById('f-active-toggle')?.classList.contains('on') !== false;
+      const payload = { text: getValue('f-title'), active, updatedAt: serverTimestamp() };
+      if (!payload.text) { showToast('Notice text is required','error'); saveBtn.disabled=false; return; }
+      if (editingId) { await updateDoc(doc(db,'notices',editingId), payload); }
+      else           { payload.createdAt=serverTimestamp(); payload.active=true; await addDoc(collection(db,'notices'),payload); }
+    }
+
+    showToast('Saved successfully ✓','success');
+    closeModal();
+  } catch(e) {
+    showToast('Error: '+e.message,'error');
+  }
+  saveBtn.disabled = false;
+};
+
+// ── Helpers ──
+window.toggleActive = async function(col, id, current) {
+  try {
+    await updateDoc(doc(db,col,id), {active: !current});
+    showToast(!current ? 'Shown on site':'Hidden from site');
+  } catch(e){ showToast('Error: '+e.message,'error'); }
+};
+
+window.toggleReview = async function(id, field, current) {
+  try {
+    await updateDoc(doc(db,'reviews',id), {[field]: !current});
+  } catch(e){ showToast('Error: '+e.message,'error'); }
+};
+
+window.deleteItem = async function(col, id, imagePath) {
+  if (!confirm('Delete this item? This cannot be undone.')) return;
+  try {
+    await deleteDoc(doc(db, col, id));
+    if (imagePath) {
+      try { await deleteObject(ref(stor, imagePath)); } catch(e){}
+    }
+    showToast('Deleted','success');
+  } catch(e){ showToast('Error: '+e.message,'error'); }
+};
+
+function collectionName(type) {
+  return type==='event'?'events':type==='special'?'specials':type==='notice'?'notices':'reviews';
+}
+function getValue(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+function esc(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Toast ──
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = (type==='success'?'✅ ':type==='error'?'❌ ':'ℹ️ ') + msg;
+  t.className = 'toast show ' + type;
+  setTimeout(()=>t.classList.remove('show'), 3500);
+}
+
+// Close modal on backdrop
+document.getElementById('modal-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+});
+</script>
+</body>
+</html>

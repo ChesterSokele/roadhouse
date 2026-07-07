@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── Primary SEO ── -->
+  <title>Full Menu | Roadhouse Deli &amp; Grill Windhoek</title>
+  <meta name="description" content="Browse the full Roadhouse Deli &amp; Grill menu — burgers, steaks, pizza, pasta, wings, platters, craft cocktails, spirits, beers and wines. Windhoek, Independence Avenue.">
+  <meta name="keywords" content="Roadhouse menu, Windhoek food, steaks Windhoek, cocktails Windhoek, burgers Namibia, pizza Windhoek, platters">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://roadhousedeli.com/menu.html">
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Full Menu | Roadhouse Deli &amp; Grill">
+  <meta property="og:description" content="Burgers, steaks, pizza, pasta, wings, platters, cocktails and more. View our full menu online.">
+  <meta property="og:url"         content="https://roadhousedeli.com/menu.html">
+  <meta property="og:image"       content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&auto=format&fit=crop&q=80">
+  <meta property="og:site_name"   content="Roadhouse Deli &amp; Grill">
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Full Menu | Roadhouse Deli &amp; Grill">
+  <meta name="twitter:description" content="View the full Roadhouse Deli &amp; Grill menu — food, drinks, cocktails and more.">
+  <meta name="twitter:image"       content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&auto=format&fit=crop&q=80">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="page-transition"></div>
+
+<!-- ======================================================
+     NAVIGATION
+     ====================================================== -->
+<nav id="navbar" class="scrolled">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpg" alt="Roadhouse Logo" onerror="this.style.display='none'">
+      <div class="logo-text">Roadhouse<span>Deli &amp; Grill</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"             data-i18n="nav.home">Home</a></li>
+      <li><a href="menu.html"              data-i18n="nav.menu" class="active">Menu</a></li>
+      <li><a href="index.html#meal-of-day" data-i18n="nav.meals">Meal of the Day</a></li>
+      <li><a href="index.html#events"      data-i18n="nav.events">Events</a></li>
+      <li><a href="index.html#reviews"     data-i18n="nav.reviews">Reviews</a></li>
+      <li><a href="index.html#contact"     data-i18n="nav.contact">Contact</a></li>
+    </ul>
+
+    <div style="display:flex;align-items:center;gap:1rem;margin-left:auto;">
+      <div class="lang-dropdown">
+        <button class="lang-selected">🇬🇧 EN <span class="caret">▼</span></button>
+        <div class="lang-menu"></div>
+      </div>
+      <a href="index.html" class="logo-circle" title="Roadhouse Deli & Grill">
+        <img src="logo.jpg" alt="Roadhouse Logo" onerror="this.parentElement.innerHTML='<div class=&quot;logo-circle-placeholder&quot;>RH<span>DELI &amp; GRILL</span></div>'">
+      </a>
+    </div>
+
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html"             data-i18n="nav.home">Home</a>
+  <a href="menu.html"              data-i18n="nav.menu">Menu</a>
+  <a href="index.html#meal-of-day" data-i18n="nav.meals">Meal of the Day</a>
+  <a href="index.html#events"      data-i18n="nav.events">Events</a>
+  <a href="index.html#reviews"     data-i18n="nav.reviews">Reviews</a>
+  <a href="index.html#contact"     data-i18n="nav.contact">Contact</a>
+  <div class="lang-dropdown" style="width:fit-content">
+    <button class="lang-selected">🇬🇧 EN <span class="caret">▼</span></button>
+    <div class="lang-menu"></div>
+  </div>
+</div>
+
+
+<!-- ======================================================
+     MENU HERO  —  Meal of the Day Slideshow
+     ====================================================== -->
+<section id="hero" class="hero-slideshow">
+  <div class="hero-slides" id="hero-slides"></div>
+
+  <button class="hero-arrow prev" id="hero-prev" aria-label="Previous slide">
+    <i class="fa fa-chevron-left"></i>
+  </button>
+  <button class="hero-arrow next" id="hero-next" aria-label="Next slide">
+    <i class="fa fa-chevron-right"></i>
+  </button>
+
+  <div class="hero-dots" id="hero-dots"></div>
+</section>
+
+
+<!-- ======================================================
+     MENU TABS
+     ====================================================== -->
+<div class="menu-tabs">
+  <div class="container">
+    <div class="menu-tabs-inner">
+      <button class="tab-btn active" data-tab="burgers">🍔 Burgers &amp; Starters</button>
+      <button class="tab-btn" data-tab="grills">🥩 Grills &amp; Steaks</button>
+      <button class="tab-btn" data-tab="pizza">🍕 Pizza &amp; Pasta</button>
+      <button class="tab-btn" data-tab="wraps">🌯 Wraps &amp; Salads</button>
+      <button class="tab-btn" data-tab="platters">🍗 Wings &amp; Platters</button>
+      <button class="tab-btn" data-tab="cocktails">🍹 Cocktails</button>
+      <button class="tab-btn" data-tab="drinks">🥃 Spirits &amp; Drinks</button>
+      <button class="tab-btn" data-tab="wines">🍷 Wines</button>
+      <button class="tab-btn" data-tab="softdrinks">🥤 Soft Drinks</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================================
+     BURGERS & STARTERS
+     ====================================================== -->
+<section id="burgers" class="menu-section" style="background:var(--black);">
+  <div class="container">
+    <div class="menu-section-header">
+      <span class="eyebrow">From the Grill</span>
+      <h2>Burgers &amp; Starters</h2>
+      <div class="wood-line"></div>
+      <p style="color:var(--text-muted);margin-top:0.75rem;font-size:0.9rem;">All burgers served with your choice of one side · Beef or Chicken patty available</p>
+    </div>
+
+    <h3 style="font-size:1.1rem;color:var(--wood-warm);margin-bottom:1.5rem;font-family:Oswald,sans-serif;letter-spacing:0.2em;text-transform:uppercase;">Starters</h3>
+    <div class="menu-items-grid" style="margin-bottom:3rem;">
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1639024471283-03518883512d?w=500&auto=format&fit=crop&q=80" alt="Cheese Grillers" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Cheese Grillers</h4>
+          <p>2 large cheese grillers deep fried, with homemade fries, salt, vinegar &amp; our secret spice.</p>
+          <div class="item-footer">
+            <span class="item-price">N$85</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=500&auto=format&fit=crop&q=80" alt="Hake and Chips" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Hake &amp; Chips</h4>
+          <p>Beer battered hake, deep-fried or grilled to perfection. With homemade fries, tartar sauce and a wedge of lemon.</p>
+          <div class="item-footer">
+            <span class="item-price">N$115</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=500&auto=format&fit=crop&q=80" alt="Chicken Balls" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Chicken Balls</h4>
+          <p>Stuffed with green peppers, cheddar cheese and mayo pepper sauce. Served with potato or rice.</p>
+          <div class="item-footer">
+            <span class="item-price">N$115</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=80" alt="Chicken Strips" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Chicken Strips</h4>
+          <p>Tender chicken strips in a crispy coating, served with golden fries.</p>
+          <div class="item-footer">
+            <span class="item-price">N$105</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1639744091981-2f6ebd5579e7?w=500&auto=format&fit=crop&q=80" alt="Barbeque Onion Rings" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Barbeque Onion Rings</h4>
+          <p>2 onion rings stuffed with mince, wrapped with bacon, grilled with barbeque sauce and sesame seeds. Served with roaster bread or fries.</p>
+          <div class="item-footer">
+            <span class="item-price">N$120</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1630431341973-02e1b662ec35?w=500&auto=format&fit=crop&q=80" alt="Loaded Fries" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Loaded Fries</h4>
+          <p>Fries loaded with jalapeños, pepperdew, cheese sauce and bacon. A perfect sharer.</p>
+          <div class="item-footer">
+            <span class="item-price">N$95</span>
+            <span class="item-badge">Shareable</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 style="font-size:1.1rem;color:var(--wood-warm);margin-bottom:1.5rem;font-family:Oswald,sans-serif;letter-spacing:0.2em;text-transform:uppercase;">Burgers</h3>
+    <div class="menu-items-grid">
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=80" alt="Classic Burger" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Classic Burger</h4>
+          <p>180g pure beef/chicken patty grilled to perfection. Served with your choice of side.</p>
+          <div class="item-footer">
+            <span class="item-price">N$95</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&auto=format&fit=crop&q=80" alt="Classic Cheese Burger" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Classic Cheese Burger</h4>
+          <p>180g pure beef/chicken patty grilled to perfection with grilled mozzarella &amp; cheddar.</p>
+          <div class="item-footer">
+            <span class="item-price">N$135</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=500&auto=format&fit=crop&q=80" alt="Mexican Burger" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Mexican Burger</h4>
+          <p>180g pure beef/chicken topped with crispy bacon, jalapeño, hot sauce and cheese. Fuego!</p>
+          <div class="item-footer">
+            <span class="item-price">N$145</span>
+            <span class="item-badge">🌶 Spicy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&auto=format&fit=crop&q=80" alt="Cheddarmelt Burger" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Cheddarmelt Burger</h4>
+          <p>180g pure beef/chicken patty topped with mushrooms, cheddar &amp; mozzarella. Melts in your mouth.</p>
+          <div class="item-footer">
+            <span class="item-price">N$145</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&auto=format&fit=crop&q=80" alt="Bacon and Blue Cheese" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Bacon &amp; Blue Cheese</h4>
+          <p>180g pure beef/chicken patty topped with grilled bacon &amp; bold blue cheese. For the brave.</p>
+          <div class="item-footer">
+            <span class="item-price">N$165</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500&auto=format&fit=crop&q=80" alt="Steak Burger" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Steak Burger</h4>
+          <p>200g rump patty grilled and cut into bite size pieces with tomato and caramelized onions.</p>
+          <div class="item-footer">
+            <span class="item-price">N$165</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=500&auto=format&fit=crop&q=80" alt="Bacon Egg Burger" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Bacon Egg Burger</h4>
+          <p>180g pure beef/chicken patty topped with egg, bacon and cheese. Breakfast meets dinner.</p>
+          <div class="item-footer">
+            <span class="item-price">N$175</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1602030638412-bb8dcc0bc8b0?w=500&auto=format&fit=crop&q=80" alt="Wagon Wheel Burger" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Wagon Wheel Burger</h4>
+          <p>Hash brown, 180g pure beef/chicken patty topped with egg, bacon and cheese. The ultimate stack.</p>
+          <div class="item-footer">
+            <span class="item-price">N$185</span>
+            <span class="item-badge">⭐ Fan Fav</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sides -->
+    <div style="margin-top:3rem;padding:2rem;background:var(--charcoal);border-radius:4px;border:1px solid rgba(255,255,255,0.05);">
+      <h3 style="font-size:1.1rem;color:var(--wood-warm);margin-bottom:1rem;font-family:Oswald,sans-serif;letter-spacing:0.2em;text-transform:uppercase;">Sides &amp; Extras</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.75rem;">
+        <div class="drink-row"><span class="drink-name">Mash Potato</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div>
+        <div class="drink-row"><span class="drink-name">Mixed Veggies</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div>
+        <div class="drink-row"><span class="drink-name">Fries</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div>
+        <div class="drink-row"><span class="drink-name">Pap</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div>
+        <div class="drink-row"><span class="drink-name">Spinach</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div>
+        <div class="drink-row"><span class="drink-name">Rice</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div>
+        <div class="drink-row"><span class="drink-name">Mushrooms</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div>
+        <div class="drink-row"><span class="drink-name">Mixed Pepper</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$25</span></div>
+        <div class="drink-row"><span class="drink-name">Ham</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div>
+        <div class="drink-row"><span class="drink-name">Avocado</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$35</span></div>
+        <div class="drink-row"><span class="drink-name">Bacon</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$35</span></div>
+        <div class="drink-row"><span class="drink-name">Cheese</span><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     GRILLS & STEAKS
+     ====================================================== -->
+<section id="grills" class="menu-section" style="background:var(--dark);">
+  <div class="container">
+    <div class="menu-section-header">
+      <span class="eyebrow">Fire &amp; Flame</span>
+      <h2>Grills &amp; Steaks</h2>
+      <div class="wood-line"></div>
+      <p style="color:var(--text-muted);margin-top:0.75rem;font-size:0.9rem;">All steaks served with chips, salad &amp; battered onion rings unless stated</p>
+    </div>
+    <div class="menu-items-grid">
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&auto=format&fit=crop&q=80" alt="Rump Steak" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Rump Steak</h4>
+          <p>A-Grade rump steak grilled to perfection, seasoned with herbs &amp; spices, in our special basting sauce.</p>
+          <div class="item-footer">
+            <span class="item-price">N$285 <small style="font-size:0.75rem;color:var(--text-muted)">(300g)</small></span>
+            <span class="item-badge">N$345 · 500g</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=500&auto=format&fit=crop&q=80" alt="T-Bone Steak" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>T-Bone Steak</h4>
+          <p>T-shaped bone seasoned with the best spices and marinated in our secret basting sauce.</p>
+          <div class="item-footer">
+            <span class="item-price">N$290 <small style="font-size:0.75rem;color:var(--text-muted)">(300g)</small></span>
+            <span class="item-badge">N$340 · 500g</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1611489704281-9e4ac2f44e3a?w=500&auto=format&fit=crop&q=80" alt="Rib-Eye Steak" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Roadhouse Rib-Eye</h4>
+          <p>350g A-Grade rib-eye — rich, juicy and full-flavoured with generous marbling. Grilled in our secret wine basting sauce.</p>
+          <div class="item-footer">
+            <span class="item-price">N$275</span>
+            <span class="item-badge">Chef's Pick</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=500&auto=format&fit=crop&q=80" alt="Tomahawk Steak" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Tomahawk Steak</h4>
+          <p>Flame-grilled tomahawk steak served with your choice of mixed veggies, mashed potatoes, or fresh green salad.</p>
+          <div class="item-footer">
+            <span class="item-price">N$295</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1544025162-d76538485491?w=500&auto=format&fit=crop&q=80" alt="Spare Ribs" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Flame Grilled Spare Ribs</h4>
+          <p>450g pork spare ribs, flame grilled to perfection with our secret red wine basting sauce.</p>
+          <div class="item-footer">
+            <span class="item-price">N$295</span>
+            <span class="item-badge">⭐ Best Seller</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1539136788836-5699e78bfc75?w=500&auto=format&fit=crop&q=80" alt="Beef Tower" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Roadhouse Beef Tower</h4>
+          <p>300g rump steak topped with prawns, served with your choice of rice, potato wedges or mashed potato, finished with garlic butter sauce.</p>
+          <div class="item-footer">
+            <span class="item-price">N$355</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Special Dishes -->
+    <div style="margin-top:3rem;">
+      <h3 style="font-size:1.1rem;color:var(--wood-warm);margin-bottom:1.5rem;font-family:Oswald,sans-serif;letter-spacing:0.2em;text-transform:uppercase;">Special Dishes <span style="font-size:0.7rem;color:var(--text-muted);font-weight:400;letter-spacing:0.1em;">(Availability Varies — Ask Your Server)</span></h3>
+      <div class="menu-items-grid">
+
+        <div class="menu-item-card reveal">
+          <div class="menu-item-img">
+            <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=500&auto=format&fit=crop&q=80" alt="Lamb Shank" loading="lazy">
+          </div>
+          <div class="menu-item-body">
+            <h4>Lamb Shank</h4>
+            <p>Delicious red wine infused lamb shank served on a bed of mash. Pure luxury.</p>
+            <div class="item-footer"><span class="item-price">N$250</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item-card reveal">
+          <div class="menu-item-img">
+            <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=500&auto=format&fit=crop&q=80" alt="Creamy Chicken Curry" loading="lazy">
+          </div>
+          <div class="menu-item-body">
+            <h4>Creamy Chicken Curry</h4>
+            <p>Tender chicken cubes in a rich, creamy curry sauce paired with fragrant savory rice.</p>
+            <div class="item-footer"><span class="item-price">N$175</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item-card reveal">
+          <div class="menu-item-img">
+            <img src="https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=500&auto=format&fit=crop&q=80" alt="Oxtail Bowl" loading="lazy">
+          </div>
+          <div class="menu-item-body">
+            <h4>Oxtail Bowl</h4>
+            <p>Soft, tenderized oxtail served with rice, mash or mixed veggies. Slow-cooked perfection.</p>
+            <div class="item-footer"><span class="item-price">N$260</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item-card reveal">
+          <div class="menu-item-img">
+            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500&auto=format&fit=crop&q=80" alt="Prawn Bowl" loading="lazy">
+          </div>
+          <div class="menu-item-body">
+            <h4>Prawn Bowl</h4>
+            <p>Four succulent prawns with crispy calamari strips, potato wedges and tartar sauce on the side.</p>
+            <div class="item-footer"><span class="item-price">N$255</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     PIZZA & PASTA
+     ====================================================== -->
+<section id="pizza" class="menu-section" style="background:var(--black);">
+  <div class="container">
+    <div class="menu-section-header">
+      <span class="eyebrow">Italian Inspired</span>
+      <h2>Pizza &amp; Pasta</h2>
+      <div class="wood-line"></div>
+    </div>
+
+    <h3 style="font-size:1.1rem;color:var(--wood-warm);margin-bottom:1.5rem;font-family:Oswald,sans-serif;letter-spacing:0.2em;text-transform:uppercase;">Pizzas</h3>
+    <div class="menu-items-grid" style="margin-bottom:3rem;">
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&auto=format&fit=crop&q=80" alt="Roadhouse Meaty Pizza" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Roadhouse Meaty Pizza</h4>
+          <p>A meat lover's dream with beef strips, ham, salami, double cheese, fresh vegetables and our secret roadhouse sauce.</p>
+          <div class="item-footer"><span class="item-price">N$195</span><span class="item-badge">⭐ Best Seller</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=80" alt="Mexican Pizza" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Mexican Pizza</h4>
+          <p>Mince, garlic, hot jalapeño sauce, onion, peppers, tomatoes and mozzarella cheese.</p>
+          <div class="item-footer"><span class="item-price">N$195</span><span class="item-badge">🌶 Spicy</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1520201163981-8cc95007dd2a?w=500&auto=format&fit=crop&q=80" alt="Chicken Mushroom Pizza" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Chicken Mushroom Pizza</h4>
+          <p>Chicken strips, mushrooms, onions, peppers, tomatoes, pepperdew and mozzarella cheese.</p>
+          <div class="item-footer"><span class="item-price">N$195</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=80" alt="Classic Pizza" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Roadhouse Classic Pizza</h4>
+          <p>Bold and zesty with seasoned mince, double cheese, garlic sauce and crisp vegetables.</p>
+          <div class="item-footer"><span class="item-price">N$180</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=500&auto=format&fit=crop&q=80" alt="Build My Pizza" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Build My Pizza</h4>
+          <p>Choose any 4 toppings: Bacon · Salami · Meat strips · Avocado · Ham · Chicken · Mince. Your pizza, your rules.</p>
+          <div class="item-footer"><span class="item-price">N$220</span><span class="item-badge">Customise</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 style="font-size:1.1rem;color:var(--wood-warm);margin-bottom:1.5rem;font-family:Oswald,sans-serif;letter-spacing:0.2em;text-transform:uppercase;">Pasta</h3>
+    <div class="menu-items-grid">
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=500&auto=format&fit=crop&q=80" alt="Beef Pasta" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Beef Pasta</h4>
+          <p>Tender slow-cooked beef strips tossed with al dente pasta in a rich basting sauce, cream, parmesan and spinach.</p>
+          <div class="item-footer"><span class="item-price">N$155</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=500&auto=format&fit=crop&q=80" alt="Seafood Pasta" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Seafood Pasta</h4>
+          <p>A delightful oceanic experience of tagliatelle pasta with mussels, prawns and seafood mix in chef's touch sauce.</p>
+          <div class="item-footer"><span class="item-price">N$180</span><span class="item-badge">⭐ Chef's Pick</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=500&auto=format&fit=crop&q=80" alt="Chicken Pasta" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Chicken Pasta</h4>
+          <p>Grilled chicken strips over perfectly cooked pasta with cream, peppers, onion, cherry tomatoes and cheese.</p>
+          <div class="item-footer"><span class="item-price">N$145</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1551183053-bf91798d792c?w=500&auto=format&fit=crop&q=80" alt="Italian Pasta" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Italian Pasta</h4>
+          <p>Perfectly cooked pasta tossed with savoury Italian sausage, garlic and herbs in a rich sauce.</p>
+          <div class="item-footer"><span class="item-price">N$180</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     WRAPS & SALADS
+     ====================================================== -->
+<section id="wraps" class="menu-section" style="background:var(--dark);">
+  <div class="container">
+    <div class="menu-section-header">
+      <span class="eyebrow">Light &amp; Fresh</span>
+      <h2>Wraps &amp; Salads</h2>
+      <div class="wood-line"></div>
+    </div>
+    <div class="menu-items-grid">
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=500&auto=format&fit=crop&q=80" alt="Roadhouse Mexico Bucket" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Roadhouse Mexico Bucket</h4>
+          <p>200g rump steak with red wine basting sauce, caramelized onions &amp; jalapeños, pan-fried in lemon &amp; garlic sauce with grilled cheese.</p>
+          <div class="item-footer"><span class="item-price">N$155</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500&auto=format&fit=crop&q=80" alt="Flame Grilled Rump Steak Wrap" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Flame Grilled Rump Steak</h4>
+          <p>200g rump steak with red wine basting sauce, caramelized onions, in lemon and garlic sauce with grilled cheese.</p>
+          <div class="item-footer"><span class="item-price">N$165</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&auto=format&fit=crop&q=80" alt="Smokey Flame Grilled Chicken" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Smokey Flame Grilled Chicken</h4>
+          <p>Flame grilled chicken breast in a secret red wine basting sauce, topped with grilled peppers, secret white sauce and grilled mozzarella.</p>
+          <div class="item-footer"><span class="item-price">N$155</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=80" alt="Greek Salad" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Greek Salad</h4>
+          <p>Lettuce, cucumber, cocktail tomatoes, peppers, red onions, feta and olives. Served with Greek sauce.</p>
+          <div class="item-footer"><span class="item-price">N$75</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&auto=format&fit=crop&q=80" alt="Chef Salad" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Chef Salad</h4>
+          <p>Lettuce, cocktail tomatoes, cucumber, broccoli, patty pan, baby corn, red onions, feta, olives, rump steak or chicken strips.</p>
+          <div class="item-footer"><span class="item-price">N$140</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     WINGS & PLATTERS
+     ====================================================== -->
+<section id="platters" class="menu-section" style="background:var(--black);">
+  <div class="container">
+    <div class="menu-section-header">
+      <span class="eyebrow">For the Table</span>
+      <h2>Wings &amp; Platters</h2>
+      <div class="wood-line"></div>
+    </div>
+
+    <h3 style="font-size:1.1rem;color:var(--wood-warm);margin-bottom:1.5rem;font-family:Oswald,sans-serif;letter-spacing:0.2em;text-transform:uppercase;">Wings · 400g Served with Chips or Salad</h3>
+    <div class="menu-items-grid" style="margin-bottom:3rem;">
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=500&auto=format&fit=crop&q=80" alt="BBQ Wings" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Barbeque Wings</h4>
+          <p>400g wings flame grilled to perfection with our secret red wine basting sauce.</p>
+          <div class="item-footer"><span class="item-price">N$145</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1628891890467-b79f2c8ba9dc?w=500&auto=format&fit=crop&q=80" alt="Honey Glazed Wings" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Roadhouse Honey Glazed</h4>
+          <p>400g deep fried wings drizzled with lemon, honey and soy sauce, topped with sesame seeds and spring onions.</p>
+          <div class="item-footer"><span class="item-price">N$145</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=500&auto=format&fit=crop&q=80" alt="Hot Wings" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Roadhouse Hot Wings</h4>
+          <p>400g wings flame grilled to perfection, served with our famous hot soy sauce.</p>
+          <div class="item-footer"><span class="item-price">N$145</span><span class="item-badge">🌶 Hot</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=500&auto=format&fit=crop&q=80" alt="Lemon Herb Wings" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Lemon &amp; Herb Wings</h4>
+          <p>400g wings flame grilled to perfection, served with lemon and herb.</p>
+          <div class="item-footer"><span class="item-price">N$145</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 style="font-size:1.1rem;color:var(--wood-warm);margin-bottom:1.5rem;font-family:Oswald,sans-serif;letter-spacing:0.2em;text-transform:uppercase;">Platters</h3>
+    <div class="menu-items-grid">
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1615360804786-7e43e9c73226?w=500&auto=format&fit=crop&q=80" alt="Seaside Platter" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Sea-Side Platter</h4>
+          <p>5 finger fish, 5 prawns, 5 fried calamari, beer battered hake fillet, fries and small side salad.</p>
+          <div class="item-footer"><span class="item-price">N$450</span><span class="item-badge">Seafood</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1544025162-d76538485491?w=500&auto=format&fit=crop&q=80" alt="Meaty Platter" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Meaty Platter</h4>
+          <p>200g rump steak, 400g chicken wings grilled with special basting, chopped boerewors and deep-fried Russian. Small salad with homemade fries.</p>
+          <div class="item-footer"><span class="item-price">N$400</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c7?w=500&auto=format&fit=crop&q=80" alt="Family Feast" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Family Feast</h4>
+          <p>A whole flame-grilled chicken with golden fries and warm Portuguese bread. Made for sharing, built for feasting.</p>
+          <div class="item-footer"><span class="item-price">N$195</span><span class="item-badge">Family</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=500&auto=format&fit=crop&q=80" alt="Wingman Platter" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Wingman Platter</h4>
+          <p>4× Lemon &amp; Herb · 4× BBQ · 4× Garlic Butter · 4× Hot Wings. Served with fries, salad or pap.</p>
+          <div class="item-footer"><span class="item-price">N$380</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=80" alt="Grand Feast Delight" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Grand Feast Delight</h4>
+          <p>Short ribs, meatballs, crispy chips, chicken wings, zesty Russian and a refreshing salad medley. A symphony of flavours. (4–6 people)</p>
+          <div class="item-footer"><span class="item-price">N$500</span><span class="item-badge">4–6 pax</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500&auto=format&fit=crop&q=80" alt="The Party" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>The Party</h4>
+          <p>4× Cheese Griller · 8× Boerewors · 10× BBQ Wings · Spare Ribs · 4× Chips · 1kg Kapana · 2× Hake · 6× Grilled Prawns · 5× Garlic Buns.</p>
+          <div class="item-footer"><span class="item-price">N$1,200</span><span class="item-badge">🎉 Party</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     COCKTAILS
+     ====================================================== -->
+<section id="cocktails" class="menu-section" style="background:var(--dark);">
+  <div class="container">
+    <div class="menu-section-header">
+      <span class="eyebrow">Craft &amp; Classic</span>
+      <h2>Cocktails</h2>
+      <div class="wood-line"></div>
+      <p style="color:var(--text-muted);margin-top:0.75rem;font-size:0.9rem;">All cocktails available as virgin where marked · Ask about our weekly specials</p>
+    </div>
+    <div class="menu-items-grid">
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&auto=format&fit=crop&q=80" alt="Roadhouse Gin" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Roadhouse Gin</h4>
+          <p>Our signature gin cocktail — the house speciality. Crafted with love, served with flair.</p>
+          <div class="item-footer"><span class="item-price">N$90</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?w=500&auto=format&fit=crop&q=80" alt="Long Island" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Long Island Iced Tea</h4>
+          <p>The classic party starter — vodka, rum, tequila, gin, triple sec and cola. Handle with care.</p>
+          <div class="item-footer"><span class="item-price">N$100</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=500&auto=format&fit=crop&q=80" alt="Classic Margarita" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Classic Margarita</h4>
+          <p>Shaken or frozen — tequila, triple sec, fresh lime. Perfection on the rocks.</p>
+          <div class="item-footer"><span class="item-price">N$90</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1490426836967-822c73a8a1ce?w=500&auto=format&fit=crop&q=80" alt="Watermelon Margarita" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Watermelon Margarita</h4>
+          <p>Fresh watermelon blended with tequila and lime. Summer in a glass.</p>
+          <div class="item-footer"><span class="item-price">N$90</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=80" alt="Strawberry Daiquiri" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Strawberry Daiquiri</h4>
+          <p>Frozen strawberry bliss. Available as Virgin (N$65) or with rum.</p>
+          <div class="item-footer"><span class="item-price">N$90</span><span class="item-badge">Virgin N$65</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1609951651556-5334e2706168?w=500&auto=format&fit=crop&q=80" alt="Classic Mojito" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Classic Mojito</h4>
+          <p>Fresh mint, lime, sugar, rum and soda. Timeless and refreshing.</p>
+          <div class="item-footer"><span class="item-price">N$90</span><span class="item-badge">Virgin N$65</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=500&auto=format&fit=crop&q=80" alt="Watermelon Mojito" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Watermelon Mojito</h4>
+          <p>The classic mojito elevated with fresh watermelon. Vibrant, bold and delicious.</p>
+          <div class="item-footer"><span class="item-price">N$90</span><span class="item-badge">Virgin N$65</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1622788218498-ac0c5a52a916?w=500&auto=format&fit=crop&q=80" alt="Pina Colada" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Piña Colada</h4>
+          <p>Coconut cream, pineapple juice and rum blended to tropical perfection.</p>
+          <div class="item-footer"><span class="item-price">N$90</span><span class="item-badge">Virgin N$65</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&auto=format&fit=crop&q=80" alt="Espresso Martini" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Espresso Martini</h4>
+          <p>Vodka, espresso and coffee liqueur shaken to a silky froth. Wake up your night.</p>
+          <div class="item-footer"><span class="item-price">N$90</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&auto=format&fit=crop&q=80" alt="Pornstar Martini" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Pornstar Martini</h4>
+          <p>Vanilla vodka, passion fruit and a side shot of prosecco. The crowd pleaser.</p>
+          <div class="item-footer"><span class="item-price">N$90</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1497534547324-0ebb3f052e88?w=500&auto=format&fit=crop&q=80" alt="Blue Lagoon" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Blue Lagoon</h4>
+          <p>Vodka, blue curaçao and lemonade. Brilliant blue, beautiful taste.</p>
+          <div class="item-footer"><span class="item-price">N$85</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1507434965515-61970f2bd7c6?w=500&auto=format&fit=crop&q=80" alt="Whiskey Sour" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Whiskey Sour</h4>
+          <p>Bourbon, fresh lemon juice, simple syrup and a frothy egg white. Classic for a reason.</p>
+          <div class="item-footer"><span class="item-price">N$115</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item-card reveal">
+        <div class="menu-item-img">
+          <img src="https://images.unsplash.com/photo-1575023782549-62ca0d244b39?w=500&auto=format&fit=crop&q=80" alt="Roadhouse Kamikazi" loading="lazy">
+        </div>
+        <div class="menu-item-body">
+          <h4>Roadhouse Kamikazi</h4>
+          <p>Vodka, triple sec and lime juice. Sharp, citrus and dangerously smooth.</p>
+          <div class="item-footer"><span class="item-price">N$90</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     SPIRITS & DRINKS
+     ====================================================== -->
+<section id="drinks" class="menu-section" style="background:var(--black);">
+  <div class="container">
+    <div class="menu-section-header">
+      <span class="eyebrow">Premium Selection</span>
+      <h2>Spirits &amp; Beers</h2>
+      <div class="wood-line"></div>
+    </div>
+
+    <div class="drinks-table">
+
+      <div class="drinks-category">
+        <div class="drinks-cat-title">🥃 Whiskey</div>
+        <div class="drinks-items">
+          <div class="drink-row"><span class="drink-name">Chivas 15 Years</span><div class="drink-prices"><div><span class="label">Tot</span>N$55</div><div><span class="label">Bottle</span>N$1,650</div></div></div>
+          <div class="drink-row"><span class="drink-name">Glenfiddich 18 Years</span><div class="drink-prices"><div><span class="label">Tot</span>N$95</div><div><span class="label">Bottle</span>N$2,850</div></div></div>
+          <div class="drink-row"><span class="drink-name">Glenfiddich 15 Years</span><div class="drink-prices"><div><span class="label">Tot</span>N$85</div><div><span class="label">Bottle</span>N$2,550</div></div></div>
+          <div class="drink-row"><span class="drink-name">Jack Daniel's / Honey / Apple</span><div class="drink-prices"><div><span class="label">Tot</span>N$35</div><div><span class="label">Bottle</span>N$1,050</div></div></div>
+          <div class="drink-row"><span class="drink-name">Jameson Select Reserve</span><div class="drink-prices"><div><span class="label">Tot</span>N$45</div><div><span class="label">Bottle</span>N$1,350</div></div></div>
+          <div class="drink-row"><span class="drink-name">Jameson Irish</span><div class="drink-prices"><div><span class="label">Tot</span>N$40</div><div><span class="label">Bottle</span>N$1,200</div></div></div>
+          <div class="drink-row"><span class="drink-name">Johnny Walker Black</span><div class="drink-prices"><div><span class="label">Tot</span>N$40</div><div><span class="label">Bottle</span>N$1,200</div></div></div>
+          <div class="drink-row"><span class="drink-name">Monkey Shoulder</span><div class="drink-prices"><div><span class="label">Tot</span>N$40</div><div><span class="label">Bottle</span>N$1,200</div></div></div>
+          <div class="drink-row"><span class="drink-name">Southern Comfort</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+        </div>
+      </div>
+
+      <div class="drinks-category">
+        <div class="drinks-cat-title">🍶 Brandy</div>
+        <div class="drinks-items">
+          <div class="drink-row"><span class="drink-name">KWV 10 Years</span><div class="drink-prices"><div><span class="label">Tot</span>N$35</div><div><span class="label">Bottle</span>N$1,050</div></div></div>
+          <div class="drink-row"><span class="drink-name">KWV 5 Years</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+          <div class="drink-row"><span class="drink-name">KWV 3 Years</span><div class="drink-prices"><div><span class="label">Tot</span>N$25</div><div><span class="label">Bottle</span>N$750</div></div></div>
+          <div class="drink-row"><span class="drink-name">KWV VS</span><div class="drink-prices"><div><span class="label">Tot</span>N$40</div><div><span class="label">Bottle</span>N$1,200</div></div></div>
+          <div class="drink-row"><span class="drink-name">Richelieu</span><div class="drink-prices"><div><span class="label">Tot</span>N$25</div><div><span class="label">Bottle</span>N$750</div></div></div>
+          <div class="drink-row"><span class="drink-name">Klipdrift</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+          <div class="drink-row"><span class="drink-name">Klipdrift Premium</span><div class="drink-prices"><div><span class="label">Tot</span>N$35</div><div><span class="label">Bottle</span>N$1,050</div></div></div>
+        </div>
+      </div>
+
+      <div class="drinks-category">
+        <div class="drinks-cat-title">🫧 Vodka</div>
+        <div class="drinks-items">
+          <div class="drink-row"><span class="drink-name">Absolut</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+          <div class="drink-row"><span class="drink-name">Smirnoff</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+          <div class="drink-row"><span class="drink-name">Belgravia</span><div class="drink-prices"><div><span class="label">Tot</span>N$35</div><div><span class="label">Bottle</span>N$45</div></div></div>
+        </div>
+      </div>
+
+      <div class="drinks-category">
+        <div class="drinks-cat-title">🍸 Gin</div>
+        <div class="drinks-items">
+          <div class="drink-row"><span class="drink-name">Bombay Sapphire</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+          <div class="drink-row"><span class="drink-name">Gordon's Gin</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+          <div class="drink-row"><span class="drink-name">Tanqueray</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+          <div class="drink-row"><span class="drink-name">Hendricks</span><div class="drink-prices"><div><span class="label">Tot</span>N$50</div><div><span class="label">Bottle</span>N$1,500</div></div></div>
+        </div>
+      </div>
+
+      <div class="drinks-category">
+        <div class="drinks-cat-title">🍺 Beers</div>
+        <div class="drinks-items">
+          <div class="drink-row"><span class="drink-name">Heineken</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div><div><span class="label">Can</span>N$40</div></div></div>
+          <div class="drink-row"><span class="drink-name">Tafel Lager</span><div class="drink-prices"><div><span class="label">Bottle</span>N$30</div><div><span class="label">Can</span>N$40</div></div></div>
+          <div class="drink-row"><span class="drink-name">Windhoek Draught</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div><div><span class="label">Can</span>N$40</div></div></div>
+          <div class="drink-row"><span class="drink-name">Windhoek Lager</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div><div><span class="label">Can</span>N$40</div></div></div>
+          <div class="drink-row"><span class="drink-name">Hansa Draught</span><div class="drink-prices"><div><span class="label">Bottle</span>N$30</div><div><span class="label">Can</span>N$30</div></div></div>
+          <div class="drink-row"><span class="drink-name">Castle Lite</span><div class="drink-prices"><div><span class="label">Bottle</span>N$30</div><div><span class="label">Can</span>N$40</div></div></div>
+          <div class="drink-row"><span class="drink-name">Castle Lite Draught</span><div class="drink-prices"><div><span class="label">Bottle</span>N$30</div></div></div>
+          <div class="drink-row"><span class="drink-name">Black Label</span><div class="drink-prices"><div><span class="label">Bottle</span>N$30</div><div><span class="label">Can</span>N$40</div></div></div>
+          <div class="drink-row"><span class="drink-name">Corona Extra</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div></div></div>
+          <div class="drink-row"><span class="drink-name">Flying Fish</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div><div><span class="label">Can</span>N$40</div></div></div>
+          <div class="drink-row"><span class="drink-name">Windhoek Non-Alcoholic</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div><div><span class="label">Can</span>N$40</div></div></div>
+          <div class="drink-row"><span class="drink-name">Clausthaler (Non-alc)</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div><div><span class="label">Can</span>N$40</div></div></div>
+          <div class="drink-row"><span class="drink-name">Heineken 0.0 (Non-alc)</span><div class="drink-prices"><div><span class="label">Bottle</span>N$30</div></div></div>
+        </div>
+      </div>
+
+      <div class="drinks-category">
+        <div class="drinks-cat-title">🍎 Ciders</div>
+        <div class="drinks-items">
+          <div class="drink-row"><span class="drink-name">Savanna Dry / Light / Angry</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div></div></div>
+          <div class="drink-row"><span class="drink-name">Hunters / Extreme</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div><div><span class="label">Can</span>N$45</div></div></div>
+          <div class="drink-row"><span class="drink-name">Brutal Fruit</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div><div><span class="label">Can</span>N$45</div></div></div>
+          <div class="drink-row"><span class="drink-name">Bernini</span><div class="drink-prices"><div><span class="label">Bottle</span>N$35</div><div><span class="label">Can</span>N$45</div></div></div>
+          <div class="drink-row"><span class="drink-name">Strongbow</span><div class="drink-prices"><div><span class="label">Can</span>N$35</div></div></div>
+        </div>
+      </div>
+
+      <div class="drinks-category">
+        <div class="drinks-cat-title">🌵 Tequila &amp; Rum</div>
+        <div class="drinks-items">
+          <div class="drink-row"><span class="drink-name">Don Julio Blanco</span><div class="drink-prices"><div><span class="label">Tot</span>N$90</div><div><span class="label">Bottle</span>N$2,700</div></div></div>
+          <div class="drink-row"><span class="drink-name">Don Julio Reposado</span><div class="drink-prices"><div><span class="label">Tot</span>N$95</div><div><span class="label">Bottle</span>N$2,900</div></div></div>
+          <div class="drink-row"><span class="drink-name">Cactus Jack</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+          <div class="drink-row"><span class="drink-name">Tequila Gold / Silver</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+          <div class="drink-row"><span class="drink-name">Captain Morgan</span><div class="drink-prices"><div><span class="label">Tot</span>N$35</div><div><span class="label">Bottle</span>N$1,050</div></div></div>
+          <div class="drink-row"><span class="drink-name">Bacardi</span><div class="drink-prices"><div><span class="label">Tot</span>N$30</div><div><span class="label">Bottle</span>N$900</div></div></div>
+        </div>
+      </div>
+
+      <div class="drinks-category">
+        <div class="drinks-cat-title">🏆 Cognac &amp; Liqueur</div>
+        <div class="drinks-items">
+          <div class="drink-row"><span class="drink-name">Hennessy VS</span><div class="drink-prices"><div><span class="label">Tot</span>N$55</div><div><span class="label">Bottle</span>N$1,650</div></div></div>
+          <div class="drink-row"><span class="drink-name">Hennessy VSOP</span><div class="drink-prices"><div><span class="label">Tot</span>N$80</div><div><span class="label">Bottle</span>N$2,400</div></div></div>
+          <div class="drink-row"><span class="drink-name">Remy Martin</span><div class="drink-prices"><div><span class="label">Tot</span>N$100</div><div><span class="label">Bottle</span>N$3,000</div></div></div>
+          <div class="drink-row"><span class="drink-name">Honor Cognac</span><div class="drink-prices"><div><span class="label">Tot</span>N$50</div><div><span class="label">Bottle</span>N$1,500</div></div></div>
+          <div class="drink-row"><span class="drink-name">Connor</span><div class="drink-prices"><div><span class="label">Tot</span>N$50</div><div><span class="label">Bottle</span>N$1,500</div></div></div>
+          <div class="drink-row"><span class="drink-name">Amarula</span><div class="drink-prices"><div><span class="label">Tot</span>N$25</div><div><span class="label">Bottle</span>N$750</div></div></div>
+          <div class="drink-row"><span class="drink-name">Kahlua</span><div class="drink-prices"><div><span class="label">Tot</span>N$25</div><div><span class="label">Bottle</span>N$750</div></div></div>
+          <div class="drink-row"><span class="drink-name">Wild Africa Cream</span><div class="drink-prices"><div><span class="label">Tot</span>N$25</div><div><span class="label">Bottle</span>N$750</div></div></div>
+          <div class="drink-row"><span class="drink-name">Billiato</span><div class="drink-prices"><div><span class="label">Tot</span>N$40</div><div><span class="label">Bottle</span>N$1,200</div></div></div>
+          <div class="drink-row"><span class="drink-name">Ponchos Tequila Coffee</span><div class="drink-prices"><div><span class="label">Tot</span>N$35</div><div><span class="label">Bottle</span>N$1,050</div></div></div>
+        </div>
+      </div>
+
+      <!-- Shooters -->
+      <div class="drinks-category" style="margin-top:1.5rem">
+        <div class="drinks-cat-title">🥃 Shooters</div>
+        <div class="drinks-items">
+          <div class="drink-row"><span class="drink-name">Underburg</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$35</span></div></div>
+          <div class="drink-row"><span class="drink-name">Blowjob</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div></div>
+          <div class="drink-row"><span class="drink-name">Springbok</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div></div>
+          <div class="drink-row"><span class="drink-name">Peppermint</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div></div>
+          <div class="drink-row"><span class="drink-name">Jagermeister</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div></div>
+          <div class="drink-row"><span class="drink-name">Ponchos Rosado</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div></div>
+          <div class="drink-row"><span class="drink-name">Cactus Jack</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div></div>
+          <div class="drink-row"><span class="drink-name">Caramel Vodka</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div></div>
+          <div class="drink-row"><span class="drink-name">Tequila Gold / Silver</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$30</span></div></div>
+          <div class="drink-row"><span class="drink-name">Ponchos Tequila Coffee</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$35</span></div></div>
+          <div class="drink-row"><span class="drink-name">Don Julio</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$95</span></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     WINES
+     ====================================================== -->
+<section id="wines" class="menu-section" style="background:var(--dark);">
+  <div class="container">
+    <div class="menu-section-header">
+      <span class="eyebrow">From the Cellar</span>
+      <h2>Wines</h2>
+      <div class="wood-line"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:1.5rem;">
+
+      <div class="drinks-table">
+        <div class="drinks-category">
+          <div class="drinks-cat-title">🍷 Red Wines</div>
+          <div class="drinks-items">
+            <div class="drink-row"><span class="drink-name">Arabella Merlot / Cab</span><div class="drink-prices"><div><span class="label">Glass</span>N$45</div><div><span class="label">Bottle</span>N$280</div></div></div>
+            <div class="drink-row"><span class="drink-name">Laborie Merlot / Cab Sauv</span><div class="drink-prices"><div><span class="label">Glass</span>N$55</div><div><span class="label">Bottle</span>N$300</div></div></div>
+            <div class="drink-row"><span class="drink-name">Silk &amp; Spice</span><div class="drink-prices"><div><span class="label">Bottle</span>N$400</div></div></div>
+            <div class="drink-row"><span class="drink-name">Chocolate Block</span><div class="drink-prices"><div><span class="label">Bottle</span>N$650</div></div></div>
+            <div class="drink-row"><span class="drink-name">Fat Bastard Merlot / Cab</span><div class="drink-prices"><div><span class="label">Bottle</span>N$350</div></div></div>
+            <div class="drink-row"><span class="drink-name">Kanonkop Kadette Cape Blend</span><div class="drink-prices"><div><span class="label">Bottle</span>N$380</div></div></div>
+            <div class="drink-row"><span class="drink-name">Pearly Bay Dry / Sweet Red</span><div class="drink-prices"><div><span class="label">Bottle</span>N$200</div></div></div>
+            <div class="drink-row"><span class="drink-name">Nederburg Baronne</span><div class="drink-prices"><div><span class="label">Bottle</span>N$210</div></div></div>
+            <div class="drink-row"><span class="drink-name">Optima</span><div class="drink-prices"><div><span class="label">Bottle</span>N$400</div></div></div>
+            <div class="drink-row"><span class="drink-name">KWV Red Muscadel</span><div class="drink-prices"><div><span class="label">Glass</span>N$65</div><div><span class="label">Bottle</span>N$250</div></div></div>
+            <div class="drink-row"><span class="drink-name">Spier Merlot / Pinotage</span><div class="drink-prices"><div><span class="label">Bottle</span>N$200</div></div></div>
+            <div class="drink-row"><span class="drink-name">Kanu Sweet Red</span><div class="drink-prices"><div><span class="label">Bottle</span>N$280</div></div></div>
+            <div class="drink-row"><span class="drink-name">Rodeberg Black</span><div class="drink-prices"><div><span class="label">Bottle</span>N$450</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drinks-table">
+        <div class="drinks-category">
+          <div class="drinks-cat-title">🥂 White Wines</div>
+          <div class="drinks-items">
+            <div class="drink-row"><span class="drink-name">Arabella Chardonnay</span><div class="drink-prices"><div><span class="label">Glass</span>N$45</div><div><span class="label">Bottle</span>N$280</div></div></div>
+            <div class="drink-row"><span class="drink-name">Laborie Chardonnay / Sauvignon</span><div class="drink-prices"><div><span class="label">Glass</span>N$55</div><div><span class="label">Bottle</span>N$300</div></div></div>
+            <div class="drink-row"><span class="drink-name">KWV Moscato / Sauvignon / Chardonnay</span><div class="drink-prices"><div><span class="label">Glass</span>N$45</div><div><span class="label">Bottle</span>N$250</div></div></div>
+            <div class="drink-row"><span class="drink-name">Pearly Bay Sweet White</span><div class="drink-prices"><div><span class="label">Glass</span>N$45</div><div><span class="label">Bottle</span>N$200</div></div></div>
+            <div class="drink-row"><span class="drink-name">Casal Garcia</span><div class="drink-prices"><div><span class="label">Bottle</span>N$280</div></div></div>
+            <div class="drink-row"><span class="drink-name">Cederburg Bukettraube</span><div class="drink-prices"><div><span class="label">Bottle</span>N$300</div></div></div>
+            <div class="drink-row"><span class="drink-name">Zanvliet Muscat</span><div class="drink-prices"><div><span class="label">Bottle</span>N$300</div></div></div>
+            <div class="drink-row"><span class="drink-name">Spier Chardonnay / Sauvignon / Chenin</span><div class="drink-prices"><div><span class="label">Bottle</span>N$200</div></div></div>
+            <div class="drink-row"><span class="drink-name">Vrl Moscato</span><div class="drink-prices"><div><span class="label">Bottle</span>N$280</div></div></div>
+            <div class="drink-row"><span class="drink-name">Silk &amp; Spice White</span><div class="drink-prices"><div><span class="label">Bottle</span>N$400</div></div></div>
+            <div class="drink-row"><span class="drink-name">Fat Bastard White</span><div class="drink-prices"><div><span class="label">Bottle</span>N$350</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drinks-table">
+        <div class="drinks-category">
+          <div class="drinks-cat-title">🌹 Rosé &amp; Bubbles</div>
+          <div class="drinks-items">
+            <div class="drink-row"><span class="drink-name">Bonnievale Rosé</span><div class="drink-prices"><div><span class="label">Bottle</span>N$280</div></div></div>
+            <div class="drink-row"><span class="drink-name">KWV Moscato Rosé</span><div class="drink-prices"><div><span class="label">Bottle</span>N$250</div></div></div>
+            <div class="drink-row"><span class="drink-name">Veuve Brut</span><div class="drink-prices"><div><span class="label">Bottle</span>N$2,300</div></div></div>
+            <div class="drink-row"><span class="drink-name">Moët Brut</span><div class="drink-prices"><div><span class="label">Bottle</span>N$2,200</div></div></div>
+            <div class="drink-row"><span class="drink-name">Moët Néctar</span><div class="drink-prices"><div><span class="label">Bottle</span>N$2,000</div></div></div>
+            <div class="drink-row"><span class="drink-name">Bottega Gold</span><div class="drink-prices"><div><span class="label">Bottle</span>N$1,650</div></div></div>
+            <div class="drink-row"><span class="drink-name">Mimosa</span><div class="drink-prices"><div><span class="label">Bottle</span>N$350</div></div></div>
+            <div class="drink-row"><span class="drink-name">Veuve Rich</span><div class="drink-prices"><div><span class="label">Bottle</span>N$2,600</div></div></div>
+            <div class="drink-row"><span class="drink-name">Simonsig Satin Néctar</span><div class="drink-prices"><div><span class="label">Bottle</span>N$450</div></div></div>
+            <div class="drink-row"><span class="drink-name">Graham Néctar Bliss / Rosé / Brut</span><div class="drink-prices"><div><span class="label">Bottle</span>N$400</div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     SOFT DRINKS & MILKSHAKES
+     ====================================================== -->
+<section id="softdrinks" class="menu-section" style="background:var(--black);">
+  <div class="container">
+    <div class="menu-section-header">
+      <span class="eyebrow">Non-Alcoholic</span>
+      <h2>Soft Drinks &amp; Milkshakes</h2>
+      <div class="wood-line"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;">
+
+      <div class="drinks-table">
+        <div class="drinks-category">
+          <div class="drinks-cat-title">🥤 Soft Drinks</div>
+          <div class="drinks-items">
+            <div class="drink-row"><span class="drink-name">Coca Cola / Coke Zero / Sprite / Sprite Zero</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$25</span></div></div>
+            <div class="drink-row"><span class="drink-name">Fanta Grape / Crème Soda</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$20</span></div></div>
+            <div class="drink-row"><span class="drink-name">Malawi Shandy</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$50</span></div></div>
+            <div class="drink-row"><span class="drink-name">Rock Shandy</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$50</span></div></div>
+            <div class="drink-row"><span class="drink-name">Passion Fruit &amp; Lemonade</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$50</span></div></div>
+            <div class="drink-row"><span class="drink-name">Passion Fruit &amp; Sprite</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div></div>
+            <div class="drink-row"><span class="drink-name">Appletiser</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div></div>
+            <div class="drink-row"><span class="drink-name">Grapetiser</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div></div>
+            <div class="drink-row"><span class="drink-name">Liqui Fruit Assorted</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$25</span></div></div>
+            <div class="drink-row"><span class="drink-name">Powerade</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$35</span></div></div>
+            <div class="drink-row"><span class="drink-name">Red Bull</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$40</span></div></div>
+            <div class="drink-row"><span class="drink-name">Still Water</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$20</span></div></div>
+            <div class="drink-row"><span class="drink-name">Sparkling Water</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$25</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drinks-table">
+        <div class="drinks-category">
+          <div class="drinks-cat-title">🥛 Milkshakes · N$65</div>
+          <div class="drinks-items">
+            <div class="drink-row"><span class="drink-name">Oreo</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$65</span></div></div>
+            <div class="drink-row"><span class="drink-name">Vanilla</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$65</span></div></div>
+            <div class="drink-row"><span class="drink-name">Chocolate</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$65</span></div></div>
+            <div class="drink-row"><span class="drink-name">Coffee Shake</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$60</span></div></div>
+            <div class="drink-row"><span class="drink-name">Strawberry</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$65</span></div></div>
+            <div class="drink-row"><span class="drink-name">Bubble Gum</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$65</span></div></div>
+            <div class="drink-row"><span class="drink-name">Eet Sum Mor</span><div class="drink-prices"><span style="color:var(--wood-cream);font-family:'Playfair Display',serif;">N$65</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     FOOTER
+     ====================================================== -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text" style="font-size:1.4rem;margin-bottom:0.5rem;">
+          Roadhouse<span style="display:block">Deli &amp; Grill</span>
+        </div>
+        <p>Windhoek's favourite spot for hearty food by day and craft cocktails by night.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/RoadhouseDeliAndGrill/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/roadhouse_deli/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/264813287476" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.hours">Hours</h4>
+        <ul>
+          <li style="color:var(--off-white);font-size:0.875rem;"><span data-i18n="footer.days.weekday">Sun – Thu</span><br><span style="color:var(--text-muted)" data-i18n="footer.hours.weekday">08:00 – 00:00</span></li>
+          <li style="color:var(--off-white);font-size:0.875rem;margin-top:0.75rem;"><span data-i18n="footer.days.fri">Fri – Sat</span><br><span style="color:var(--text-muted)" data-i18n="footer.hours.fri">08:00 – 02:00</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.links">Quick Links</h4>
+        <ul>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="menu.html" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="index.html#events" data-i18n="nav.events">Events</a></li>
+          <li><a href="index.html#reviews" data-i18n="nav.reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.contact">Contact</h4>
+        <p><i class="fa fa-map-marker-alt" style="color:var(--wood-warm);margin-right:0.5rem;"></i>Independence Avenue, opposite Hilton Hotel, Windhoek</p>
+        <p style="margin-top:0.75rem;"><i class="fa fa-phone" style="color:var(--wood-warm);margin-right:0.5rem;"></i><a href="tel:+264813287476">+264 81 328 7476</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer.rights">© 2026 Roadhouse Deli &amp; Grill. All rights reserved.</p>
+      <p style="color:var(--wood-dark);font-size:0.75rem;">Made with ♥ in Namibia</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/264813287476" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>

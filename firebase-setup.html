@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firebase Setup Guide — Roadhouse Deli &amp; Grill</title>
+<style>
+:root {
+  --black:#111010;--dark:#1a1a18;--charcoal:#2a2a27;
+  --white:#f5f0eb;--muted:#9e9e9e;--gold:#c9a84c;
+  --wood-warm:#c8956c;--wood-cream:#d4a574;
+  --green:#25a85a;--red:#e05555;--blue:#4a9eff;
+  --border:rgba(255,255,255,0.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black);color:var(--white);font-family:'Segoe UI',sans-serif;line-height:1.7;padding:0 1rem 4rem}
+a{color:var(--blue)}
+code{background:var(--charcoal);color:var(--wood-cream);padding:.15rem .45rem;border-radius:4px;font-size:.88em;font-family:'Courier New',monospace}
+pre{background:var(--charcoal);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;overflow-x:auto;margin:1rem 0;font-family:'Courier New',monospace;font-size:.88rem;line-height:1.6;color:var(--wood-cream)}
+pre .k{color:var(--blue)}pre .s{color:#98c379}pre .c{color:var(--muted)}
+
+/* Layout */
+.page{max-width:860px;margin:0 auto}
+header{text-align:center;padding:3rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:3rem}
+header .brand{font-size:1.1rem;font-family:'Courier New',monospace;color:var(--muted);margin-bottom:.5rem}
+header h1{font-size:2rem;font-weight:800;margin-bottom:.5rem}
+header p{color:var(--muted);font-size:.95rem}
+
+/* Steps */
+.step{
+  display:flex;gap:1.5rem;margin-bottom:2.5rem;
+  background:var(--dark);border:1px solid var(--border);border-radius:10px;
+  padding:1.5rem 1.75rem;position:relative;overflow:hidden;
+}
+.step::before{
+  content:'';position:absolute;top:0;left:0;width:4px;height:100%;
+  background:linear-gradient(180deg,var(--gold),var(--wood-warm));
+}
+.step-num{
+  width:36px;height:36px;background:var(--gold);color:var(--black);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:1rem;flex-shrink:0;margin-top:.1rem;
+}
+.step-content{flex:1}
+.step-content h2{font-size:1.1rem;font-weight:700;margin-bottom:.6rem}
+.step-content p{color:var(--muted);font-size:.9rem;margin-bottom:.75rem}
+.step-content p:last-child{margin-bottom:0}
+.step-content ul{color:var(--muted);font-size:.9rem;padding-left:1.25rem;margin-bottom:.75rem}
+.step-content ul li{margin-bottom:.3rem}
+
+/* Tip/Warning */
+.tip,.warn,.done{
+  border-radius:7px;padding:.85rem 1.1rem;margin:1rem 0;font-size:.88rem;
+  display:flex;gap:.6rem;align-items:flex-start;
+}
+.tip{background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.25);color:#a8d4ff}
+.warn{background:rgba(224,85,85,.1);border:1px solid rgba(224,85,85,.25);color:#f0a0a0}
+.done{background:rgba(37,168,90,.1);border:1px solid rgba(37,168,90,.25);color:#7de0a0}
+.tip .icon,.warn .icon,.done .icon{font-size:1rem;flex-shrink:0;margin-top:.1rem}
+
+/* Config block */
+.config-block{
+  background:var(--charcoal);border:1px solid var(--border);border-radius:8px;
+  padding:1.25rem 1.5rem;margin:1rem 0;position:relative;
+}
+.config-block .copy-btn{
+  position:absolute;top:.75rem;right:.75rem;
+  background:var(--gold);color:var(--black);border:none;border-radius:4px;
+  font-size:.72rem;font-weight:700;padding:.3rem .7rem;cursor:pointer;
+}
+.config-block .copy-btn:hover{opacity:.85}
+
+/* Files to update */
+.file-list{display:flex;flex-direction:column;gap:.6rem;margin:1rem 0}
+.file-row{
+  background:var(--charcoal);border:1px solid var(--border);border-radius:6px;
+  padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem;font-size:.88rem;
+}
+.file-row .fname{font-family:'Courier New',monospace;color:var(--wood-cream);font-weight:700}
+.file-row .fdesc{color:var(--muted);font-size:.82rem;margin-left:auto}
+
+/* Rules block */
+.rules{background:var(--charcoal);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;margin:1rem 0}
+
+/* Section heading */
+.section-heading{
+  font-family:'Courier New',monospace;font-size:.72rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--wood-warm);margin:2.5rem 0 1rem;
+}
+
+/* Checklist */
+.checklist{list-style:none;padding:0;margin:1rem 0}
+.checklist li{
+  padding:.5rem .75rem;display:flex;align-items:center;gap:.6rem;
+  border-bottom:1px solid rgba(255,255,255,.04);font-size:.88rem;
+}
+.checklist li .cb{
+  width:18px;height:18px;border:2px solid var(--muted);border-radius:4px;
+  cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;transition:all .2s;
+}
+.checklist li .cb.checked{background:var(--green);border-color:var(--green);color:#fff}
+
+footer{text-align:center;padding-top:3rem;border-top:1px solid var(--border);color:var(--muted);font-size:.82rem}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="brand">firebase-setup.html</div>
+  <h1>🔥 Firebase Setup Guide</h1>
+  <p>Roadhouse Deli &amp; Grill — Admin Backend · Step-by-step for David</p>
+</header>
+
+<!-- ═══════════════ OVERVIEW ═══════════════ -->
+<p class="section-heading">What we're setting up</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;margin-bottom:2.5rem">
+  <div style="background:var(--charcoal);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+    <div style="font-size:1.5rem;margin-bottom:.4rem">🔐</div>
+    <div style="font-weight:700;font-size:.9rem">Auth</div>
+    <div style="color:var(--muted);font-size:.78rem">Admin login</div>
+  </div>
+  <div style="background:var(--charcoal);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+    <div style="font-size:1.5rem;margin-bottom:.4rem">🗃️</div>
+    <div style="font-weight:700;font-size:.9rem">Firestore</div>
+    <div style="color:var(--muted);font-size:.78rem">Live data</div>
+  </div>
+  <div style="background:var(--charcoal);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+    <div style="font-size:1.5rem;margin-bottom:.4rem">🖼️</div>
+    <div style="font-weight:700;font-size:.9rem">Storage</div>
+    <div style="color:var(--muted);font-size:.78rem">Event images</div>
+  </div>
+  <div style="background:var(--charcoal);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+    <div style="font-size:1.5rem;margin-bottom:.4rem">🌐</div>
+    <div style="font-weight:700;font-size:.9rem">Hosting</div>
+    <div style="color:var(--muted);font-size:.78rem">Optional free deploy</div>
+  </div>
+</div>
+
+<!-- ═══════════════ STEPS ═══════════════ -->
+<p class="section-heading">Step-by-step</p>
+
+<!-- STEP 1 -->
+<div class="step">
+  <div class="step-num">1</div>
+  <div class="step-content">
+    <h2>Create a Firebase Project</h2>
+    <p>Go to <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a> and sign in with your Google account.</p>
+    <ul>
+      <li>Click <strong>Add project</strong></li>
+      <li>Name it <strong>roadhouse-deli-grill</strong> (or anything you like)</li>
+      <li>Disable Google Analytics (not needed) → click <strong>Create project</strong></li>
+      <li>Wait ~30 seconds for it to provision, then click <strong>Continue</strong></li>
+    </ul>
+    <div class="tip"><span class="icon">💡</span><span>The free Spark plan is more than enough — you get 1 GB storage, 50,000 Firestore reads/day, and 10 GB hosting.</span></div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <div class="step-num">2</div>
+  <div class="step-content">
+    <h2>Register a Web App &amp; Get Your Config</h2>
+    <p>In your new project's dashboard:</p>
+    <ul>
+      <li>Click the <strong>&lt;/&gt;</strong> (Web) icon under "Get started by adding Firebase to your app"</li>
+      <li>Enter app nickname: <strong>Roadhouse Website</strong></li>
+      <li>Skip Firebase Hosting for now → click <strong>Register app</strong></li>
+      <li>You'll see a code block — copy the <code>firebaseConfig</code> object</li>
+    </ul>
+    <div class="tip"><span class="icon">💡</span><span>It looks like this — yours will have real values instead of placeholders:</span></div>
+    <div class="config-block">
+      <button class="copy-btn" onclick="copyConfig()">Copy</button>
+<pre><span class="k">const</span> firebaseConfig = {
+  apiKey:            <span class="s">"AIzaSy..."</span>,
+  authDomain:        <span class="s">"roadhouse-deli.firebaseapp.com"</span>,
+  projectId:         <span class="s">"roadhouse-deli"</span>,
+  storageBucket:     <span class="s">"roadhouse-deli.appspot.com"</span>,
+  messagingSenderId: <span class="s">"123456789"</span>,
+  appId:             <span class="s">"1:123..."</span>
+};</pre>
+    </div>
+    <div class="warn"><span class="icon">⚠️</span><span>Do not share your <code>apiKey</code> publicly. It's okay in front-end code only because we'll lock it down with Firestore Rules in Step 5.</span></div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <div class="step-num">3</div>
+  <div class="step-content">
+    <h2>Paste the Config into Your Files</h2>
+    <p>Open these two files in any text editor and replace <code>YOUR_API_KEY</code>, <code>YOUR_PROJECT_ID</code> etc. with your real values:</p>
+    <div class="file-list">
+      <div class="file-row"><span>📄</span><span class="fname">admin.html</span><span class="fdesc">Find <code>const firebaseConfig = {</code> near the bottom</span></div>
+      <div class="file-row"><span>📄</span><span class="fname">index.html</span><span class="fdesc">Find <code>const firebaseConfig = {</code> inside the Firebase script block at the bottom</span></div>
+    </div>
+    <div class="tip"><span class="icon">💡</span><span>Use <strong>Ctrl+F</strong> (or Cmd+F) in your text editor to search for <code>YOUR_API_KEY</code> — it'll jump straight to the right place.</span></div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <div class="step-num">4</div>
+  <div class="step-content">
+    <h2>Enable Firebase Authentication</h2>
+    <p>This is your login system for the admin panel.</p>
+    <ul>
+      <li>In Firebase Console → left sidebar → <strong>Build → Authentication</strong></li>
+      <li>Click <strong>Get started</strong></li>
+      <li>Under "Sign-in method" click <strong>Email/Password</strong> → Enable → Save</li>
+      <li>Go to the <strong>Users</strong> tab → click <strong>Add user</strong></li>
+      <li>Enter your email and choose a password → click <strong>Add user</strong></li>
+    </ul>
+    <div class="done"><span class="icon">✅</span><span>That email + password is what you'll use to log into <code>admin.html</code></span></div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <div class="step-num">5</div>
+  <div class="step-content">
+    <h2>Create the Firestore Database</h2>
+    <ul>
+      <li>Firebase Console → <strong>Build → Firestore Database</strong></li>
+      <li>Click <strong>Create database</strong></li>
+      <li>Choose <strong>Start in production mode</strong> → Next</li>
+      <li>Select your region (e.g. <strong>europe-west1</strong>) → Enable</li>
+      <li>Wait ~30 seconds for it to provision</li>
+    </ul>
+    <p style="margin-top:.5rem"><strong>Set up Security Rules.</strong> Click the <strong>Rules</strong> tab and paste this:</p>
+    <div class="rules">
+<pre><span class="c">// Firestore Security Rules for Roadhouse</span>
+rules_version = <span class="s">'2'</span>;
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    <span class="c">// Everyone can read — no sensitive data here</span>
+    match /{document=**} {
+      allow read: <span class="k">if</span> true;
+      allow write: <span class="k">if</span> request.auth != null; <span class="c">// only logged-in admin can write</span>
+    }
+
+    <span class="c">// Anyone can submit a review (create only, not edit/delete)</span>
+    match /reviews/{id} {
+      allow create: <span class="k">if</span> true;
+    }
+  }
+}</pre>
+    </div>
+    <p>Click <strong>Publish</strong>.</p>
+    <div class="tip"><span class="icon">💡</span><span>These rules let the public read active content and submit reviews, but only you (logged in) can create/edit/delete anything.</span></div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step">
+  <div class="step-num">6</div>
+  <div class="step-content">
+    <h2>Enable Firebase Storage (for Images)</h2>
+    <ul>
+      <li>Firebase Console → <strong>Build → Storage</strong></li>
+      <li>Click <strong>Get started</strong> → Start in production mode → Next → Done</li>
+      <li>Click the <strong>Rules</strong> tab and paste:</li>
+    </ul>
+    <div class="rules">
+<pre>rules_version = <span class="s">'2'</span>;
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read: <span class="k">if</span> true;
+      allow write: <span class="k">if</span> request.auth != null;
+    }
+  }
+}</pre>
+    </div>
+    <p>Click <strong>Publish</strong>.</p>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step">
+  <div class="step-num">7</div>
+  <div class="step-content">
+    <h2>Open the Admin Panel</h2>
+    <p>Open <code>admin.html</code> in your browser (or deploy — see Step 8). Log in with the email and password you created in Step 4.</p>
+    <ul>
+      <li>Add your first <strong>Event</strong> (date, title, description, image)</li>
+      <li>Add <strong>Specials</strong> (name, price, badge like "Mon–Fri")</li>
+      <li>Update each day's <strong>Meal of the Day</strong></li>
+      <li>Incoming <strong>Reviews</strong> from the website appear here — approve to show them</li>
+      <li>Add a <strong>Notice</strong> to show a banner on the homepage (e.g. "Closed on public holidays")</li>
+    </ul>
+    <div class="done"><span class="icon">✅</span><span>Any change you save appears on the website <strong>instantly</strong> — no page reload needed for visitors.</span></div>
+  </div>
+</div>
+
+<!-- STEP 8 (Optional Hosting) -->
+<div class="step">
+  <div class="step-num">8</div>
+  <div class="step-content">
+    <h2>Optional: Deploy to Firebase Hosting (Free)</h2>
+    <p>This gives you a free public URL like <code>roadhouse-deli.web.app</code>. You'll need Node.js installed.</p>
+    <pre>npm install -g firebase-tools
+firebase login
+firebase init hosting
+firebase deploy</pre>
+    <p style="margin-top:.75rem">Or just host your files with any regular web host (Netlify, cPanel, etc.) — Firebase Hosting is completely optional since we're only using Firestore + Auth + Storage.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ CHECKLIST ═══════════════ -->
+<p class="section-heading">Your setup checklist</p>
+<ul class="checklist" id="checklist">
+  <li><div class="cb" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Firebase project created</li>
+  <li><div class="cb" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Web app registered &amp; config copied</li>
+  <li><div class="cb" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Config pasted into <code>admin.html</code> and <code>index.html</code></li>
+  <li><div class="cb" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Email/Password Auth enabled &amp; admin user created</li>
+  <li><div class="cb" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Firestore created with Security Rules published</li>
+  <li><div class="cb" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Storage enabled with Storage Rules published</li>
+  <li><div class="cb" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Logged into <code>admin.html</code> successfully</li>
+  <li><div class="cb" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>First event or special added — visible on website ✅</li>
+</ul>
+
+<!-- ═══════════════ FIRESTORE STRUCTURE ═══════════════ -->
+<p class="section-heading">Firestore data structure (for reference)</p>
+<div style="background:var(--charcoal);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:2rem">
+<pre><span class="c">events/</span>
+  {id}: title, description, date, time, tag, imageURL, imagePath, active
+
+<span class="c">specials/</span>
+  {id}: name, description, price, badge, imageURL, imagePath, active
+
+<span class="c">mealOfDay/</span>
+  "0" (Sun): name, desc, price, imageURL
+  "1" (Mon): ...  "2" (Tue): ...  "3" (Wed): ...
+  "4" (Thu): ...  "5" (Fri): ...  "6" (Sat): ...
+
+<span class="c">reviews/</span>
+  {id}: name, text, rating, approved, pinned, createdAt
+
+<span class="c">notices/</span>
+  {id}: text, active, createdAt</pre>
+</div>
+
+<footer>
+  <p>Roadhouse Deli &amp; Grill — Firebase Setup Guide · Keep this file in your project folder for reference.</p>
+</footer>
+
+</div>
+
+<script>
+function copyConfig() {
+  const sample = `const firebaseConfig = {\n  apiKey:            "YOUR_API_KEY",\n  authDomain:        "YOUR_PROJECT_ID.firebaseapp.com",\n  projectId:         "YOUR_PROJECT_ID",\n  storageBucket:     "YOUR_PROJECT_ID.appspot.com",\n  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",\n  appId:             "YOUR_APP_ID"\n};`;
+  navigator.clipboard?.writeText(sample);
+  event.target.textContent = 'Copied!';
+  setTimeout(()=>event.target.textContent='Copy',2000);
+}
+</script>
+</body>
+</html>

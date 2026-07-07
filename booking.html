@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Table — Roadhouse Deli &amp; Grill</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Page Hero ── */
+    .booking-hero {
+      min-height: 38vh;
+      background: linear-gradient(160deg, var(--wood-dark) 0%, var(--black) 60%);
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('straw.jpg') center/cover no-repeat;
+      opacity: 0.12;
+    }
+    .booking-hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      width: 100%;
+    }
+    .booking-hero-content h1 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      color: var(--white);
+    }
+    .booking-hero-content p {
+      color: var(--wood-cream);
+      margin-top: 0.5rem;
+      font-size: 1.05rem;
+      font-family: 'Lato', sans-serif;
+    }
+
+    /* ── Form Card ── */
+    .booking-section {
+      background: var(--dark);
+      padding: 5rem 0 6rem;
+    }
+    .booking-card {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--charcoal);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 3rem 3.5rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    /* ── Form Grid ── */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin-bottom: 1.4rem;
+    }
+    .form-row.single { grid-template-columns: 1fr; }
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+
+    .form-group label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--wood-warm);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--input-bg);
+      border: 1px solid var(--border-sub);
+      border-radius: 4px;
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.75rem 1rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23c8956c' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+    /* Date/time native picker icon colour */
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator,
+    .form-group input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.7) sepia(1) saturate(2) hue-rotate(5deg);
+      cursor: pointer;
+    }
+
+    /* ── Submit ── */
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      width: 100%;
+      padding: 1rem 2rem;
+      margin-top: 2rem;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.3s, transform 0.2s;
+    }
+    .btn-whatsapp:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-whatsapp:active { transform: translateY(0); }
+    .btn-whatsapp svg { flex-shrink: 0; }
+
+    /* ── Notice ── */
+    .booking-notice {
+      text-align: center;
+      margin-top: 1.4rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .booking-notice span { color: var(--wood-warm); }
+
+    /* ── Info Strip ── */
+    .info-strip {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      padding: 0 1rem;
+    }
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      text-align: center;
+    }
+    .info-item .icon { font-size: 1.5rem; }
+    .info-item .label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--wood-warm);
+    }
+    .info-item .value {
+      font-size: 0.9rem;
+      color: var(--off-white);
+    }
+
+    /* ── Error state ── */
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #e05555;
+      box-shadow: 0 0 0 3px rgba(224,85,85,0.12);
+    }
+    .field-error {
+      font-size: 0.75rem;
+      color: #e07070;
+      margin-top: -0.2rem;
+    }
+
+    /* ── Success overlay ── */
+    .success-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-overlay.show { display: flex; }
+    .success-box {
+      background: var(--charcoal);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 3rem 3.5rem;
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      animation: popIn 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes popIn {
+      from { opacity:0; transform:scale(0.85); }
+      to   { opacity:1; transform:scale(1); }
+    }
+    .success-box .check { font-size: 3rem; margin-bottom: 1rem; }
+    .success-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .success-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .btn-close-success {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 0.7rem 2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .booking-card { padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .info-strip { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAV  (matches index.html nav)
+════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpg" alt="Roadhouse Logo" onerror="this.style.display='none'">
+      <div class="logo-text">Roadhouse<span>Deli &amp; Grill</span></div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html"       data-i18n="nav.home">Home</a></li>
+      <li><a href="menu.html"        data-i18n="nav.menu">Menu</a></li>
+      <li><a href="index.html#meal-of-day" data-i18n="nav.meals">Meal of the Day</a></li>
+      <li><a href="index.html#events"      data-i18n="nav.events">Events</a></li>
+      <li><a href="index.html#reviews"     data-i18n="nav.reviews">Reviews</a></li>
+      <li><a href="index.html#contact"     data-i18n="nav.contact">Contact</a></li>
+      <li><a href="booking.html" style="color:var(--gold)" data-i18n="nav.book">Book a Table</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="lang-dropdown">
+        <button class="lang-selected">&#x1F1EC;&#x1F1E7; EN <span class="caret">&#9660;</span></button>
+        <div class="lang-menu"></div>
+      </div>
+      <a href="index.html" class="logo-circle" title="Roadhouse Deli &amp; Grill">
+        <img src="logo.jpg" alt="Roadhouse Logo"
+             onerror="this.parentElement.innerHTML='<div class=&quot;logo-circle-placeholder&quot;>RH<span>DELI &amp; GRILL</span></div>'">
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div id="mobile-overlay" class="mobile-overlay">
+  <button id="mobile-close" class="mobile-close" aria-label="Close menu">&#10005;</button>
+  <a href="index.html"       data-i18n="nav.home">Home</a>
+  <a href="menu.html"        data-i18n="nav.menu">Menu</a>
+  <a href="index.html#meal-of-day" data-i18n="nav.meals">Meal of the Day</a>
+  <a href="index.html#events"      data-i18n="nav.events">Events</a>
+  <a href="index.html#reviews"     data-i18n="nav.reviews">Reviews</a>
+  <a href="index.html#contact"     data-i18n="nav.contact">Contact</a>
+  <a href="booking.html" style="color:var(--gold)" data-i18n="nav.book">Book a Table</a>
+  <div class="lang-dropdown" style="width:fit-content">
+    <button class="lang-selected">&#x1F1EC;&#x1F1E7; EN <span class="caret">&#9660;</span></button>
+    <div class="lang-menu"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="booking-hero">
+  <div class="booking-hero-content">
+    <span class="eyebrow" data-i18n="book.eyebrow">Reserve Your Spot</span>
+    <h1 data-i18n="book.title">Book a Table</h1>
+    <p data-i18n="book.subtitle">We'll confirm your reservation via WhatsApp</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FORM
+════════════════════════════════════════════ -->
+<section class="booking-section">
+  <div class="container">
+
+    <!-- Info strip -->
+    <div class="info-strip">
+      <div class="info-item">
+        <span class="icon">🕐</span>
+        <span class="label" data-i18n="book.info.hoursLabel">Hours</span>
+        <span class="value" data-i18n="book.info.hours">Mon–Sun · 11am – 10pm</span>
+      </div>
+      <div class="info-item">
+        <span class="icon">📍</span>
+        <span class="label" data-i18n="book.info.locationLabel">Location</span>
+        <span class="value" data-i18n="book.info.location">Roadhouse Deli &amp; Grill</span>
+      </div>
+      <div class="info-item">
+        <span class="icon">💬</span>
+        <span class="label" data-i18n="book.info.confirmLabel">Confirmation</span>
+        <span class="value" data-i18n="book.info.confirm">Via WhatsApp</span>
+      </div>
+    </div>
+
+    <div class="booking-card">
+      <form id="bookingForm" novalidate>
+
+        <!-- Name + Phone -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guestName" data-i18n="book.form.name">Full Name</label>
+            <input type="text" id="guestName" name="guestName"
+                   data-i18n-placeholder="book.form.namePh" placeholder="Your name" required>
+            <span class="field-error" id="err-name"></span>
+          </div>
+          <div class="form-group">
+            <label for="guestPhone" data-i18n="book.form.phone">Phone Number</label>
+            <input type="tel" id="guestPhone" name="guestPhone"
+                   data-i18n-placeholder="book.form.phonePh" placeholder="+27 82 000 0000" required>
+            <span class="field-error" id="err-phone"></span>
+          </div>
+        </div>
+
+        <!-- Date + Time -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="resDate" data-i18n="book.form.date">Date</label>
+            <input type="date" id="resDate" name="resDate" required>
+            <span class="field-error" id="err-date"></span>
+          </div>
+          <div class="form-group">
+            <label for="resTime" data-i18n="book.form.time">Time</label>
+            <input type="time" id="resTime" name="resTime" required min="11:00" max="21:30">
+            <span class="field-error" id="err-time"></span>
+          </div>
+        </div>
+
+        <!-- Guests + Occasion -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guests" data-i18n="book.form.guests">Number of Guests</label>
+            <select id="guests" name="guests" required>
+              <option value="" disabled selected data-i18n="book.form.guestsPh">Select guests</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+              <option value="7">7 Guests</option>
+              <option value="8">8 Guests</option>
+              <option value="9+">9+ Guests (large group)</option>
+            </select>
+            <span class="field-error" id="err-guests"></span>
+          </div>
+          <div class="form-group">
+            <label for="occasion" data-i18n="book.form.occasion">Occasion (optional)</label>
+            <select id="occasion" name="occasion">
+              <option value="" selected data-i18n="book.form.occasionPh">Just dining</option>
+              <option value="Birthday" data-i18n="book.form.occ.birthday">Birthday 🎂</option>
+              <option value="Anniversary" data-i18n="book.form.occ.anniversary">Anniversary 💑</option>
+              <option value="Business Lunch" data-i18n="book.form.occ.business">Business Lunch</option>
+              <option value="Date Night" data-i18n="book.form.occ.date">Date Night</option>
+              <option value="Family Gathering" data-i18n="book.form.occ.family">Family Gathering</option>
+              <option value="Celebration" data-i18n="book.form.occ.celebration">Celebration 🥂</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Special Requests -->
+        <div class="form-row single">
+          <div class="form-group">
+            <label for="requests" data-i18n="book.form.requests">Special Requests (optional)</label>
+            <textarea id="requests" name="requests"
+                      data-i18n-placeholder="book.form.requestsPh"
+                      placeholder="Allergies, dietary needs, seating preference…"></textarea>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-whatsapp" id="submitBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span data-i18n="book.form.submit">Send Reservation via WhatsApp</span>
+        </button>
+
+        <p class="booking-notice" data-i18n="book.form.notice">
+          Tapping the button opens WhatsApp with your details pre-filled.<br>
+          <span>We aim to confirm within 30 minutes.</span>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     SUCCESS OVERLAY
+════════════════════════════════════════════ -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="check">✅</div>
+    <h3 data-i18n="book.success.title">WhatsApp Opened!</h3>
+    <p data-i18n="book.success.body">Your reservation details are ready to send.<br>Just hit Send in WhatsApp and we'll confirm shortly.</p>
+    <button class="btn-close-success" onclick="document.getElementById('successOverlay').classList.remove('show')" data-i18n="book.success.close">Done</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     FOOTER STRIP
+════════════════════════════════════════════ -->
+<footer style="background:var(--black);border-top:1px solid var(--border-strong);padding:2rem 0;text-align:center;">
+  <p style="color:var(--text-muted);font-size:0.82rem;" data-i18n="footer.rights">© 2026 Roadhouse Deli &amp; Grill. All rights reserved.</p>
+</footer>
+
+<!-- ════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+<script src="script.js"></script>
+<script>
+(function() {
+
+  // ── CONFIG — replace with the restaurant's WhatsApp number ──
+  // Format: country code + number, no spaces, no +
+  // e.g. South Africa +27 82 123 4567  →  "27821234567"
+  var WHATSAPP_NUMBER = "27000000000"; // ← REPLACE THIS
+
+  // ── Set min date to today ──
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById('resDate').setAttribute('min', today);
+
+  // ── Validation helpers ──
+  function showError(id, msg) {
+    var el = document.getElementById('err-' + id);
+    var inp = document.getElementById(id === 'name' ? 'guestName' :
+                                      id === 'phone' ? 'guestPhone' :
+                                      id === 'date'  ? 'resDate' :
+                                      id === 'time'  ? 'resTime' :
+                                      id === 'guests'? 'guests' : id);
+    if (el) el.textContent = msg;
+    if (inp) inp.classList.add('error');
+  }
+  function clearErrors() {
+    ['name','phone','date','time','guests'].forEach(function(id) {
+      var el = document.getElementById('err-' + id);
+      if (el) el.textContent = '';
+    });
+    document.querySelectorAll('.form-group input, .form-group select').forEach(function(el) {
+      el.classList.remove('error');
+    });
+  }
+
+  function formatDate(d) {
+    if (!d) return '';
+    var parts = d.split('-');
+    return parts[2] + '/' + parts[1] + '/' + parts[0];
+  }
+  function formatTime(t) {
+    if (!t) return '';
+    var parts = t.split(':');
+    var h = parseInt(parts[0], 10);
+    var m = parts[1];
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return h + ':' + m + ' ' + ampm;
+  }
+
+  // ── Form submit ──
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearErrors();
+
+    var name     = document.getElementById('guestName').value.trim();
+    var phone    = document.getElementById('guestPhone').value.trim();
+    var date     = document.getElementById('resDate').value;
+    var time     = document.getElementById('resTime').value;
+    var guests   = document.getElementById('guests').value;
+    var occasion = document.getElementById('occasion').value;
+    var requests = document.getElementById('requests').value.trim();
+
+    var valid = true;
+
+    if (!name) { showError('name', 'Please enter your name.'); valid = false; }
+    if (!phone) { showError('phone', 'Please enter your phone number.'); valid = false; }
+    if (!date)  { showError('date',  'Please pick a date.'); valid = false; }
+    if (!time)  { showError('time',  'Please choose a time.'); valid = false; }
+    if (!guests){ showError('guests','Please select number of guests.'); valid = false; }
+
+    if (!valid) return;
+
+    // Build message
+    var msg = '🍽️ *Table Reservation — Roadhouse Deli & Grill*\n\n';
+    msg += '👤 *Name:* ' + name + '\n';
+    msg += '📞 *Phone:* ' + phone + '\n';
+    msg += '📅 *Date:* ' + formatDate(date) + '\n';
+    msg += '🕐 *Time:* ' + formatTime(time) + '\n';
+    msg += '👥 *Guests:* ' + guests + '\n';
+    if (occasion) msg += '🎉 *Occasion:* ' + occasion + '\n';
+    if (requests) msg += '📝 *Special Requests:* ' + requests + '\n';
+    msg += '\nPlease confirm my reservation. Thank you!';
+
+    var waURL = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+    window.open(waURL, '_blank');
+
+    // Show success overlay
+    document.getElementById('successOverlay').classList.add('show');
+
+    // Reset form
+    document.getElementById('bookingForm').reset();
+  });
+
+  // Close overlay on backdrop click
+  document.getElementById('successOverlay').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('show');
+  });
+
+})();
+</script>
+</body>
+</html>
