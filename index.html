@@ -3,10 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Roadhouse Deli & Grill — Windhoek's favourite spot for hearty food by day and craft cocktails by night. Burgers, steaks, wings, pizza and premium drinks.">
-  <title>Roadhouse Deli & Grill | Windhoek</title>
+
+  <!-- ─── PRIMARY SEO ─── -->
+  <title>Roadhouse Deli & Grill | Best Restaurant in Windhoek, Namibia</title>
+  <meta name="description" content="Roadhouse Deli & Grill — Windhoek's favourite restaurant. Enjoy flame-grilled steaks, gourmet burgers, stone-baked pizza, craft cocktails & more. Open daily 08:00–02:00. Book now!">
+  <meta name="keywords" content="Roadhouse Deli, Roadhouse Grill, restaurant Windhoek, best restaurant Windhoek, steaks Windhoek, burgers Windhoek, pizza Windhoek, cocktails Windhoek, Namibian restaurant, Independence Avenue restaurant, Hilton Hotel Windhoek restaurant">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://roadhousedeli.com/index.html">
+
+  <!-- ─── OPEN GRAPH (Social Media) ─── -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Roadhouse Deli & Grill | Best Restaurant in Windhoek">
+  <meta property="og:description" content="Windhoek's favourite restaurant for flame-grilled steaks, gourmet burgers, craft cocktails & more. Open daily 08:00–02:00. Book your table today!">
+  <meta property="og:url" content="https://roadhousedeli.com/">
+  <meta property="og:image" content="https://roadhousedeli.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Roadhouse Deli & Grill">
+  <meta property="og:locale" content="en_NA">
+
+  <!-- ─── TWITTER CARD ─── -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Roadhouse Deli & Grill | Windhoek's Best Restaurant">
+  <meta name="twitter:description" content="Steaks, burgers, pizza, cocktails & more — Roadhouse Deli & Grill is Windhoek's favourite dining spot. Open 08:00–02:00.">
+  <meta name="twitter:image" content="https://roadhousedeli.com/images/og-image.jpg">
+
+  <!-- ─── GEO / LOCAL SEO ─── -->
+  <meta name="geo.region" content="NA-KH">
+  <meta name="geo.placename" content="Windhoek">
+  <meta name="geo.position" content="-22.5700;17.0861">
+  <meta name="ICBM" content="-22.5700, 17.0861">
+  <meta name="location" content="Windhoek, Namibia">
+
+  <!-- ─── BUSINESS STRUCTURED DATA (JSON-LD) ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Roadhouse Deli & Grill",
+    "image": "https://roadhousedeli.com/images/logo.png",
+    "description": "Roadhouse Deli & Grill is Windhoek's favourite restaurant for flame-grilled steaks, gourmet burgers, stone-baked pizza, and craft cocktails.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Independence Avenue",
+      "addressLocality": "Windhoek",
+      "addressRegion": "Khomas",
+      "addressCountry": "Namibia"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-22.5700",
+      "longitude": "17.0861"
+    },
+    "telephone": "+264813287476",
+    "priceRange": "$$",
+    "openingHours": "Sun-Thu 08:00-00:00, Fri-Sat 08:00-02:00",
+    "servesCuisine": ["Steakhouse", "Burger", "Pizza", "Pasta", "Seafood", "Cocktail Bar"],
+    "hasMenu": "https://roadhousedeli.com/menu.html",
+    "acceptsReservations": "Yes",
+    "sameAs": [
+      "https://www.facebook.com/RoadhouseDeliAndGrill/",
+      "https://www.instagram.com/roadhouse_deli/"
+    ]
+  }
+  </script>
+
+  <!-- ─── STYLES ─── -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
+  <!-- ─── FAVICON ─── -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
 
@@ -17,27 +85,24 @@
      ====================================================== -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <img src="logo.png" alt="Roadhouse Logo" onerror="this.style.display='none'">
-      <div class="logo-text">
-        Roadhouse
-        <span>Deli &amp; Grill</span>
-      </div>
+    <!-- Circular Logo on the LEFT -->
+    <a href="index.html" class="logo-circle" title="Roadhouse Deli & Grill — Windhoek's Best Restaurant">
+      <img src="logo.png" alt="Roadhouse Deli & Grill Logo" onerror="this.parentElement.innerHTML='<div class=\'logo-circle-placeholder\'>RH<span>DELI &amp; GRILL</span></div>'">
     </a>
 
-    <ul class="nav-links">
-      <li><a href="#hero"        data-i18n="nav.home">Home</a></li>
-      <li><a href="menu.html"    data-i18n="nav.menu">Menu</a></li>
+    <ul class="nav-links" role="navigation" aria-label="Main Navigation">
+      <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+      <li><a href="menu.html" data-i18n="nav.menu">Menu</a></li>
       <li><a href="#meal-of-day" data-i18n="nav.meals">Meal of the Day</a></li>
-      <li><a href="#events"      data-i18n="nav.events">Events</a></li>
-      <li><a href="#reviews"     data-i18n="nav.reviews">Reviews</a></li>
-      <li><a href="#contact"     data-i18n="nav.contact">Contact</a></li>
+      <li><a href="#events" data-i18n="nav.events">Events</a></li>
+      <li><a href="#reviews" data-i18n="nav.reviews">Reviews</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
 
-    <!-- Language dropdown only (right logo removed) -->
+    <!-- Language dropdown (kept on the right) -->
     <div style="display:flex;align-items:center;gap:1rem;margin-left:auto;">
       <div class="lang-dropdown">
-        <button class="lang-selected">🇬🇧 EN <span class="caret">▼</span></button>
+        <button class="lang-selected" aria-label="Select Language">🇬🇧 EN <span class="caret">▼</span></button>
         <div class="lang-menu"></div>
       </div>
     </div>
@@ -48,13 +113,13 @@
   </div>
 </nav>
 
-<div class="mobile-menu">
-  <a href="#hero"        data-i18n="nav.home">Home</a>
-  <a href="menu.html"    data-i18n="nav.menu">Menu</a>
+<div class="mobile-menu" role="navigation" aria-label="Mobile Navigation">
+  <a href="#hero" data-i18n="nav.home">Home</a>
+  <a href="menu.html" data-i18n="nav.menu">Menu</a>
   <a href="#meal-of-day" data-i18n="nav.meals">Meal of the Day</a>
-  <a href="#events"      data-i18n="nav.events">Events</a>
-  <a href="#reviews"     data-i18n="nav.reviews">Reviews</a>
-  <a href="#contact"     data-i18n="nav.contact">Contact</a>
+  <a href="#events" data-i18n="nav.events">Events</a>
+  <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+  <a href="#contact" data-i18n="nav.contact">Contact</a>
   <div class="lang-dropdown" style="width:fit-content">
     <button class="lang-selected">🇬🇧 EN <span class="caret">▼</span></button>
     <div class="lang-menu"></div>
@@ -65,21 +130,21 @@
 <!-- ======================================================
      HERO
      ====================================================== -->
-<section id="hero">
+<section id="hero" aria-label="Welcome to Roadhouse Deli & Grill">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-texture"></div>
 
   <div class="hero-content">
-    <span class="hero-badge" data-i18n="hero.badge">Established in Windhoek</span>
+    <span class="hero-badge" data-i18n="hero.badge">🏆 Windhoek's Favourite Restaurant</span>
     <h1 class="hero-title">
       <span data-i18n="hero.title1">Roadhouse</span><br>
       <em class="highlight" data-i18n="hero.title2">Deli &amp; Grill</em>
     </h1>
-    <p class="hero-subtitle" data-i18n="hero.subtitle">Where great food meets great company</p>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">Windhoek's Best Steaks • Burgers • Pizza • Cocktails</p>
     <div class="hero-cta">
-      <a href="menu.html" class="btn-primary" data-i18n="hero.cta1">View Menu</a>
-      <a href="#contact"  class="btn-outline"  data-i18n="hero.cta2">Book a Table</a>
+      <a href="menu.html" class="btn-primary" data-i18n="hero.cta1">View Our Menu</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero.cta2">Book a Table</a>
     </div>
   </div>
 
@@ -93,12 +158,12 @@
 <!-- ======================================================
      ABOUT
      ====================================================== -->
-<section id="about" class="section-pad">
+<section id="about" class="section-pad" aria-label="About Roadhouse Deli & Grill">
   <div class="about-grid">
     <div class="about-image-col reveal left">
       <img
         src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=900&auto=format&fit=crop&q=80"
-        alt="Roadhouse interior"
+        alt="Roadhouse Deli & Grill — Warm and inviting restaurant interior in Windhoek"
         loading="lazy"
       >
       <div class="about-image-overlay"></div>
@@ -106,8 +171,8 @@
 
     <div class="about-content-col reveal right">
       <span class="eyebrow" data-i18n="about.eyebrow">Our Story</span>
-      <h2 data-i18n="about.title">Born from the love of fire &amp; flavour</h2>
-      <p data-i18n="about.body">Roadhouse Deli &amp; Grill is more than a restaurant — it's a gathering place. By day we fuel the city with hearty meals and honest food. By night we light up the bar with craft cocktails, premium spirits, and the kind of atmosphere that keeps you coming back. Warm wood, bold flavours, and a staff that wear black because they mean business.</p>
+      <h2>Born from the love of fire &amp; flavour</h2>
+      <p>Roadhouse Deli &amp; Grill is more than a restaurant — it's a gathering place in the heart of Windhoek. By day we fuel the city with hearty meals and honest food. By night we light up the bar with craft cocktails, premium spirits, and the kind of atmosphere that keeps you coming back. Warm wood, bold flavours, and a staff that wear black because they mean business.</p>
 
       <div class="about-stats">
         <div class="stat">
@@ -131,7 +196,7 @@
 <!-- ======================================================
      MEAL OF THE DAY
      ====================================================== -->
-<section id="meal-of-day" class="section-pad">
+<section id="meal-of-day" class="section-pad" aria-label="Daily Specials">
   <div class="container">
     <div class="meal-header reveal">
       <span class="eyebrow" data-i18n="meal.eyebrow">Daily Special</span>
@@ -147,9 +212,9 @@
 
 
 <!-- ======================================================
-     MENU PREVIEW
+     MENU PREVIEW (UPDATED WITH BACKGROUND IMAGES)
      ====================================================== -->
-<section id="menu-preview" class="section-pad">
+<section id="menu-preview" class="section-pad" aria-label="Our Menu Categories">
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:3rem;">
       <span class="eyebrow" data-i18n="menu.eyebrow">What We Serve</span>
@@ -158,33 +223,33 @@
     </div>
 
     <div class="menu-categories">
-      <a href="menu.html#burgers"   class="menu-cat-item reveal">
-        <span class="cat-icon">🍔</span>
+      <!-- Burgers & Starters -->
+      <a href="menu.html#burgers" class="menu-cat-item reveal" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80'); background-size: cover; background-position: center;">
         <h3>Burgers &amp; Starters</h3>
         <p>Classic through to loaded</p>
       </a>
-      <a href="menu.html#grills"    class="menu-cat-item reveal">
-        <span class="cat-icon">🥩</span>
+      <!-- Grill & Steaks -->
+      <a href="menu.html#grills" class="menu-cat-item reveal" style="background-image: url('https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'); background-size: cover; background-position: center;">
         <h3 data-i18n="menu.cat.grill">Grill &amp; Steaks</h3>
         <p>A-grade cuts, flame-grilled</p>
       </a>
-      <a href="menu.html#pizza"     class="menu-cat-item reveal">
-        <span class="cat-icon">🍕</span>
+      <!-- Pizza & Pasta -->
+      <a href="menu.html#pizza" class="menu-cat-item reveal" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=80'); background-size: cover; background-position: center;">
         <h3>Pizza &amp; Pasta</h3>
         <p>Stone-baked &amp; hand-tossed</p>
       </a>
-      <a href="menu.html#platters"  class="menu-cat-item reveal">
-        <span class="cat-icon">🍗</span>
+      <!-- Wings & Platters -->
+      <a href="menu.html#platters" class="menu-cat-item reveal" style="background-image: url('https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=600&auto=format&fit=crop&q=80'); background-size: cover; background-position: center;">
         <h3 data-i18n="menu.cat.platters">Wings &amp; Platters</h3>
         <p>Sharing is caring</p>
       </a>
-      <a href="menu.html#cocktails" class="menu-cat-item reveal">
-        <span class="cat-icon">🍹</span>
+      <!-- Cocktails -->
+      <a href="menu.html#cocktails" class="menu-cat-item reveal" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80'); background-size: cover; background-position: center;">
         <h3 data-i18n="menu.cat.cocktails">Cocktails</h3>
         <p>Craft &amp; classic blends</p>
       </a>
-      <a href="menu.html#drinks"    class="menu-cat-item reveal">
-        <span class="cat-icon">🥃</span>
+      <!-- Spirits & Drinks -->
+      <a href="menu.html#drinks" class="menu-cat-item reveal" style="background-image: url('https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=600&auto=format&fit=crop&q=80'); background-size: cover; background-position: center;">
         <h3 data-i18n="menu.cat.drinks">Spirits &amp; Drinks</h3>
         <p>Whiskey, gin, beer &amp; wine</p>
       </a>
@@ -200,7 +265,7 @@
 <!-- ======================================================
      EVENTS & SPECIALS
      ====================================================== -->
-<section id="events" class="section-pad">
+<section id="events" class="section-pad" aria-label="Events and Specials">
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:3rem;">
       <span class="eyebrow" data-i18n="events.eyebrow">What's On</span>
@@ -306,7 +371,7 @@
 <!-- ======================================================
      REVIEWS
      ====================================================== -->
-<section id="reviews" class="section-pad">
+<section id="reviews" class="section-pad" aria-label="Guest Reviews">
   <div class="container">
     <div class="reviews-header reveal">
       <span class="eyebrow" data-i18n="reviews.eyebrow">What People Say</span>
@@ -433,7 +498,7 @@
 <!-- ======================================================
      FOOTER / CONTACT
      ====================================================== -->
-<footer id="contact">
+<footer id="contact" aria-label="Contact Roadhouse Deli & Grill">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -465,24 +530,25 @@
       <div class="footer-col">
         <h4 data-i18n="footer.links">Quick Links</h4>
         <ul>
-          <li><a href="index.html"   data-i18n="nav.home">Home</a></li>
-          <li><a href="menu.html"    data-i18n="nav.menu">Menu</a></li>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="menu.html" data-i18n="nav.menu">Menu</a></li>
           <li><a href="#meal-of-day" data-i18n="nav.meals">Meal of the Day</a></li>
-          <li><a href="#events"      data-i18n="nav.events">Events</a></li>
-          <li><a href="#reviews"     data-i18n="nav.reviews">Reviews</a></li>
+          <li><a href="#events" data-i18n="nav.events">Events</a></li>
+          <li><a href="#reviews" data-i18n="nav.reviews">Reviews</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4 data-i18n="footer.contact">Contact</h4>
-        <p><i class="fa fa-map-marker-alt" style="color:var(--wood-warm);margin-right:0.5rem;"></i>Independence Avenue, opposite Hilton Hotel, Windhoek</p>
+        <p><i class="fa fa-map-marker-alt" style="color:var(--wood-warm);margin-right:0.5rem;"></i>Independence Avenue, opposite Hilton Hotel, Windhoek, Namibia</p>
         <p style="margin-top:0.75rem;"><i class="fa fa-phone" style="color:var(--wood-warm);margin-right:0.5rem;"></i><a href="tel:+264813287476">+264 81 328 7476</a></p>
+        <p style="margin-top:0.5rem;"><i class="fa fa-envelope" style="color:var(--wood-warm);margin-right:0.5rem;"></i><a href="mailto:info@roadhousedeli.com">info@roadhousedeli.com</a></p>
       </div>
     </div>
 
     <div class="footer-bottom">
       <p data-i18n="footer.rights">© 2026 Roadhouse Deli &amp; Grill. All rights reserved.</p>
-      <p style="color:var(--wood-dark);font-size:0.75rem;">Made with ♥ in Namibia</p>
+      <p style="color:var(--wood-dark);font-size:0.75rem;">Made with ♥ in Windhoek, Namibia</p>
     </div>
   </div>
 </footer>
