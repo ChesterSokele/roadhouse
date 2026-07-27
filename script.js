@@ -256,8 +256,8 @@ const T = {
 const translations = T;
 
 const mealsOfDay = {
-  0:{name:'Family Feast',desc:'A whole flame-grilled chicken with golden fries and warm Portuguese bread. Made for sharing, built for feasting.',price:'N$195',img:'images/piz.png'},
-  1:{name:'Roadhouse Pasta',desc:"Perfectly cooked pasta with ham in our chef's special cream sauce, topped with fresh herbs and parmesan.",price:'N$85',img:'https://images.unsplash.com/photo-1551183053-bf91798d792c?w=1800&auto=format&fit=crop&q=80'},
+  0:{name:'Family Feast',desc:'A whole flame-grilled chicken with golden fries and warm Portuguese bread. Made for sharing, built for feasting.',price:'N$195',img:'images/platmeat.png'},
+  1:{name:'Roadhouse Pasta',desc:"Perfectly cooked pasta with ham in our chef's special cream sauce, topped with fresh herbs and parmesan.",price:'N$85',img:'images/lam.png'},
   2:{name:'Beef Stew',desc:'Slow-cooked tender beef in a rich, hearty gravy served with fluffy rice or pap. Pure comfort on a plate.',price:'N$100',img:'https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=1800&auto=format&fit=crop&q=80'},
   3:{name:'Cottage Pie',desc:'Classic cottage pie with a savoury mince filling topped with golden mashed potato, served with green beans.',price:'N$100',img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=1800&auto=format&fit=crop&q=80'},
   4:{name:'Chicken Schnitzel',desc:'Crispy, golden-fried chicken schnitzel served with creamy mash potato and rich homemade gravy.',price:'N$85',img:'https://images.unsplash.com/photo-1562802378-063ec186a863?w=1800&auto=format&fit=crop&q=80'},
