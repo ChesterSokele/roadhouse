@@ -255,17 +255,24 @@ const T = {
 
 const translations = T;
 
+// Default meals (0 = Sunday). Order matches the official "Meal of the Day" menu board.
+// Anything saved in admin.html (Firebase) replaces these on the live site.
 const mealsOfDay = {
   0:{name:'Family Feast',desc:'A whole flame-grilled chicken with golden fries and warm Portuguese bread. Made for sharing, built for feasting.',price:'N$195',img:'images/platmeat.png'},
-  1:{name:'Roadhouse Pasta',desc:"Perfectly cooked pasta with ham in our chef's special cream sauce, topped with fresh herbs and parmesan.",price:'N$85',img:'images/lam.png'},
-  2:{name:'Beef Stew',desc:'Slow-cooked tender beef in a rich, hearty gravy served with fluffy rice or pap. Pure comfort on a plate.',price:'N$100',img:'https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=1800&auto=format&fit=crop&q=80'},
+  1:{name:'Chicken Schnitzel',desc:'Crispy, golden-fried chicken schnitzel served with creamy mash potato and rich homemade gravy.',price:'N$85',img:'https://images.unsplash.com/photo-1562802378-063ec186a863?w=1800&auto=format&fit=crop&q=80'},
+  2:{name:'Roadhouse Pasta',desc:"Perfectly cooked pasta with ham in our chef's special cream sauce, topped with fresh herbs and parmesan.",price:'N$85',img:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=1800&auto=format&fit=crop&q=80'},
   3:{name:'Cottage Pie',desc:'Classic cottage pie with a savoury mince filling topped with golden mashed potato, served with green beans.',price:'N$100',img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=1800&auto=format&fit=crop&q=80'},
-  4:{name:'Chicken Schnitzel',desc:'Crispy, golden-fried chicken schnitzel served with creamy mash potato and rich homemade gravy.',price:'N$85',img:'https://images.unsplash.com/photo-1562802378-063ec186a863?w=1800&auto=format&fit=crop&q=80'},
-  5:{name:'Braai Plate',desc:'The Roadhouse Friday classic: boerewors, chicken, chops and sides. The weekend starts here.',price:'N$150',img:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=1800&auto=format&fit=crop&q=80'},
-  6:{name:'Grand Feast Delight',desc:'Short ribs, meatballs, crispy chips, flavourful wings, zesty Russian and a refreshing salad medley. Serves 4–6.',price:'N$500',img:'https://images.unsplash.com/photo-1544025162-d76538485491?w=1800&auto=format&fit=crop&q=80'},
+  4:{name:'Beef Stew',desc:'Slow-cooked tender beef in a rich, hearty gravy served with rice or mash. Pure comfort on a plate.',price:'N$100',img:'https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=1800&auto=format&fit=crop&q=80'},
+  5:{name:'Braai Plate',desc:'The Roadhouse Friday classic: chop, salad, wing and wors. The weekend starts here.',price:'N$150',img:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=1800&auto=format&fit=crop&q=80'},
+  6:{name:'Grand Feast Delight',desc:'Short ribs, meatballs, crispy chips, flavourful wings, zesty Russian and a refreshing salad medley. Serves 4–6.',price:'N$500',img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1800&auto=format&fit=crop&q=80'},
 };
 
 const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+/* Escape text before it goes into innerHTML, so typed-in HTML/scripts can't run */
+function esc(str) {
+  return String(str == null ? '' : str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
 
 let currentLang = localStorage.getItem('rh_lang') || 'en';
 let currentSlide = 0;   // review slider
@@ -415,13 +422,13 @@ function initMealOfDay() {
     var m = mealsOfDay[d];
     var isToday = item.o === 0;
     return '<div class="meal-card reveal"' + (item.s ? ' style="opacity:0.65"' : '') + '>' +
-      '<div class="card-img"><img src="' + m.img + '" alt="' + m.name + '" loading="lazy">' +
+      '<div class="card-img"><img src="' + esc(m.img) + '" alt="' + esc(m.name) + '" loading="lazy">' +
       (isToday ? '<span class="special-tag" data-i18n="meal.special">Special</span>' : '') +
       '</div><div class="card-body">' +
       (isToday
         ? '<div style="font-family:Oswald,sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--wood-warm);margin-bottom:0.25rem" data-i18n="meal.today">Today\'s Feature</div>'
         : '<div style="font-family:Oswald,sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.25rem">' + dayNames[d] + '</div>') +
-      '<h3>' + m.name + '</h3><p>' + m.desc + '</p><div class="card-price">' + m.price + '</div></div></div>';
+      '<h3>' + esc(m.name) + '</h3><p>' + esc(m.desc) + '</p><div class="card-price">' + esc(m.price) + '</div></div></div>';
   }).join('');
   initReveal();
 }
@@ -438,28 +445,36 @@ function initReveal() {
 }
 
 /* ── Review Slider ── */
+function reviewPages() {
+  var track = document.querySelector('.reviews-track');
+  if (!track) return 1;
+  var pv = window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+  return Math.max(1, Math.ceil(track.querySelectorAll('.review-card').length / pv));
+}
+
+/* (Re)build the dots — called again whenever reviews are added */
+function buildReviewDots() {
+  var dotsC = document.querySelector('.slider-dots');
+  if (!dotsC) return;
+  dotsC.innerHTML = Array.from({length:reviewPages()}, function(_,i) {
+    return '<span class="dot' + (i===currentSlide?' active':'') + '" data-idx="' + i + '"></span>';
+  }).join('');
+  dotsC.querySelectorAll('.dot').forEach(function(dot) {
+    dot.addEventListener('click', function() { goToSlide(parseInt(dot.dataset.idx)); });
+  });
+}
+
 function initReviewSlider() {
   var track = document.querySelector('.reviews-track');
-  var dotsC = document.querySelector('.slider-dots');
   if (!track) return;
-  var cards = track.querySelectorAll('.review-card');
-  var pv = function() { return window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3; };
-  var total = Math.ceil(cards.length / pv());
-  if (dotsC) {
-    dotsC.innerHTML = Array.from({length:total}, function(_,i) {
-      return '<span class="dot' + (i===0?' active':'') + '" data-idx="' + i + '"></span>';
-    }).join('');
-    dotsC.querySelectorAll('.dot').forEach(function(dot) {
-      dot.addEventListener('click', function() { goToSlide(parseInt(dot.dataset.idx)); });
-    });
-  }
   var prev = document.querySelector('.slider-btn.prev');
   var next = document.querySelector('.slider-btn.next');
   if (prev) prev.addEventListener('click', function() { goToSlide(currentSlide - 1); });
   if (next) next.addEventListener('click', function() { goToSlide(currentSlide + 1); });
-  var ap = setInterval(function() { goToSlide((currentSlide+1)%total); }, 5000);
+  var tick = function() { goToSlide((currentSlide+1) % reviewPages()); };
+  var ap = setInterval(tick, 5000);
   track.addEventListener('mouseenter', function() { clearInterval(ap); });
-  track.addEventListener('mouseleave', function() { ap = setInterval(function() { goToSlide((currentSlide+1)%total); }, 5000); });
+  track.addEventListener('mouseleave', function() { ap = setInterval(tick, 5000); });
   var sx = 0;
   track.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; }, {passive:true});
   track.addEventListener('touchend', function(e) {
@@ -468,7 +483,20 @@ function initReviewSlider() {
   });
   renderStoredReviews();
 }
-window.initReviewSlider = initReviewSlider; // expose for Firebase module
+
+/* Build one review card — all text is escaped */
+function buildReviewCard(r, extraClass) {
+  var rating = Math.max(1, Math.min(5, parseInt(r.rating) || 5));
+  var name = String(r.name || 'Guest');
+  var card = document.createElement('div');
+  card.className = 'review-card' + (extraClass ? ' ' + extraClass : '');
+  card.innerHTML = '<p class="review-text">"' + esc(r.text) + '"</p>' +
+    '<div class="reviewer"><div class="reviewer-avatar">' + esc(name[0].toUpperCase()) + '</div>' +
+    '<div><div class="reviewer-name">' + esc(name) + '</div>' +
+    '<div class="stars" style="font-size:0.8rem">' + '★'.repeat(rating) + '☆'.repeat(5-rating) + '</div>' +
+    '<div class="reviewer-date">' + esc(r.date) + '</div></div></div>';
+  return card;
+}
 
 function goToSlide(idx) {
   var track = document.querySelector('.reviews-track');
@@ -504,15 +532,32 @@ function initReviewForm() {
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    var name = form.querySelector('[name="reviewer-name"]').value.trim();
-    var text = form.querySelector('[name="review-text"]').value.trim();
+    var name = form.querySelector('[name="reviewer-name"]').value.trim().slice(0, 60);
+    var text = form.querySelector('[name="review-text"]').value.trim().slice(0, 1000);
     var rating = parseInt(form.querySelector('#rating-value').value) || 5;
-    if (!name || !text) return;
+    if (!name || !text) { showToast('Please enter your name and review'); return; }
+    var btn = form.querySelector('[type="submit"]');
+    var done = function() {
+      form.reset();
+      var rv = document.getElementById('rating-value');
+      if (rv) rv.value = 5;
+      document.querySelectorAll('.star-rating span').forEach(function(s) { s.classList.add('lit'); });
+      if (btn) btn.disabled = false;
+    };
+    if (btn) btn.disabled = true;
+
+    // Live site: send to Firebase. It shows on the site once approved in admin.html.
+    if (window.RH && window.RH.submitReview) {
+      window.RH.submitReview({name:name, text:text, rating:rating})
+        .then(function() { done(); showToast('Thank you! Your review will appear once approved.'); })
+        .catch(function() { if (btn) btn.disabled = false; showToast('Sorry, your review could not be sent. Please try again.'); });
+      return;
+    }
+    // Fallback when Firebase isn't available (e.g. page opened as a local file)
     var reviews = JSON.parse(localStorage.getItem('rh_reviews') || '[]');
     reviews.unshift({name:name, text:text, rating:rating, date:new Date().toLocaleDateString('en-GB',{month:'short',year:'numeric'})});
     localStorage.setItem('rh_reviews', JSON.stringify(reviews.slice(0,20)));
-    form.reset();
-    document.querySelectorAll('.star-rating span').forEach(function(s) { s.classList.remove('lit'); });
+    done();
     renderStoredReviews();
     showToast('Review submitted — thank you!');
   });
@@ -522,18 +567,37 @@ function renderStoredReviews() {
   var track = document.querySelector('.reviews-track');
   if (!track) return;
   track.querySelectorAll('.review-card.user-review').forEach(function(c) { c.remove(); });
-  var stored = JSON.parse(localStorage.getItem('rh_reviews') || '[]');
-  stored.forEach(function(r) {
-    var card = document.createElement('div');
-    card.className = 'review-card user-review';
-    card.innerHTML = '<p class="review-text">"' + r.text + '"</p>' +
-      '<div class="reviewer"><div class="reviewer-avatar">' + r.name[0].toUpperCase() + '</div>' +
-      '<div><div class="reviewer-name">' + r.name + '</div>' +
-      '<div class="stars" style="font-size:0.8rem">' + '★'.repeat(r.rating) + '☆'.repeat(5-r.rating) + '</div>' +
-      '<div class="reviewer-date">' + r.date + '</div></div></div>';
-    track.prepend(card);
-  });
+  if (!(window.RH && window.RH.submitReview)) {
+    var stored = JSON.parse(localStorage.getItem('rh_reviews') || '[]');
+    stored.forEach(function(r) { track.prepend(buildReviewCard(r, 'user-review')); });
+  }
+  buildReviewDots();
 }
+
+/* ── Hooks used by live-data.js to show what's saved in admin.html ── */
+window.RH = window.RH || {};
+window.RH.setMeals = function(live) {
+  Object.keys(live).forEach(function(k) {
+    var m = live[k], base = mealsOfDay[k] || {};
+    mealsOfDay[k] = {
+      name:  m.name  || base.name,
+      desc:  m.desc  || m.description || base.desc || '',
+      price: m.price || base.price || '',
+      img:   m.imageURL || base.img
+    };
+  });
+  initMealOfDay();
+  applyLang(currentLang);
+};
+window.RH.setReviews = function(list) {
+  var track = document.querySelector('.reviews-track');
+  if (!track) return;
+  track.querySelectorAll('.review-card.live-review').forEach(function(c) { c.remove(); });
+  list.slice().reverse().forEach(function(r) { track.prepend(buildReviewCard(r, 'live-review reveal visible')); });
+  currentSlide = 0;
+  renderStoredReviews();
+  goToSlide(0);
+};
 
 /* ── Toast notification ── */
 function showToast(msg) {

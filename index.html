@@ -73,8 +73,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
 
   <!-- ─── FAVICON ─── -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="logo.png">
 </head>
 <body>
 
@@ -155,61 +155,11 @@
 </section>
 
 
-<!-- ======================================================
-     ABOUT
-     ====================================================== -->
-<section id="about" class="section-pad" aria-label="About Roadhouse Deli & Grill">
-  <div class="about-grid">
-    <div class="about-image-col reveal left">
-      <img
-        src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=900&auto=format&fit=crop&q=80"
-        alt="Roadhouse Deli & Grill — Warm and inviting restaurant interior in Windhoek"
-        loading="lazy"
-      >
-      <div class="about-image-overlay"></div>
-    </div>
-
-    <div class="about-content-col reveal right">
-      <span class="eyebrow" data-i18n="about.eyebrow">Our Story</span>
-      <h2>Born from the love of fire &amp; flavour</h2>
-      <p>Roadhouse Deli &amp; Grill is more than a restaurant — it's a gathering place in the heart of Windhoek. By day we fuel the city with hearty meals and honest food. By night we light up the bar with craft cocktails, premium spirits, and the kind of atmosphere that keeps you coming back. Warm wood, bold flavours, and a staff that wear black because they mean business.</p>
-
-      <div class="about-stats">
-        <div class="stat">
-          <span class="stat-num">80+</span>
-          <span class="stat-label" data-i18n="about.stat1">Menu Items</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">20+</span>
-          <span class="stat-label" data-i18n="about.stat2">Craft Cocktails</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">5+</span>
-          <span class="stat-label" data-i18n="about.stat3">Years Open</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ======================================================
-     MEAL OF THE DAY
-     ====================================================== -->
-<section id="meal-of-day" class="section-pad" aria-label="Daily Specials">
-  <div class="container">
-    <div class="meal-header reveal">
-      <span class="eyebrow" data-i18n="meal.eyebrow">Daily Special</span>
-      <h2 data-i18n="meal.title">Meal of the Day</h2>
-      <div class="wood-line"></div>
-      <div class="day-badge" id="day-badge">Today</div>
-    </div>
-    <div class="meal-cards" id="meal-cards">
-      <!-- Populated by script.js -->
-    </div>
-  </div>
-</section>
-
+<!-- Notice bar — filled from admin.html → Notices (hidden when there are none) -->
+<div id="site-notice" class="site-notice" role="status" hidden>
+  <i class="fa fa-bullhorn" aria-hidden="true"></i>
+  <span class="site-notice-text"></span>
+</div>
 
 <!-- ======================================================
      MENU PREVIEW (UPDATED WITH BACKGROUND IMAGES)
@@ -257,6 +207,24 @@
 
     <div class="menu-preview-cta reveal" style="margin-top:2.5rem;">
       <a href="menu.html" class="btn-primary" data-i18n="menu.cta">View Full Menu</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     MEAL OF THE DAY
+     ====================================================== -->
+<section id="meal-of-day" class="section-pad" aria-label="Daily Specials">
+  <div class="container">
+    <div class="meal-header reveal">
+      <span class="eyebrow" data-i18n="meal.eyebrow">Daily Special</span>
+      <h2 data-i18n="meal.title">Meal of the Day</h2>
+      <div class="wood-line"></div>
+      <div class="day-badge" id="day-badge">Today</div>
+    </div>
+    <div class="meal-cards" id="meal-cards">
+      <!-- Populated by script.js -->
     </div>
   </div>
 </section>
@@ -346,11 +314,11 @@
           <span class="special-item-price">N$145</span>
         </div>
         <div class="special-item">
-          <span class="special-item-name">Roadhouse Pasta <span class="special-badge">Mon</span></span>
+          <span class="special-item-name">Chicken Schnitzel <span class="special-badge">Mon</span></span>
           <span class="special-item-price">N$85</span>
         </div>
         <div class="special-item">
-          <span class="special-item-name">Chicken Schnitzel <span class="special-badge">Thu</span></span>
+          <span class="special-item-name">Roadhouse Pasta <span class="special-badge">Tue</span></span>
           <span class="special-item-price">N$85</span>
         </div>
         <div class="special-item">
@@ -496,6 +464,45 @@
 
 
 <!-- ======================================================
+     ABOUT
+     ====================================================== -->
+
+<section id="about" class="section-pad" aria-label="About Roadhouse Deli & Grill">
+  <div class="about-grid">
+    <div class="about-image-col reveal left">
+      <img
+        src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=900&auto=format&fit=crop&q=80"
+        alt="Roadhouse Deli & Grill — Warm and inviting restaurant interior in Windhoek"
+        loading="lazy"
+      >
+      <div class="about-image-overlay"></div>
+    </div>
+
+    <div class="about-content-col reveal right">
+      <span class="eyebrow" data-i18n="about.eyebrow">Our Story</span>
+      <h2>Born from the love of fire &amp; flavour</h2>
+      <p>Roadhouse Deli &amp; Grill is more than a restaurant — it's a gathering place in the heart of Windhoek. By day we fuel the city with hearty meals and honest food. By night we light up the bar with craft cocktails, premium spirits, and the kind of atmosphere that keeps you coming back. Warm wood, bold flavours, and a staff that wear black because they mean business.</p>
+
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-num">80+</span>
+          <span class="stat-label" data-i18n="about.stat1">Menu Items</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">20+</span>
+          <span class="stat-label" data-i18n="about.stat2">Craft Cocktails</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">5+</span>
+          <span class="stat-label" data-i18n="about.stat3">Years Open</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
      FOOTER / CONTACT
      ====================================================== -->
 <footer id="contact" aria-label="Contact Roadhouse Deli & Grill">
@@ -554,5 +561,7 @@
 </footer>
 
 <script src="script.js"></script>
+<!-- Loads meals, events, specials, notices & approved reviews saved in admin.html -->
+<script type="module" src="live-data.js"></script>
 </body>
 </html>

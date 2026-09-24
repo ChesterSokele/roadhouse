@@ -818,36 +818,52 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.8rem); }
 .menu-categories {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--charcoal);
-  border: 1px solid var(--charcoal);
-  border-radius: 4px;
-  overflow: hidden;
+  gap: 1.25rem;
   margin-bottom: 3rem;
 }
 
+/* Rounded photo cards — the photo is darkened so the text stands out */
 .menu-cat-item {
-  background: var(--dark);
+  background-color: var(--dark);
+  min-height: 200px;
   padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  transition: background var(--transition);
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
+/* Fade layer over the photo */
+.menu-cat-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,8,6,0.45) 0%, rgba(10,8,6,0.7) 100%);
+  transition: background var(--transition);
+}
+
+/* Warm wood tint on hover */
 .menu-cat-item::before {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(135deg, var(--wood-dark), var(--wood-mid));
   opacity: 0;
   transition: opacity var(--transition);
 }
 
-.menu-cat-item:hover::before { opacity: 1; }
+.menu-cat-item:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(0,0,0,0.45); }
+.menu-cat-item:hover::before { opacity: 0.55; }
 
-.menu-cat-item * { position: relative; z-index: 1; }
+.menu-cat-item * { position: relative; z-index: 2; }
 
 .cat-icon {
   font-size: 2.5rem;
@@ -859,14 +875,16 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.8rem); }
 .menu-cat-item:hover .cat-icon { transform: scale(1.2) rotate(-5deg); }
 
 .menu-cat-item h3 {
-  font-size: 1.1rem;
-  color: var(--white);
-  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 0.35rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
 .menu-cat-item p {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
   font-family: 'Oswald', sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1690,9 +1708,7 @@ footer {
 
   /* Menu preview */
   #menu-preview { background: var(--dark); }
-  .menu-categories { background: #d4c4b0; border-color: #d4c4b0; }
-  .menu-cat-item { background: var(--dark); }
-  .menu-cat-item p { color: #7a7970; }
+  .menu-cat-item { box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
 
   /* Events */
   #events { background: var(--charcoal); }
@@ -2403,3 +2419,20 @@ footer {
   .sh-special-card { padding: 0.75rem 1rem; }
   .hero-title { font-size: clamp(2.2rem, 11vw, 3.5rem); }
 }
+
+/* ── Notice bar (filled from admin.html → Notices) ── */
+.site-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--wood-mid);
+  color: var(--white);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+.site-notice[hidden] { display: none; }
+.site-notice i { color: var(--gold); }

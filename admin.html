@@ -542,21 +542,21 @@ function loadEvents() {
       const card = document.createElement('div');
       card.className = 'item-card';
       card.innerHTML = `
-        ${ev.imageURL
-          ? `<img class="card-img" src="${ev.imageURL}" alt="${ev.title}">`
+        ${safeURL(ev.imageURL)
+          ? `<img class="card-img" src="${esc(safeURL(ev.imageURL))}" alt="${esc(ev.title)}">`
           : `<div class="card-img-placeholder">📅</div>`}
         <div class="card-body">
-          <div class="card-title">${ev.title}</div>
-          <div class="card-desc">${ev.description||''}</div>
+          <div class="card-title">${esc(ev.title)}</div>
+          <div class="card-desc">${esc(ev.description||'')}</div>
           <div class="card-meta">
-            <span class="tag tag-event">${ev.date||''} ${ev.time||''}</span>
+            <span class="tag tag-event">${esc(ev.date||'')} ${esc(ev.time||'')}</span>
             <span class="tag ${ev.active!==false?'tag-active':'tag-inactive'}">${ev.active!==false?'Active':'Hidden'}</span>
           </div>
         </div>
         <div class="card-actions">
           <button class="btn-edit"  onclick="openModal('event','${d.id}')">✏️ Edit</button>
           <button class="btn-toggle" onclick="toggleActive('events','${d.id}',${ev.active!==false})">${ev.active!==false?'Hide':'Show'}</button>
-          <button class="btn-delete" onclick="deleteItem('events','${d.id}','${ev.imagePath||''}')">🗑️ Delete</button>
+          <button class="btn-delete" onclick="deleteItem('events','${d.id}',${jsArg(ev.imagePath)})">🗑️ Delete</button>
         </div>`;
       grid.appendChild(card);
     });
@@ -580,22 +580,22 @@ function loadSpecials() {
       const card = document.createElement('div');
       card.className = 'item-card';
       card.innerHTML = `
-        ${sp.imageURL
-          ? `<img class="card-img" src="${sp.imageURL}" alt="${sp.name}">`
+        ${safeURL(sp.imageURL)
+          ? `<img class="card-img" src="${esc(safeURL(sp.imageURL))}" alt="${esc(sp.name)}">`
           : `<div class="card-img-placeholder">⭐</div>`}
         <div class="card-body">
-          <div class="card-title">${sp.name}</div>
-          <div class="card-desc">${sp.description||''}</div>
+          <div class="card-title">${esc(sp.name)}</div>
+          <div class="card-desc">${esc(sp.description||'')}</div>
           <div class="card-meta">
-            ${sp.badge?`<span class="tag tag-event">${sp.badge}</span>`:''}
+            ${sp.badge?`<span class="tag tag-event">${esc(sp.badge)}</span>`:''}
             <span class="tag ${sp.active!==false?'tag-active':'tag-inactive'}">${sp.active!==false?'Active':'Hidden'}</span>
-            ${sp.price?`<span class="card-price">${sp.price}</span>`:''}
+            ${sp.price?`<span class="card-price">${esc(sp.price)}</span>`:''}
           </div>
         </div>
         <div class="card-actions">
           <button class="btn-edit"  onclick="openModal('special','${d.id}')">✏️ Edit</button>
           <button class="btn-toggle" onclick="toggleActive('specials','${d.id}',${sp.active!==false})">${sp.active!==false?'Hide':'Show'}</button>
-          <button class="btn-delete" onclick="deleteItem('specials','${d.id}','${sp.imagePath||''}')">🗑️ Delete</button>
+          <button class="btn-delete" onclick="deleteItem('specials','${d.id}',${jsArg(sp.imagePath)})">🗑️ Delete</button>
         </div>`;
       grid.appendChild(card);
     });
@@ -606,13 +606,13 @@ function loadSpecials() {
 //  MEAL OF THE DAY
 // ════════════════════════════════════════
 const defaultMeals = {
-  0:{name:'Family Feast',desc:'A whole flame-grilled chicken with golden fries and warm Portuguese bread.',price:'N$195',imageURL:'https://images.unsplash.com/photo-1598103442097-8b74394b95c7?w=600&auto=format&fit=crop'},
-  1:{name:'Roadhouse Pasta',desc:"Pasta with ham in our chef's special cream sauce, topped with fresh herbs and parmesan.",price:'N$85',imageURL:'https://images.unsplash.com/photo-1551183053-bf91798d792c?w=600&auto=format&fit=crop'},
-  2:{name:'Beef Stew',desc:'Slow-cooked tender beef in a rich, hearty gravy served with fluffy rice or pap.',price:'N$100',imageURL:'https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=600&auto=format&fit=crop'},
-  3:{name:'Cottage Pie',desc:'Classic cottage pie with savoury mince filling topped with golden mashed potato.',price:'N$100',imageURL:'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop'},
-  4:{name:'Chicken Schnitzel',desc:'Crispy, golden-fried chicken schnitzel served with creamy mash and rich homemade gravy.',price:'N$85',imageURL:'https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&auto=format&fit=crop'},
-  5:{name:'Braai Plate',desc:'The Roadhouse Friday classic: boerewors, chicken, chops and sides.',price:'N$150',imageURL:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&auto=format&fit=crop'},
-  6:{name:'Grand Feast Delight',desc:'Short ribs, meatballs, crispy chips, flavourful wings, zesty Russian and salad medley.',price:'N$500',imageURL:'https://images.unsplash.com/photo-1544025162-d76538485491?w=600&auto=format&fit=crop'},
+  0:{name:'Family Feast',desc:'A whole flame-grilled chicken with golden fries and warm Portuguese bread.',price:'N$195',imageURL:'https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&auto=format&fit=crop'},
+  1:{name:'Chicken Schnitzel',desc:'Crispy, golden-fried chicken schnitzel served with creamy mash and rich homemade gravy.',price:'N$85',imageURL:'https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&auto=format&fit=crop'},
+  2:{name:'Roadhouse Pasta',desc:"Pasta with ham in our chef's special cream sauce, topped with fresh herbs and parmesan.",price:'N$85',imageURL:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&auto=format&fit=crop'},
+  3:{name:'Cottage Pie',desc:'Classic cottage pie with savoury mince filling topped with golden mashed potato, served with green beans.',price:'N$100',imageURL:'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop'},
+  4:{name:'Beef Stew',desc:'Slow-cooked tender beef in a rich, hearty gravy served with rice or mash.',price:'N$100',imageURL:'https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=600&auto=format&fit=crop'},
+  5:{name:'Braai Plate',desc:'The Roadhouse Friday classic: chop, salad, wing and wors.',price:'N$150',imageURL:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&auto=format&fit=crop'},
+  6:{name:'Grand Feast Delight',desc:'Short ribs, meatballs, crispy chips, flavourful wings, zesty Russian and salad medley.',price:'N$500',imageURL:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&auto=format&fit=crop'},
 };
 
 function loadMeals() {
@@ -631,12 +631,12 @@ function loadMeals() {
         <div class="day-header">
           <span class="day-name">${dayNames[i]}${i===today?' ← Today':''}</span>
         </div>
-        ${meal.imageURL
-          ? `<img class="meal-img" src="${meal.imageURL}" alt="${meal.name}">`
+        ${safeURL(meal.imageURL)
+          ? `<img class="meal-img" src="${esc(safeURL(meal.imageURL))}" alt="${esc(meal.name)}">`
           : `<div class="meal-img-placeholder">🍽️</div>`}
         <div class="meal-body">
-          <div class="meal-name">${meal.name}</div>
-          <div class="meal-price">${meal.price||''}</div>
+          <div class="meal-name">${esc(meal.name)}</div>
+          <div class="meal-price">${esc(meal.price||'')}</div>
           <button class="btn-edit-meal" onclick="openModal('meal','${i}')">✏️ Edit ${dayNames[i]}</button>
         </div>`;
       grid.appendChild(card);
@@ -658,14 +658,15 @@ function loadReviews() {
     tbody.innerHTML = '';
     snap.forEach(d => {
       const rv = d.data();
-      const stars = '★'.repeat(rv.rating||5) + '☆'.repeat(5-(rv.rating||5));
+      const rating = Math.max(1, Math.min(5, parseInt(rv.rating) || 5));
+      const stars = '★'.repeat(rating) + '☆'.repeat(5-rating);
       const date = rv.createdAt?.toDate?.()?.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) || 'N/A';
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td><strong>${rv.name||'Anonymous'}</strong></td>
+        <td><strong>${esc(rv.name||'Anonymous')}</strong></td>
         <td><span class="star-display">${stars}</span></td>
-        <td class="review-text-cell" title="${(rv.text||'').replace(/"/g,"'")}">
-          "${rv.text||''}"
+        <td class="review-text-cell" title="${esc(rv.text||'')}">
+          "${esc(rv.text||'')}"
         </td>
         <td style="color:var(--muted);font-size:.8rem">${date}</td>
         <td>
@@ -701,7 +702,7 @@ function loadNotices() {
       const card = document.createElement('div');
       card.className = 'notice-card';
       card.innerHTML = `
-        <div class="notice-text">${nt.text||''}</div>
+        <div class="notice-text">${esc(nt.text||'')}</div>
         <div class="notice-actions">
           <button class="btn-toggle" onclick="toggleActive('notices','${d.id}',${nt.active!==false})"
             style="width:auto;padding:.3rem .75rem;font-size:.75rem">
@@ -756,7 +757,7 @@ window.openModal = async function(type, id = null) {
         <textarea id="f-desc">${esc(data.description||'')}</textarea></div>
       <div class="form-row-2">
         <div class="form-group"><label>Date</label>
-          <input type="date" id="f-date" value="${data.date||''}"></div>
+          <input type="date" id="f-date" value="${esc(data.date||'')}"></div>
         <div class="form-group"><label>Time (e.g. 19:00)</label>
           <input id="f-time" value="${esc(data.time||'')}" placeholder="19:00"></div>
       </div>
@@ -767,7 +768,7 @@ window.openModal = async function(type, id = null) {
         <div class="upload-hint">Max 5MB · JPG/PNG/WebP</div>
         <div class="upload-progress" id="upload-progress"><div class="bar" id="upload-bar"></div></div>
         <div class="img-preview-wrap" id="img-preview">
-          ${data.imageURL?`<img src="${data.imageURL}" alt="preview">`:''}
+          ${safeURL(data.imageURL)?`<img src="${esc(safeURL(data.imageURL))}" alt="preview">`:''}
         </div>
       </div>`;
   } else if (type === 'special') {
@@ -787,7 +788,7 @@ window.openModal = async function(type, id = null) {
         <div class="upload-hint">Max 5MB · JPG/PNG/WebP</div>
         <div class="upload-progress" id="upload-progress"><div class="bar" id="upload-bar"></div></div>
         <div class="img-preview-wrap" id="img-preview">
-          ${data.imageURL?`<img src="${data.imageURL}" alt="preview">`:''}
+          ${safeURL(data.imageURL)?`<img src="${esc(safeURL(data.imageURL))}" alt="preview">`:''}
         </div>
       </div>`;
   } else if (type === 'meal') {
@@ -805,7 +806,7 @@ window.openModal = async function(type, id = null) {
         <div class="upload-hint">Max 5MB · JPG/PNG/WebP</div>
         <div class="upload-progress" id="upload-progress"><div class="bar" id="upload-bar"></div></div>
         <div class="img-preview-wrap" id="img-preview">
-          ${data.imageURL?`<img src="${data.imageURL}" alt="preview">`:''}
+          ${safeURL(data.imageURL)?`<img src="${esc(safeURL(data.imageURL))}" alt="preview">`:''}
         </div>
       </div>`;
   } else if (type === 'notice') {
@@ -837,7 +838,8 @@ window.handleImageSelect = function(e) {
   if (!file) return;
   if (file.size > 5*1024*1024) { showToast('Image must be under 5MB','error'); return; }
 
-  const path = `${editingType}s/${Date.now()}_${file.name}`;
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+  const path = `${editingType}s/${Date.now()}_${safeName}`;
   const storRef = ref(stor, path);
   const task = uploadBytesResumable(storRef, file);
 
@@ -960,7 +962,15 @@ function getValue(id) {
   return el ? el.value.trim() : '';
 }
 function esc(str) {
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(str == null ? '' : str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+// Only show https image links from the database
+function safeURL(url) {
+  return /^https:\/\//i.test(url || '') ? url : '';
+}
+// Safely pass a text value as an argument inside an onclick="..." attribute
+function jsArg(str) {
+  return esc(JSON.stringify(String(str || '')));
 }
 
 // ── Toast ──
