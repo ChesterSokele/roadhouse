@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preload" as="font" type="font/woff2" href="./assets/barlow-latin-400-normal-qiz4-Cze.woff2" crossorigin="">
+  <link rel="preload" as="font" type="font/woff2" href="./assets/fraunces-latin-600-normal-BFCDtZfi.woff2" crossorigin="">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12100e" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+  <title>Book a Table — Roadhouse Deli &amp; Grill, Windhoek</title>
+  <meta name="description" content="Reserve a table at Roadhouse Deli &amp; Grill on Independence Avenue, Windhoek. Send your booking request and we'll confirm it on WhatsApp.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://roadhousedeli.com/booking.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Book a Table — Roadhouse Deli &amp; Grill">
+  <meta property="og:description" content="Reserve a table in Windhoek. We confirm your booking on WhatsApp.">
+  <meta property="og:url" content="https://roadhousedeli.com/booking.html">
+  <meta property="og:image" content="https://roadhousedeli.com/og-image.jpg">
+  <meta property="og:site_name" content="Roadhouse Deli &amp; Grill">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script type="module" crossorigin src="./assets/booking-C60aBBQM.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/preload-helper-BmaJr4lw.js">
+  <link rel="modulepreload" crossorigin href="./assets/common-t_uE6cJV.js">
+  <link rel="stylesheet" crossorigin href="./assets/common-41wsUxfX.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-t>Skip to content</a>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="The Roadhouse Deli &amp; Grill — home" data-ta="aria-label">
+      <img src="logo-white.png" alt="The Roadhouse Deli &amp; Grill" width="65" height="52" data-ta="alt">
+    </a>
+
+    <nav class="nav" aria-label="Main" data-ta="aria-label">
+      <ul>
+        <li><a href="menu.html" data-t>Menu</a></li>
+        <li><a href="index.html#meal-of-day" data-t>Meal of the Day</a></li>
+        <li><a href="index.html#events" data-t>Events</a></li>
+        <li><a href="index.html#reviews" data-t>Reviews</a></li>
+        <li><a href="#contact" data-t>Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <select class="lang-select" aria-label="Language" data-lang-select data-ta="aria-label">
+        <option value="en">EN</option><option value="af">AF</option><option value="pt">PT</option>
+        <option value="de">DE</option><option value="fr">FR</option><option value="it">IT</option>
+        <option value="zh">中文</option><option value="hi">हिन्दी</option><option value="ja">日本語</option>
+      </select>
+      <a class="btn btn--primary btn--sm" href="booking.html" aria-current="page" data-t>Book a Table</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu" data-ta="aria-label"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden data-ta="aria-label">
+    <a href="menu.html" data-t>Menu</a>
+    <a href="index.html#meal-of-day" data-t>Meal of the Day</a>
+    <a href="index.html#events" data-t>Events</a>
+    <a href="index.html#reviews" data-t>Reviews</a>
+    <a href="#contact" data-t>Contact</a>
+    <select class="lang-select" aria-label="Language" data-lang-select data-ta="aria-label">
+      <option value="en">English</option><option value="af">Afrikaans</option><option value="pt">Português</option>
+      <option value="de">Deutsch</option><option value="fr">Français</option><option value="it">Italiano</option>
+      <option value="zh">中文</option><option value="hi">हिन्दी</option><option value="ja">日本語</option>
+    </select>
+  </nav>
+</header>
+
+
+<main id="main">
+  <section class="page-head" aria-labelledby="book-h1">
+    <div class="container">
+      <span class="eyebrow" data-t>Reserve Your Spot</span>
+      <h1 id="book-h1" data-t>Book a Table</h1>
+      <p class="lead" data-t>Send us your details and we'll confirm your reservation on WhatsApp.</p>
+    </div>
+  </section>
+
+  <div class="container booking">
+    <div class="booking-card">
+      <form id="bookingForm" novalidate>
+        <div class="booking-grid">
+          <div class="field">
+            <label for="guestName" data-t>Full name</label>
+            <input type="text" id="guestName" name="guestName" autocomplete="name" placeholder="Your name" required aria-describedby="err-name" data-ta="placeholder">
+            <span class="field-error" id="err-name" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="guestPhone" data-t>Phone number</label>
+            <input type="tel" id="guestPhone" name="guestPhone" autocomplete="tel" inputmode="tel" placeholder="+264 81 000 0000" required aria-describedby="err-phone">
+            <span class="field-error" id="err-phone" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="resDate" data-t>Date</label>
+            <input type="date" id="resDate" name="resDate" required aria-describedby="err-date">
+            <span class="field-error" id="err-date" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="resTime" data-t>Time</label>
+            <input type="time" id="resTime" name="resTime" required aria-describedby="err-time hours-hint">
+            <span class="field-error" id="err-time" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="guests" data-t>Number of guests</label>
+            <select id="guests" name="guests" required aria-describedby="err-guests">
+              <option value="" disabled selected data-t>Select guests</option>
+              <option value="1" data-t>1 guest</option><option value="2" data-t>2 guests</option><option value="3" data-t>3 guests</option>
+              <option value="4" data-t>4 guests</option><option value="5" data-t>5 guests</option><option value="6" data-t>6 guests</option>
+              <option value="7" data-t>7 guests</option><option value="8" data-t>8 guests</option>
+              <option value="9+" data-t>9+ guests (large group)</option>
+            </select>
+            <span class="field-error" id="err-guests" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="occasion" data-t>Occasion (optional)</label>
+            <select id="occasion" name="occasion">
+              <option value="" selected data-t>Just dining</option>
+              <option value="Birthday" data-t>Birthday</option><option value="Anniversary" data-t>Anniversary</option><option value="Business Lunch" data-t>Business Lunch</option>
+              <option value="Date Night" data-t>Date Night</option><option value="Family Gathering" data-t>Family Gathering</option><option value="Celebration" data-t>Celebration</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="requests" data-t>Special requests (optional)</label>
+            <textarea id="requests" name="requests" placeholder="Allergies, dietary needs, seating preference…" data-ta="placeholder"></textarea>
+          </div>
+        </div>
+        <p class="field-hint" id="hours-hint" style="margin-top: var(--s4)"><span data-t>Open</span> <span data-t>Sun – Thu</span> 08:00 – 00:00 · <span data-t>Fri – Sat</span> 08:00 – 02:00</p>
+
+        <button type="submit" class="btn btn--primary" data-t>Send reservation via WhatsApp</button>
+        <p class="notice-line" data-t>Tapping the button opens WhatsApp with your details filled in. Hit send and we'll confirm shortly.</p>
+      </form>
+    </div>
+
+    <aside class="booking-aside" aria-label="Restaurant details" data-ta="aria-label">
+      <div class="booking-aside__photo"><picture><source type="image/avif" srcset="img/booking-480.avif 480w, img/booking-720.avif 720w, img/booking-960.avif 960w" sizes="(min-width: 960px) 420px, 100vw"><source type="image/webp" srcset="img/booking-480.webp 480w, img/booking-720.webp 720w, img/booking-960.webp 960w" sizes="(min-width: 960px) 420px, 100vw"><img src="img/booking-960.webp" width="960" height="1280" alt="A strawberry cocktail on the Roadhouse bar" loading="lazy" decoding="async" data-ta="alt"></picture></div>
+      <div>
+        <h2 data-t>Prefer to talk?</h2>
+        <dl>
+          <dt data-t>Call</dt><dd><a href="tel:+264813287476">+264 81 328 7476</a></dd>
+          <dt data-t>WhatsApp</dt><dd><a href="https://wa.me/264813287476" target="_blank" rel="noopener" data-t>Message us</a></dd>
+          <dt data-t>Find us</dt><dd data-t>Independence Avenue, opposite Hilton Hotel, Windhoek</dd>
+          <dt data-t>Hours</dt><dd><span data-t>Sun – Thu</span> 08:00 – 00:00<br><span data-t>Fri – Sat</span> 08:00 – 02:00</dd>
+        </dl>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div class="dialog-backdrop" id="successOverlay" role="dialog" aria-modal="true" aria-labelledby="done-title">
+  <div class="dialog">
+    <h2 id="done-title" data-t>WhatsApp opened</h2>
+    <p data-t>Your reservation details are ready to send. Just hit Send in WhatsApp and we'll confirm shortly.</p>
+    <button type="button" class="btn btn--primary" data-t>Done</button>
+  </div>
+</div>
+
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo-white.png" alt="The Roadhouse Deli &amp; Grill" width="80" height="64" loading="lazy" data-ta="alt">
+        <p data-t>Windhoek's favourite spot for hearty food by day and craft cocktails by night. Good food, good drinks, good people.</p>
+      </div>
+
+      <div class="footer-col">
+        <h2 data-t>Hours</h2>
+        <dl class="hours">
+          <dt data-t>Sun – Thu</dt><dd>08:00 – 00:00</dd>
+          <dt data-t>Fri – Sat</dt><dd>08:00 – 02:00</dd>
+        </dl>
+      </div>
+
+      <div class="footer-col">
+        <h2 data-t>Quick Links</h2>
+        <ul>
+          <li><a href="index.html" data-t>Home</a></li>
+          <li><a href="menu.html" data-t>Menu</a></li>
+          <li><a href="index.html#meal-of-day" data-t>Meal of the Day</a></li>
+          <li><a href="index.html#events" data-t>Events</a></li>
+          <li><a href="index.html#reviews" data-t>Reviews</a></li>
+          <li><a href="booking.html" data-t>Book a Table</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 data-t>Contact</h2>
+        <address><span data-t>Independence Avenue, opposite Hilton Hotel,</span><br><span data-t>Windhoek, Namibia</span></address>
+        <p><a href="tel:+264813287476">+264 81 328 7476</a></p>
+        <p><a href="mailto:info@roadhousedeli.com">info@roadhousedeli.com</a></p>
+        <ul style="margin-top: var(--s4)">
+          <li><a href="https://wa.me/264813287476" target="_blank" rel="noopener" data-t>WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/roadhouse_deli/" target="_blank" rel="noopener" data-t>Instagram</a></li>
+          <li><a href="https://www.facebook.com/RoadhouseDeliAndGrill/" target="_blank" rel="noopener" data-t>Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p data-t>© 2026 Roadhouse Deli &amp; Grill. All rights reserved.</p>
+      <p data-t>Made with ♥ in Windhoek, Namibia</p>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/264813287476" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" data-ta="aria-label">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>

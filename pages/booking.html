@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12100e" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+  <title>Book a Table — Roadhouse Deli &amp; Grill, Windhoek</title>
+  <meta name="description" content="Reserve a table at Roadhouse Deli &amp; Grill on Independence Avenue, Windhoek. Send your booking request and we'll confirm it on WhatsApp.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://roadhousedeli.com/booking.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Book a Table — Roadhouse Deli &amp; Grill">
+  <meta property="og:description" content="Reserve a table in Windhoek. We confirm your booking on WhatsApp.">
+  <meta property="og:url" content="https://roadhousedeli.com/booking.html">
+  <meta property="og:image" content="https://roadhousedeli.com/og-image.jpg">
+  <meta property="og:site_name" content="Roadhouse Deli &amp; Grill">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script type="module" src="../src/pages/booking.js"></script>
+</head>
+<body>
+
+<!-- @include header current="booking" -->
+
+<main id="main">
+  <section class="page-head" aria-labelledby="book-h1">
+    <div class="container">
+      <span class="eyebrow">Reserve Your Spot</span>
+      <h1 id="book-h1">Book a Table</h1>
+      <p class="lead">Send us your details and we'll confirm your reservation on WhatsApp.</p>
+    </div>
+  </section>
+
+  <div class="container booking">
+    <div class="booking-card">
+      <form id="bookingForm" novalidate>
+        <div class="booking-grid">
+          <div class="field">
+            <label for="guestName">Full name</label>
+            <input type="text" id="guestName" name="guestName" autocomplete="name" placeholder="Your name" required aria-describedby="err-name">
+            <span class="field-error" id="err-name" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="guestPhone">Phone number</label>
+            <input type="tel" id="guestPhone" name="guestPhone" autocomplete="tel" inputmode="tel" placeholder="+264 81 000 0000" required aria-describedby="err-phone">
+            <span class="field-error" id="err-phone" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="resDate">Date</label>
+            <input type="date" id="resDate" name="resDate" required aria-describedby="err-date">
+            <span class="field-error" id="err-date" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="resTime">Time</label>
+            <input type="time" id="resTime" name="resTime" required aria-describedby="err-time hours-hint">
+            <span class="field-error" id="err-time" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="guests">Number of guests</label>
+            <select id="guests" name="guests" required aria-describedby="err-guests">
+              <option value="" disabled selected>Select guests</option>
+              <option value="1">1 guest</option><option value="2">2 guests</option><option value="3">3 guests</option>
+              <option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option>
+              <option value="7">7 guests</option><option value="8">8 guests</option>
+              <option value="9+">9+ guests (large group)</option>
+            </select>
+            <span class="field-error" id="err-guests" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="occasion">Occasion (optional)</label>
+            <select id="occasion" name="occasion">
+              <option value="" selected>Just dining</option>
+              <option value="Birthday">Birthday</option><option value="Anniversary">Anniversary</option><option value="Business Lunch">Business Lunch</option>
+              <option value="Date Night">Date Night</option><option value="Family Gathering">Family Gathering</option><option value="Celebration">Celebration</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="requests">Special requests (optional)</label>
+            <textarea id="requests" name="requests" placeholder="Allergies, dietary needs, seating preference…"></textarea>
+          </div>
+        </div>
+        <p class="field-hint" id="hours-hint" style="margin-top: var(--s4)"><span>Open</span> <span>Sun – Thu</span> 08:00 – 00:00 · <span>Fri – Sat</span> 08:00 – 02:00</p>
+
+        <button type="submit" class="btn btn--primary">Send reservation via WhatsApp</button>
+        <p class="notice-line">Tapping the button opens WhatsApp with your details filled in. Hit send and we'll confirm shortly.</p>
+      </form>
+    </div>
+
+    <aside class="booking-aside" aria-label="Restaurant details">
+      <div class="booking-aside__photo"><rh-img name="booking" alt="A strawberry cocktail on the Roadhouse bar" sizes="(min-width: 960px) 420px, 100vw" /></div>
+      <div>
+        <h2>Prefer to talk?</h2>
+        <dl>
+          <dt>Call</dt><dd><a href="tel:+264813287476">+264 81 328 7476</a></dd>
+          <dt>WhatsApp</dt><dd><a href="https://wa.me/264813287476" target="_blank" rel="noopener">Message us</a></dd>
+          <dt>Find us</dt><dd>Independence Avenue, opposite Hilton Hotel, Windhoek</dd>
+          <dt>Hours</dt><dd><span>Sun – Thu</span> 08:00 – 00:00<br><span>Fri – Sat</span> 08:00 – 02:00</dd>
+        </dl>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div class="dialog-backdrop" id="successOverlay" role="dialog" aria-modal="true" aria-labelledby="done-title">
+  <div class="dialog">
+    <h2 id="done-title">WhatsApp opened</h2>
+    <p>Your reservation details are ready to send. Just hit Send in WhatsApp and we'll confirm shortly.</p>
+    <button type="button" class="btn btn--primary">Done</button>
+  </div>
+</div>
+
+<!-- @include footer -->
+</body>
+</html>

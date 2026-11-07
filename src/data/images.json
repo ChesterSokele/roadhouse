@@ -1,0 +1,210 @@
+{
+  "hero": {
+    "widths": [
+      480,
+      720,
+      917
+    ],
+    "ratio": 1.1178
+  },
+  "interior": {
+    "widths": [
+      480,
+      720,
+      886
+    ],
+    "ratio": 0.9345
+  },
+  "dining": {
+    "widths": [
+      454
+    ],
+    "ratio": 1.3282
+  },
+  "bar": {
+    "widths": [
+      480,
+      720,
+      923
+    ],
+    "ratio": 1.2243
+  },
+  "grill-table": {
+    "widths": [
+      480,
+      720,
+      931
+    ],
+    "ratio": 1.2599
+  },
+  "platters": {
+    "widths": [
+      480,
+      720,
+      934
+    ],
+    "ratio": 1.3073
+  },
+  "pizza-1": {
+    "widths": [
+      480,
+      720,
+      928
+    ],
+    "ratio": 1.25
+  },
+  "pizza-2": {
+    "widths": [
+      480,
+      720,
+      962
+    ],
+    "ratio": 1.1819
+  },
+  "beer": {
+    "widths": [
+      480,
+      720,
+      936
+    ],
+    "ratio": 1.1848
+  },
+  "booking": {
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": 1.3333
+  },
+  "cat-burgers": {
+    "widths": [
+      480,
+      720,
+      919
+    ],
+    "ratio": 1.2416
+  },
+  "cat-cocktails": {
+    "widths": [
+      480,
+      720,
+      939
+    ],
+    "ratio": 1.2375
+  },
+  "chicken-strips": {
+    "widths": [
+      168,
+      336,
+      520
+    ],
+    "ratio": 1
+  },
+  "honey-glazed-wings": {
+    "widths": [
+      168,
+      336
+    ],
+    "ratio": 1
+  },
+  "classic-margarita": {
+    "widths": [
+      168,
+      336
+    ],
+    "ratio": 1
+  },
+  "watermelon-margarita": {
+    "widths": [
+      168,
+      336
+    ],
+    "ratio": 1
+  },
+  "strawberry-daiquiri": {
+    "widths": [
+      168,
+      336
+    ],
+    "ratio": 1
+  },
+  "classic-mojito": {
+    "widths": [
+      168,
+      336
+    ],
+    "ratio": 1
+  },
+  "pina-colada": {
+    "widths": [
+      168,
+      336
+    ],
+    "ratio": 1
+  },
+  "espresso-martini": {
+    "widths": [
+      168,
+      336
+    ],
+    "ratio": 1
+  },
+  "blue-lagoon": {
+    "widths": [
+      168,
+      336,
+      520
+    ],
+    "ratio": 1
+  },
+  "whiskey-sour": {
+    "widths": [
+      168,
+      336
+    ],
+    "ratio": 1
+  },
+  "dish-hake-and-chips": {
+    "widths": [
+      240,
+      480
+    ],
+    "ratio": 1
+  },
+  "dish-classic-burger": {
+    "widths": [
+      240,
+      480
+    ],
+    "ratio": 1
+  },
+  "dish-tomahawk-steak": {
+    "widths": [
+      240,
+      480
+    ],
+    "ratio": 1
+  },
+  "dish-roadhouse-meaty-pizza": {
+    "widths": [
+      240,
+      480
+    ],
+    "ratio": 1
+  },
+  "dish-flame-grilled-rump-steak": {
+    "widths": [
+      240,
+      480
+    ],
+    "ratio": 1
+  },
+  "dish-roadhouse-tropical": {
+    "widths": [
+      240,
+      480
+    ],
+    "ratio": 1
+  }
+}

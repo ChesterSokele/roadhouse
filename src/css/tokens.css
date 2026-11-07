@@ -1,0 +1,72 @@
+/*
+  DESIGN TOKENS
+  Palette : warm blacks from the logo and brick wall (dark) or warm paper (light); one accent (ember — the copper
+            of the brick and the grill). The theme follows the visitor's device setting (prefers-color-scheme).
+  Type    : Fraunces (display + dish names) · Barlow (body) · Barlow Condensed (labels; echoes the logo lettering)
+  Spacing : 4px-based scale, --s1 … --s9
+*/
+:root {
+  color-scheme: dark light;
+
+  /* ── dark (default) ── */
+  --page:  #12100e;   /* page */
+  --coal:  #1a1714;   /* alternate sections, footer */
+  --char:  #25201c;   /* raised surfaces: forms, specials panel */
+  --field: #12100e;   /* form fields */
+  --cream: #f3ebdd;   /* primary text   — 15.6:1 on page */
+  --stone: #b3a894;   /* secondary text —  7.8:1 */
+  --faint: #8a8070;   /* placeholders, inactive stars */
+  --ember: #dd8240;   /* accent text    —  6.4:1 */
+  --ember-hi: #eb9b5f;
+  --accent-fill: #dd8240;     /* buttons */
+  --accent-fill-hi: #eb9b5f;
+  --on-accent: #12100e;       /* text on buttons */
+  --accent-wash: rgba(221, 130, 64, .12);
+  --accent-line: rgba(221, 130, 64, .5);
+  --line:  rgba(243, 235, 221, .14);
+  --line-soft: rgba(243, 235, 221, .08);
+  --ghost-border: rgba(243, 235, 221, .5);
+  --hover: rgba(243, 235, 221, .06);
+  --danger: #ff8f7a;
+  --logo-filter: none;
+
+  --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
+  --font-body: 'Barlow', 'Barlow Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+  --font-label: 'Barlow Condensed', 'Barlow Condensed Fallback', 'Barlow', system-ui, sans-serif;
+
+  --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem;
+  --s6: 2rem; --s7: 3rem; --s8: 4.5rem; --s9: 6.5rem;
+
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --maxw: 1160px;
+  --header-h: 60px;
+  --section-y: clamp(3.5rem, 8vw, 6rem);
+  --radius: 2px;
+}
+@media (min-width: 900px) { :root { --header-h: 68px; } }
+
+/* ── light (device is in light mode) ── */
+@media (prefers-color-scheme: light) {
+  :root {
+    --page:  #faf6ef;
+    --coal:  #f1eadd;
+    --char:  #e8dfcf;
+    --field: #fffdf9;
+    --cream: #1e1914;   /* primary text   — 16:1 */
+    --stone: #5a5046;   /* secondary text —  7:1 */
+    --faint: #7a7064;
+    --ember: #94460f;   /* accent text    —  5.1:1 or better */
+    --ember-hi: #7a380b;
+    --accent-fill: #b4570f;
+    --accent-fill-hi: #9a470a;
+    --on-accent: #ffffff;
+    --accent-wash: rgba(164, 80, 26, .1);
+    --accent-line: rgba(148, 70, 15, .5);
+    --line:  rgba(30, 25, 20, .18);
+    --line-soft: rgba(30, 25, 20, .1);
+    --ghost-border: rgba(30, 25, 20, .55);
+    --hover: rgba(30, 25, 20, .06);
+    --danger: #b3261e;
+    --logo-filter: invert(1);   /* the logo artwork is white */
+  }
+}

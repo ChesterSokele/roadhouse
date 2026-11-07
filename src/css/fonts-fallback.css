@@ -1,0 +1,11 @@
+/*
+  Metric-matched fallbacks: the system font is scaled to occupy the same space as the web font,
+  so text doesn't reflow (no layout shift) when Barlow / Fraunces finish loading.
+  Values were computed from the font files (average advance width, ascent, descent) against Arial / Georgia.
+*/
+@font-face { font-family: 'Barlow Fallback'; font-weight: 400; src: local('Arial'); size-adjust: 95.77%; ascent-override: 104.42%; descent-override: 20.88%; line-gap-override: 0%; }
+@font-face { font-family: 'Barlow Fallback'; font-weight: 600; src: local('Arial Bold'); size-adjust: 91.07%; ascent-override: 109.8%; descent-override: 21.96%; line-gap-override: 0%; }
+@font-face { font-family: 'Barlow Condensed Fallback'; font-weight: 500; src: local('Arial'); size-adjust: 77.78%; ascent-override: 128.56%; descent-override: 25.71%; line-gap-override: 0%; }
+@font-face { font-family: 'Barlow Condensed Fallback'; font-weight: 600; src: local('Arial Bold'); size-adjust: 74.04%; ascent-override: 135.07%; descent-override: 27.01%; line-gap-override: 0%; }
+@font-face { font-family: 'Fraunces Fallback'; font-weight: 500; src: local('Georgia'); size-adjust: 107.16%; ascent-override: 91.26%; descent-override: 23.8%; line-gap-override: 0%; }
+@font-face { font-family: 'Fraunces Fallback'; font-weight: 600; src: local('Georgia Bold'); size-adjust: 93.63%; ascent-override: 104.46%; descent-override: 27.24%; line-gap-override: 0%; }

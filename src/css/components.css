@@ -1,0 +1,55 @@
+/* ───────── Buttons ───────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s2);
+  min-height: 48px; padding: 0 var(--s5);
+  font-family: var(--font-label); font-weight: 600; font-size: 1.125rem; letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid transparent; border-radius: var(--radius); background: none; white-space: nowrap;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.btn--primary { background: var(--accent-fill); color: var(--on-accent); }
+.btn--primary:hover { background: var(--accent-fill-hi); }
+.btn--ghost { border-color: var(--ghost-border); color: var(--cream); }
+.btn--ghost:hover { border-color: var(--cream); background: var(--hover); }
+.btn--sm { min-height: 40px; padding: 0 var(--s4); font-size: 1rem; }
+.btn[disabled] { opacity: .6; cursor: progress; }
+
+.link-arrow {
+  font-family: var(--font-label); font-weight: 600; font-size: 1.0625rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ember);
+  display: inline-flex; align-items: center; gap: var(--s2); padding: var(--s2) 0; border-bottom: 1px solid transparent;
+}
+.link-arrow::after { content: '→'; transition: transform .2s; }
+.link-arrow:hover { color: var(--ember-hi); border-bottom-color: currentColor; }
+.link-arrow:hover::after { transform: translateX(3px); }
+
+/* ───────── Type helpers ───────── */
+.eyebrow { display: block; font-family: var(--font-label); font-weight: 600; font-size: 1rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ember); margin-bottom: var(--s2); }
+.lead { font-size: 1.1875rem; color: var(--stone); max-width: 52ch; }
+.muted { color: var(--stone); }
+
+/* ───────── Forms ───────── */
+.field { display: flex; flex-direction: column; gap: var(--s2); border: 0; padding: 0; min-width: 0; }
+.field label, .field legend { font-family: var(--font-label); font-weight: 600; font-size: 1rem; letter-spacing: .12em; text-transform: uppercase; color: var(--stone); padding: 0; }
+.field input, .field select, .field textarea {
+  width: 100%; min-width: 0; max-width: 100%; min-height: 48px; padding: .65rem var(--s3);
+  background: var(--field); border: 1px solid var(--line); border-radius: var(--radius); color: var(--cream);
+}
+.field textarea { min-height: 120px; resize: vertical; }
+.field input::placeholder, .field textarea::placeholder { color: var(--faint); }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--ember); outline-offset: 1px; border-color: var(--ember); }
+.field [aria-invalid="true"] { border-color: var(--danger); }
+.field-error { color: var(--danger); font-size: .9375rem; min-height: 1.2em; }
+.field-hint { color: var(--stone); font-size: .9375rem; }
+input[type="date"], input[type="time"] { color-scheme: dark; }
+
+.toast {
+  position: fixed; left: 50%; bottom: var(--s6); z-index: 300; transform: translateX(-50%);
+  max-width: min(92vw, 460px); padding: var(--s3) var(--s5);
+  background: var(--cream); color: var(--page); font-weight: 500; border-radius: var(--radius); box-shadow: 0 8px 28px rgba(0,0,0,.5);
+}
+
+/* ───────── Pictures ───────── */
+.ph { width: 100%; height: 100%; object-fit: cover; background: var(--char); }
+
+/* <picture> wrappers fill their frame so object-fit works */
+.hero__photo picture, .tile__img picture, .about__photo picture, .booking-aside__photo picture,
+.menu-section__photos picture, .dish__photo picture { display: block; width: 100%; height: 100%; }

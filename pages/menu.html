@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12100e" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+
+  <title>Full Menu | Roadhouse Deli &amp; Grill Windhoek</title>
+  <meta name="description" content="Browse the full Roadhouse Deli &amp; Grill menu — burgers, steaks, pizza, pasta, wings, platters, craft cocktails, spirits, beers and wines. Windhoek, Independence Avenue.">
+  <meta name="keywords" content="Roadhouse menu, Windhoek food, steaks Windhoek, cocktails Windhoek, burgers Namibia, pizza Windhoek, platters">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://roadhousedeli.com/menu.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Full Menu | Roadhouse Deli &amp; Grill">
+  <meta property="og:description" content="Burgers, steaks, pizza, pasta, wings, platters, cocktails and more. View our full menu online.">
+  <meta property="og:url" content="https://roadhousedeli.com/menu.html">
+  <meta property="og:image" content="https://roadhousedeli.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Roadhouse Deli &amp; Grill">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Full Menu | Roadhouse Deli &amp; Grill">
+  <meta name="twitter:description" content="View the full Roadhouse Deli &amp; Grill menu — food, drinks, cocktails and more.">
+  <meta name="twitter:image" content="https://roadhousedeli.com/og-image.jpg">
+
+  <!-- @menu-jsonld -->
+
+  <!-- Old links such as menu.html#cocktails now open that category's own page -->
+  <script>
+    (function () {
+      var h = location.hash.slice(1);
+      if (/^(burgers|grills|pizza|wraps|platters|cocktails|drinks|wines|softdrinks)$/.test(h)) location.replace('menu-' + h + '.html');
+    })();
+  </script>
+
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script type="module" src="../src/pages/menu.js"></script>
+</head>
+<body>
+
+<!-- @include header current="menu" -->
+
+<main id="main">
+  <section class="page-head" aria-labelledby="menu-h1">
+    <div class="container">
+      <div class="page-head__row">
+        <div>
+          <span class="eyebrow">Roadhouse Deli &amp; Grill</span>
+          <h1 id="menu-h1">Our Menu</h1>
+          <p class="lead">Flame-grilled steaks, burgers, pizza, platters, craft cocktails and a full bar. Prices in Namibian dollars (N$).</p>
+        </div>
+        <div class="page-head__actions">
+          <a class="btn btn--primary btn--sm" href="booking.html">Book a Table</a>
+          <a class="btn btn--ghost btn--sm" href="roadhouse-menu.pdf" target="_blank" rel="noopener">Download PDF menu</a>
+        </div>
+      </div>
+
+      <div class="today" id="today-meal" data-pending>
+        <span class="today__label">Meal of the Day</span>
+        <span class="today__day muted" translate="no">Wednesday</span>
+        <span class="today__name" translate="no">Grand Feast Delight</span>
+        <span class="today__price" translate="no">N$000</span>
+        <a class="link-arrow" href="index.html#meal-of-day">This week</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="hub" aria-labelledby="hub-h">
+    <div class="container">
+      <h2 id="hub-h" class="visually-hidden">Choose a category</h2>
+      <!-- @menu-cards eager="1" -->
+    </div>
+  </section>
+</main>
+
+<!-- @include footer -->
+</body>
+</html>
